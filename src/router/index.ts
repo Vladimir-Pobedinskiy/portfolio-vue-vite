@@ -5,7 +5,7 @@ import { useUserStore } from '@/stores/storeUser'
 
 const checkAuth = (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
 	const userStore = useUserStore()
-	const user = computed(() => userStore.user)
+	const user = computed(() => userStore?.user)
 
 	if (!user.value) {
 		next({ name: 'login-view' })

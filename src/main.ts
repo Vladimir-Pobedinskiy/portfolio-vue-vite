@@ -3,6 +3,7 @@ import './assets/scss/main.scss'
 import { createApp } from 'vue'
 import type { Directive } from 'vue'
 import { createPinia } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
 import App from './App.vue'
 import router from './router'
@@ -20,9 +21,12 @@ const firebaseConfig = {
 // Initialize Firebase
 initializeApp(firebaseConfig)
 
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
+
 const app = createApp(App)
 
-app.use(createPinia())
+app.use(pinia)
 app.use(router)
 app.directive('imask', IMaskDirective as Directive)
 

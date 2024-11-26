@@ -21,7 +21,14 @@ const userStore = useUserStore()
 const setUser = (token: string) => userStore.setUser(token)
 
 const formRef = ref<any>(null)
-const form = reactive({
+
+interface Form {
+	name: string
+	tel: string
+	email: string
+	password: string
+}
+const form = reactive<Form>({
 	name: '',
 	tel: '',
 	email: '',
