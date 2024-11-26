@@ -6,7 +6,7 @@ import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
 import App from './App.vue'
-import router from './router'
+import { router } from './router'
 import { initializeApp } from 'firebase/app'
 import { IMaskDirective } from 'vue-imask'
 
