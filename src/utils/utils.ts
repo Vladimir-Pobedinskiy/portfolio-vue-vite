@@ -24,3 +24,17 @@ export function priceFormatter(value: number) {
 	parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '\u00A0')
 	return `${parts.join(',')} ₽`
 }
+
+/* Показ пароля */
+export function passwordVisibility(event: any) {
+	const toggle = event.currentTarget
+	const input = toggle.previousElementSibling.children[0]
+
+	if (input.type === 'password') {
+		input.setAttribute('type', 'text')
+		toggle.setAttribute('data-show', true)
+	} else {
+		input.setAttribute('type', 'password')
+		toggle.setAttribute('data-show', false)
+	}
+}

@@ -8,6 +8,7 @@ $burger-height: 2px;
 	border: none;
 	outline: none;
 	background-color: transparent;
+	z-index: 999;
 
 	&::before,
 	&::after {

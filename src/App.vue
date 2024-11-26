@@ -5,8 +5,25 @@ import AppHeader from '@/components/App/AppHeader.vue'
 <template>
 	<AppHeader />
 	<main class="main">
-		<RouterView />
+		<RouterView v-slot="{ Component }">
+			<Transition name="page" mode="out-in">
+				<component :is="Component" />
+			</Transition>
+		</RouterView>
 	</main>
 </template>
 
-<style scoped></style>
+<style lang="scss">
+.page-enter-active,
+.page-leave-active {
+	transition:
+		opacity 0.3s ease-in-out,
+		visibility 0.3s ease-in-out;
+}
+
+.page-enter-from,
+.page-leave-to {
+	opacity: 0;
+	visibility: hidden;
+}
+</style>

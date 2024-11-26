@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { ref, computed, watch, onMounted } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useDesktopHandler } from '@/composables/useDesktopHandler'
 import { useSwipeHandler } from '@/composables/useSwipeHandler'
 import { useMenuStore } from '@/stores/storeMenu'
-
 import { screens } from '@/utils/utils'
+import UIUser from '@/components/UI/UIUser.vue'
 
 const route = useRoute()
 const { isDesktop } = useDesktopHandler(screens.desktop)
 
 const storeMenu = useMenuStore()
 const isOpen = computed(() => storeMenu.isOpen)
-const toggleState = (menuName: string) => storeMenu.toggleState(menuName)
+const toggleState = (name: string) => storeMenu.toggleState(name)
 
 watch(route, () => {
 	if (isOpen.value === 'navigation') {
@@ -32,17 +32,24 @@ useSwipeHandler(navigation, isOpen, 'left', screens.desktop)
 	<header class="header">
 		<div class="container">
 			<div class="header__inner">
-				<RouterLink class="header__logo h4" :to="{ name: 'home-view' }">PORTFOLIO</RouterLink>
-				<div ref="navigation" class="header__nav-list-wrapper" :class="{ active: isOpen === 'navigation' }"></div>
+				<template v-if="route.name === 'home-view'">
+					<span class="header__logo h4">PORTFOLIO</span>
+				</template>
+				<template v-else>
+					<RouterLink class="header__logo h4" :to="{ name: 'home-view' }">PORTFOLIO</RouterLink>
+				</template>
+
+				<div ref="navigation" :class="['header__nav-list-wrapper', { active: isOpen === 'navigation' }]"></div>
 
 				<ul v-if="isDesktop" class="nav-user">
-					<li class="nav-user__item">1</li>
-					<li class="nav-user__item">2</li>
+					<li class="nav-user__item">
+						<UIUser />
+					</li>
 				</ul>
 
 				<button
-					class="header__burger-btn burger-btn"
-					:class="{ active: isOpen === 'navigation' }"
+					v-if="!isDesktop"
+					:class="['burger-btn', { active: isOpen === 'navigation' }]"
 					type="button"
 					@click="handleBurgerClick"
 				>
@@ -107,14 +114,6 @@ useSwipeHandler(navigation, isOpen, 'left', screens.desktop)
 					opacity 0.3s ease,
 					visibility 0.3s ease;
 			}
-		}
-	}
-
-	&__burger-btn {
-		z-index: 999;
-
-		@media (min-width: $desktop) {
-			display: none;
 		}
 	}
 

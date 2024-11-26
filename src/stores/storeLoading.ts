@@ -1,28 +1,16 @@
-import { defineStore, acceptHMRUpdate } from 'pinia'
+import { ref } from 'vue'
+import { defineStore } from 'pinia'
 
-export interface StoreLoading {
-	isLoading: boolean
-}
+export const useLoadingStore = defineStore('loading', () => {
+	const isLoading = ref<boolean>(false)
 
-export const useLoadingStore = defineStore('loading', {
-	state(): StoreLoading {
-		return {
-			isLoading: false,
-		}
-	},
+	const startLoading = () => {
+		isLoading.value = true
+	}
 
-	getters: {
-		getIsLoading(): boolean {
-			return this.isLoading
-		},
-	},
+	const endLoading = () => {
+		isLoading.value = false
+	}
 
-	actions: {
-		startLoading() {
-			this.isLoading = true
-		},
-		endLoading() {
-			this.isLoading = false
-		},
-	},
+	return { isLoading, startLoading, endLoading }
 })

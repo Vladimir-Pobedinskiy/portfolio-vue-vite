@@ -5,30 +5,28 @@ import { useMenuStore } from '@/stores/storeMenu'
 
 export function useSwipeHandler(
 	target: Ref<HTMLElement | null>,
-	isOpen: Ref,
+	state: Ref,
 	directionSwipe: 'left' | 'right' | 'up' | 'down',
 	breakpoint: string
 ) {
-	// Флаг для предотвращения многократной обработки одного свайпа
+	// Флаг для предотвращения многократной отработки одного свайпа
 	const swipeProcessed = ref<boolean>(false)
 	const storeMenu = useMenuStore()
-	const toggleState = (isOpen: Ref) => storeMenu.toggleState(isOpen.value ? isOpen.value : '')
+	const toggleState = (state: Ref) => storeMenu.toggleState(state.value ? state.value : '')
 
 	const handleSwipe = () => {
 		const { direction } = useSwipe(target, {
 			passive: false,
 			onSwipe: () => {
 				if (window.innerWidth <= parseInt(breakpoint)) {
-					if (!swipeProcessed.value) {
-						if (direction.value === directionSwipe) {
-							swipeProcessed.value = true
-						}
+					if (!swipeProcessed.value && direction.value === directionSwipe) {
+						swipeProcessed.value = true
 					}
 				}
 			},
 			onSwipeEnd: (e: TouchEvent, direction: UseSwipeDirection) => {
 				if (e.type === 'touchend' && swipeProcessed.value && direction === directionSwipe) {
-					toggleState(isOpen.value)
+					toggleState(state.value)
 				}
 				swipeProcessed.value = false
 			},

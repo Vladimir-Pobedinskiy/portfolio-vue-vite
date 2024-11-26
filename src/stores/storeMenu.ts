@@ -1,35 +1,23 @@
-import { defineStore, acceptHMRUpdate } from 'pinia'
+import { ref } from 'vue'
+import { defineStore } from 'pinia'
 import { useScrollController } from '@/composables/useScrollController'
 
-export interface StoreMenu {
-	isOpen: string
-}
+export const useMenuStore = defineStore('menu', () => {
+	const isOpen = ref<string | undefined>(undefined)
 
-export const useMenuStore = defineStore('menu', {
-	state(): StoreMenu {
-		return {
-			isOpen: '',
+	const toggleState = (name: string) => {
+		if (isOpen.value === name) {
+			useScrollController.enableScroll()
+			isOpen.value = ''
+		} else {
+			useScrollController.disableScroll()
+			isOpen.value = name
 		}
-	},
+	}
 
-	getters: {
-		getIsOpen(): string {
-			return this.isOpen
-		},
-	},
+	const closeMenu = () => {
+		isOpen.value = ''
+	}
 
-	actions: {
-		toggleState(menuName: string) {
-			if (this.isOpen === menuName) {
-				useScrollController.enableScroll()
-				this.isOpen = ''
-			} else {
-				useScrollController.disableScroll()
-				this.isOpen = menuName
-			}
-		},
-		closeMenu() {
-			this.isOpen = ''
-		},
-	},
+	return { isOpen, toggleState, closeMenu }
 })
