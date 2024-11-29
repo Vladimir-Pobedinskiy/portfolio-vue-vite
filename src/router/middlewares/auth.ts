@@ -4,9 +4,9 @@ import { useUserStore } from '@/stores/storeUser'
 
 export const auth = (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
 	const userStore = useUserStore()
-	const user = computed(() => userStore?.user)
+	const token = computed(() => userStore.user.token)
 
-	if (!user.value) {
+	if (!token.value) {
 		next({ name: 'login-view' })
 	} else {
 		next()

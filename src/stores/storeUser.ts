@@ -1,19 +1,26 @@
-import { ref } from 'vue'
+import { reactive } from 'vue'
 import { defineStore } from 'pinia'
 import { useRouter } from 'vue-router'
+import { clearObject } from '@/utils/utils'
+
+interface User {
+	token: string | null
+}
 
 export const useUserStore = defineStore(
 	'user',
 	() => {
 		const router = useRouter()
-		const user = ref<string | undefined>(undefined)
+		const user = reactive<User>({
+			token: null,
+		})
 
 		const setUser = (token: string) => {
-			user.value = token
+			user.token = token
 		}
 
 		const logout = () => {
-			user.value = undefined
+			clearObject(user)
 			router.push({ name: 'home-view' })
 		}
 

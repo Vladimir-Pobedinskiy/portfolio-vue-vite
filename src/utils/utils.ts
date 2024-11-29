@@ -11,13 +11,13 @@ export const screens = {
 }
 
 /* Склонение числительных */
-export function declOfNum(number: number, txt: string) {
+export const declOfNum = (number: number, txt: string) => {
 	const cases = [2, 0, 1, 1, 1, 2]
 	return txt[number % 100 > 4 && number % 100 < 20 ? 2 : cases[number % 10 < 5 ? number % 10 : 5]]
 }
 
 // priceFormatter
-export function priceFormatter(value: number) {
+export const priceFormatter = (value: number) => {
 	if (value === null || value === undefined) return ''
 	if (value === 0) return '0 ₽'
 	const parts = value.toString().split('.')
@@ -26,7 +26,7 @@ export function priceFormatter(value: number) {
 }
 
 /* Показ пароля */
-export function passwordVisibility(event: any) {
+export const passwordVisibility = (event: any) => {
 	const toggle = event.currentTarget
 	const input = toggle.previousElementSibling.children[0]
 
@@ -37,4 +37,14 @@ export function passwordVisibility(event: any) {
 		input.setAttribute('type', 'password')
 		toggle.setAttribute('data-show', false)
 	}
+}
+
+/* clear Object */
+export const clearObject = (obj: any) => {
+	Object.keys(obj).forEach((key) => {
+		if (typeof obj[key] === 'object' && obj[key] !== null) {
+			clearObject(obj[key]) // Рекурсия
+		}
+		delete obj[key]
+	})
 }
