@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 import { useRouter } from 'vue-router'
 import { clearObject } from '@/utils/utils'
 
-interface User {
+interface IUser {
 	token: string | null
 }
 
@@ -11,7 +11,7 @@ export const useUserStore = defineStore(
 	'user',
 	() => {
 		const router = useRouter()
-		const user = reactive<User>({
+		const user = reactive<IUser>({
 			token: null,
 		})
 

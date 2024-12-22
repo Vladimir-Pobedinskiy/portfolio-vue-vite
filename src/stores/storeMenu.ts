@@ -3,21 +3,21 @@ import { defineStore } from 'pinia'
 import { useScrollController } from '@/composables/useScrollController'
 
 export const useMenuStore = defineStore('menu', () => {
-	const isOpen = ref<string | undefined>(undefined)
+	const menuName = ref<string | undefined>(undefined)
 
 	const toggleState = (name: string) => {
-		if (isOpen.value === name) {
+		if (menuName.value === name) {
 			useScrollController.enableScroll()
-			isOpen.value = ''
+			menuName.value = ''
 		} else {
 			useScrollController.disableScroll()
-			isOpen.value = name
+			menuName.value = name
 		}
 	}
 
 	const closeMenu = () => {
-		isOpen.value = ''
+		menuName.value = ''
 	}
 
-	return { isOpen, toggleState, closeMenu }
+	return { menuName, toggleState, closeMenu }
 })

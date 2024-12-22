@@ -22,11 +22,11 @@ const setUser = (token: string) => userStore.setUser(token)
 
 const formRef = ref<any>(null)
 
-interface Form {
+interface IForm {
 	email: string
 	password: string
 }
-const form = reactive<Form>({
+const form = reactive<IForm>({
 	email: '',
 	password: '',
 })
@@ -81,42 +81,39 @@ const onSubmit = async (): Promise<void> => {
 			@submit="onSubmit"
 			v-slot="{ errors }"
 		>
-			<div class="login__form-item">
-				<div class="login__form-label-wrap label-wrap" :class="{ error: errors.email }">
-					<label class="label">
-						<Field v-model="form.email" class="label__input l-input" type="email" name="email" placeholder=" " />
-						<span class="label__input-title l-input">Электронная почта</span>
-						<span class="error-message marker">{{ errors.email }}</span>
-					</label>
-				</div>
+			<div class="login__form-item label-wrap" :class="{ error: errors.email }">
+				<label class="label">
+					<Field v-model="form.email" class="label__input l-input" type="email" name="email" placeholder=" " />
+					<span class="label__input-title l-input">Электронная почта</span>
+					<span class="error-message marker">{{ errors.email }}</span>
+				</label>
 			</div>
-			<div class="login__form-item">
-				<div class="login__form-label-wrap label-wrap" :class="{ error: errors.password }">
-					<label class="label">
-						<Field
-							v-model="form.password"
-							class="label__input l-input"
-							type="password"
-							name="password"
-							placeholder=" "
-							autocomplete="off"
-							:disabled="isLoading"
-						/>
-						<span class="label__input-title l-input">Пароль</span>
-						<span class="error-message marker">{{ errors.password }}</span>
-					</label>
-					<button
-						class="toggle-password-visibility-btn"
-						data-show="false"
-						type="button"
-						tabindex="1"
+
+			<div class="login__form-item label-wrap" :class="{ error: errors.password }">
+				<label class="label">
+					<Field
+						v-model="form.password"
+						class="label__input l-input"
+						type="password"
+						name="password"
+						placeholder=" "
+						autocomplete="off"
 						:disabled="isLoading"
-						@click="togglePasswordVisibility"
-					>
-						<IconEye class="icon-eye-password" />
-						<IconEyeHidden class="icon-eye-password-hidden" />
-					</button>
-				</div>
+					/>
+					<span class="label__input-title l-input">Пароль</span>
+					<span class="error-message marker">{{ errors.password }}</span>
+				</label>
+				<button
+					class="toggle-password-visibility-btn"
+					data-show="false"
+					type="button"
+					tabindex="1"
+					:disabled="isLoading"
+					@click="togglePasswordVisibility"
+				>
+					<IconEye class="icon-eye-password" />
+					<IconEyeHidden class="icon-eye-password-hidden" />
+				</button>
 			</div>
 
 			<div class="login__password-recovery-btn-wrapper">

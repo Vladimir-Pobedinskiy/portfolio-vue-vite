@@ -1,18 +1,19 @@
-import { ref, onMounted, onUnmounted, type Ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
+import type { Ref } from 'vue'
 import { useSwipe } from '@vueuse/core'
 import type { UseSwipeDirection } from '@vueuse/core'
 import { useMenuStore } from '@/stores/storeMenu'
 
-export function useSwipeHandler(
+export const useSwipeHandler = (
 	target: Ref<HTMLElement | null>,
-	state: Ref,
+	menuName: Ref,
 	directionSwipe: 'left' | 'right' | 'up' | 'down',
 	breakpoint: string
-) {
+) => {
 	// Флаг для предотвращения многократной отработки одного свайпа
 	const swipeProcessed = ref<boolean>(false)
 	const storeMenu = useMenuStore()
-	const toggleState = (state: Ref) => storeMenu.toggleState(state.value ? state.value : '')
+	const toggleState = (menuName: Ref) => storeMenu.toggleState(menuName.value)
 
 	const handleSwipe = () => {
 		const { direction } = useSwipe(target, {
@@ -26,7 +27,7 @@ export function useSwipeHandler(
 			},
 			onSwipeEnd: (e: TouchEvent, direction: UseSwipeDirection) => {
 				if (e.type === 'touchend' && swipeProcessed.value && direction === directionSwipe) {
-					toggleState(state.value)
+					toggleState(menuName.value)
 				}
 				swipeProcessed.value = false
 			},

@@ -1,12 +1,12 @@
-import './assets/scss/main.scss'
+import '@/assets/scss/main.scss'
 
 import { createApp } from 'vue'
 import type { Directive } from 'vue'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
-import App from './App.vue'
-import { router } from './router'
+import App from '@/App.vue'
+import { router } from '@/router'
 import { initializeApp } from 'firebase/app'
 import { IMaskDirective } from 'vue-imask'
 

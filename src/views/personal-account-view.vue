@@ -1,10 +1,15 @@
 <script setup lang="ts">
-import { watch, computed } from 'vue'
-import { useUserStore } from '../stores/storeUser'
+import { computed } from 'vue'
+import { useUserStore } from '@/stores/storeUser'
+import { getAuth, signOut } from 'firebase/auth'
 
 const userStore = useUserStore()
 const user = computed(() => userStore.user)
-const logout = userStore.logout
+
+const logout = async (): Promise<void> => {
+	await signOut(getAuth())
+	userStore.logout()
+}
 </script>
 
 <template>

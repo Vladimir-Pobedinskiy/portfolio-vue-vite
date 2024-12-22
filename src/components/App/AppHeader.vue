@@ -5,18 +5,18 @@ import { useDesktopHandler } from '@/composables/useDesktopHandler'
 import { useSwipeHandler } from '@/composables/useSwipeHandler'
 import { useMenuStore } from '@/stores/storeMenu'
 import { screens } from '@/utils/utils'
-import UIUser from '@/components/UI/UIUser.vue'
+import UIUserLink from '@/components/UI/UIUserLink.vue'
 
 const route = useRoute()
 const { isDesktop } = useDesktopHandler(screens.desktop)
 
 const storeMenu = useMenuStore()
-const isOpen = computed(() => storeMenu.isOpen)
+const menuName = computed(() => storeMenu.menuName)
 const toggleState = (name: string) => storeMenu.toggleState(name)
 
 watch(route, () => {
-	if (isOpen.value === 'navigation') {
-		toggleState(isOpen.value)
+	if (menuName.value === 'navigation') {
+		toggleState(menuName.value)
 	}
 })
 
@@ -25,7 +25,7 @@ const handleBurgerClick = () => {
 }
 
 const navigation = ref<HTMLElement | null>(null)
-useSwipeHandler(navigation, isOpen, 'left', screens.desktop)
+useSwipeHandler(navigation, menuName, 'left', screens.desktop)
 </script>
 
 <template>
@@ -39,17 +39,17 @@ useSwipeHandler(navigation, isOpen, 'left', screens.desktop)
 					<RouterLink class="header__logo h4" :to="{ name: 'home-view' }">PORTFOLIO</RouterLink>
 				</template>
 
-				<div ref="navigation" :class="['header__nav-list-wrapper', { active: isOpen === 'navigation' }]"></div>
+				<div ref="navigation" :class="['header__nav-list-wrapper', { active: menuName === 'navigation' }]"></div>
 
 				<ul v-if="isDesktop" class="nav-user">
 					<li class="nav-user__item">
-						<UIUser />
+						<UIUserLink />
 					</li>
 				</ul>
 
 				<button
 					v-if="!isDesktop"
-					:class="['burger-btn', { active: isOpen === 'navigation' }]"
+					:class="['burger-btn', { active: menuName === 'navigation' }]"
 					type="button"
 					@click="handleBurgerClick"
 				>

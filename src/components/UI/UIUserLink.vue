@@ -4,13 +4,13 @@ import IconUser from '@/assets/icons/icon-user.svg'
 </script>
 
 <template>
-	<RouterLink :to="{ name: 'personal-account-view' }" class="ui-user" aria-label="В Личный кабинет">
-		<IconUser class="ui-user__icon" />
+	<RouterLink :to="{ name: 'personal-account-view' }" class="ui-user-link" aria-label="В Личный кабинет">
+		<IconUser class="ui-user-link__icon" />
 	</RouterLink>
 </template>
 
 <style lang="scss">
-.ui-user {
+.ui-user-link {
 	display: flex;
 	align-items: center;
 	justify-content: center;
