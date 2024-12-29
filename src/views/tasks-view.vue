@@ -2,9 +2,9 @@
 
 <template>
 	<main>
-		<div class="home-view offset-page">
+		<div class="tasks-view offset-page">
 			<div class="container">
-				<p>home-view</p>
+				<p>tasks-view</p>
 			</div>
 		</div>
 	</main>

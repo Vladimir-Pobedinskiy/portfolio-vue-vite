@@ -45,6 +45,6 @@ export const clearObject = (obj: any) => {
 		if (typeof obj[key] === 'object' && obj[key] !== null) {
 			clearObject(obj[key]) // Рекурсия
 		}
-		delete obj[key]
+		obj[key] = null
 	})
 }

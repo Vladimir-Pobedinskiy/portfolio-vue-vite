@@ -13,6 +13,12 @@ export const routes: RouteRecordRaw[] = [
 		component: () => import('@/views/registration-view.vue'),
 	},
 	{
+		path: '/personal-account',
+		name: 'personal-account-view',
+		beforeEnter: [auth],
+		component: () => import('@/views/personal-account-view.vue'),
+	},
+	{
 		path: '/',
 		name: 'home-view',
 		beforeEnter: [auth],
@@ -25,9 +31,14 @@ export const routes: RouteRecordRaw[] = [
 		component: () => import('@/views/about-view.vue'),
 	},
 	{
-		path: '/personal-account',
-		name: 'personal-account-view',
+		path: '/tasks',
+		name: 'tasks-view',
 		beforeEnter: [auth],
-		component: () => import('@/views/personal-account-view.vue'),
+		component: () => import('@/views/tasks-view.vue'),
+	},
+	{
+		path: '/:pathMatch(.*)*',
+		beforeEnter: [auth],
+		component: () => import('@/views/not-found-view.vue'),
 	},
 ]

@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
+import type { INav } from '@/interfaces'
+import { getFirestore, getDoc, doc } from 'firebase/firestore'
 import { useRoute } from 'vue-router'
 import { useDesktopHandler } from '@/composables/useDesktopHandler'
 import { useSwipeHandler } from '@/composables/useSwipeHandler'
@@ -13,6 +15,29 @@ const { isDesktop } = useDesktopHandler(screens.desktop)
 const storeMenu = useMenuStore()
 const menuName = computed(() => storeMenu.menuName)
 const toggleState = (name: string) => storeMenu.toggleState(name)
+
+const nav = ref<INav[]>([])
+const db = getFirestore()
+
+const isLoading = ref<boolean>(false)
+const getLinks = async (): Promise<void> => {
+	try {
+		isLoading.value = true
+		const docRef = doc(db, 'general', '9azrkqLoosCRB7x11WmH')
+		const docSnap = await getDoc(docRef)
+		// docSnap.exists()) проверяет, был ли вообще найден документ. Если его нет return undefined
+		nav.value = docSnap.exists() ? [...docSnap.data().nav] : []
+		// const getData = query(collection(db, 'general'))
+		// const listDocs = await getDocs(getData)
+		// const res = listDocs.docs.map((doc) => doc.data())
+	} catch (error: any) {
+		console.error('general header error', error)
+		throw error
+	} finally {
+		isLoading.value = false
+	}
+}
+getLinks()
 
 watch(route, () => {
 	if (menuName.value === 'navigation') {
@@ -38,8 +63,13 @@ useSwipeHandler(navigation, menuName, 'left', screens.desktop)
 				<template v-else>
 					<RouterLink class="header__logo h4" :to="{ name: 'home-view' }">PORTFOLIO</RouterLink>
 				</template>
-
-				<div ref="navigation" :class="['header__nav-list-wrapper', { active: menuName === 'navigation' }]"></div>
+				<div ref="navigation" :class="['header__nav-list-wrapper', { active: menuName === 'navigation' }]">
+					<ul class="nav-list">
+						<li v-for="(item, i) in nav" :key="i" class="nav-item">
+							<RouterLink class="nav-link p1 hover-from-center" :to="`${item.url}`">{{ item.title }}</RouterLink>
+						</li>
+					</ul>
+				</div>
 
 				<ul v-if="isDesktop" class="nav-user">
 					<li class="nav-user__item">
