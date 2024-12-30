@@ -36,7 +36,7 @@ const getLinks = async (): Promise<void> => {
 		breadcrumbs.value = [...res[0].breadcrumbs]
 		description.value = { ...res[0].description }
 	} catch (error: any) {
-		vfm.open('ModalError')
+		vfm.open('modal-error')
 		console.error('tasks error', error)
 		throw error
 	} finally {

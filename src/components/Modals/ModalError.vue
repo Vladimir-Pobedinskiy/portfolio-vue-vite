@@ -1,17 +1,22 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import UIModal from '@/components/UI/UIModal.vue'
-import type { IModalSettings } from '@/interfaces'
 
-const modalSettings: IModalSettings = {
-	name: 'ModalError',
-	clickToClose: true, // Закрытие модального окна при нажатии на наложение модального окна
-	escToClose: true, // Нажмите esc, чтобы закрыть модальное окно
-	hideOverlay: false, // Скрытие отображения наложения
+const isOpenModalError = ref<boolean>(false)
+const handleModalError = (flag: boolean) => {
+	isOpenModalError.value = flag
 }
 </script>
 
 <template>
-	<UIModal :modal-settings="modalSettings">
+	<UIModal
+		v-model:model-value="isOpenModalError"
+		modal-id="modal-error"
+		:click-to-close="true"
+		:esc-to-close="true"
+		:hide-overlay="false"
+		@update:model-value="handleModalError"
+	>
 		<template #header>
 			<h2 class="modal-error-title s2">Ошибка!</h2>
 		</template>

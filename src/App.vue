@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import AppHeader from '@/components/App/AppHeader.vue'
+import ModalError from '@/components/Modals/ModalError.vue'
 </script>
 
 <template>
@@ -11,6 +12,8 @@ import AppHeader from '@/components/App/AppHeader.vue'
 			</Transition>
 		</RouterView>
 	</main>
+
+	<ModalError />
 </template>
 
 <style lang="scss">

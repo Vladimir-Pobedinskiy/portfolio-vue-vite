@@ -9,7 +9,6 @@ import type { ITag } from '@/interfaces'
 const props = defineProps<{
 	currentTags: ITag[]
 	currentIndex: number
-	isPreview?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -41,26 +40,26 @@ const initCombinedTags = () => {
 	}))
 }
 
-const showModal = ref(false)
-const modalSettings = {
-	name: 'ModalTags',
-	clickToClose: true, // Закрытие модального окна при нажатии на наложение модального окна
-	escToClose: true, // Нажмите esc, чтобы закрыть модальное окно
-	hideOverlay: false, // Скрытие отображения наложения
-}
-
-const openModal = () => {
+const isOpenModalTags = ref<boolean>(false)
+const handleShowModalTags = (flag: boolean) => {
 	initCombinedTags()
-	showModal.value = true
+	isOpenModalTags.value = flag
 }
 
 const savedTags = ref<ITag[]>([])
 const handleSelectedTag = (tag: ITag) => {
 	if (!savedTags.value.length) {
-		savedTags.value.push({
-			title: tag.title,
-			selected: true,
-		})
+		const selectedTags = combinedTags.value.filter((item) => item.selected)
+		if (selectedTags) savedTags.value = [...selectedTags]
+		const selectedIndex = savedTags.value.findIndex((item) => item.title === tag.title)
+		if (selectedIndex !== -1) {
+			savedTags.value.splice(selectedIndex, 1)
+		} else {
+			savedTags.value.push({
+				title: tag.title,
+				selected: true,
+			})
+		}
 	} else {
 		const selectedIndex = savedTags.value.findIndex((item) => item.title === tag.title)
 		if (selectedIndex !== -1) {
@@ -83,13 +82,21 @@ const handleSelectedTag = (tag: ITag) => {
 
 const editSelectedTags = () => {
 	emit('editSelectedTags', savedTags.value)
-	showModal.value = false
+	isOpenModalTags.value = false
 }
 </script>
 
 <template>
 	<div class="modal-tags">
-		<UIModal v-model="showModal" :modal-settings="modalSettings">
+		<UIModal
+			v-model:model-value="isOpenModalTags"
+			modal-id="modal-tags"
+			class="modal-tags"
+			:click-to-close="true"
+			:esc-to-close="true"
+			:hide-overlay="false"
+			@update:model-value="handleShowModalTags"
+		>
 			<template #header>
 				<span class="modal-tags-title s2">Выберите теги</span>
 			</template>
@@ -102,7 +109,7 @@ const editSelectedTags = () => {
 		<button
 			:class="currentTags.length ? 'modal-tags-btn-open' : 'btn btn-small'"
 			aria-label="Открыть модальное окно"
-			@click="openModal"
+			@click="handleShowModalTags(true)"
 		>
 			<template v-if="currentTags.length">
 				<IconEdit class="icon-edit" />
@@ -119,6 +126,7 @@ const editSelectedTags = () => {
 	margin-left: 20px;
 	width: 24px;
 	height: 24px;
+	outline: transparent;
 }
 
 .modal-tags-btn-open-icon {

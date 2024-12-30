@@ -3,13 +3,43 @@ import { computed } from 'vue'
 import { VueFinalModal } from 'vue-final-modal'
 import { useMenuStore } from '@/stores/storeMenu'
 import { useScrollController } from '@/composables/useScrollController'
-import type { IModalSettings } from '@/interfaces'
 import IconClose from '@/assets/icons/icon-close.svg'
 
-defineProps<{
-	modalSettings: IModalSettings
-	isPreview?: boolean
+const props = withDefaults(
+	defineProps<{
+		modelValue: boolean
+		modalId: number | string
+		lockScroll?: boolean
+		/** Закрытие модального окна при нажатии на наложение модального окна */
+		clickToClose?: boolean
+		/** Нажмите esc, чтобы закрыть модальное окно */
+		escToClose?: boolean
+		/** Скрытие отображения наложения */
+		hideOverlay?: boolean
+		swipeToClose?: 'none' | 'up' | 'right' | 'down' | 'left'
+		isLoading?: boolean
+	}>(),
+	{
+		lockScroll: false,
+		clickToClose: true,
+		escToClose: true,
+		hideOverlay: false,
+		swipeToClose: 'none',
+		isLoading: false,
+	}
+)
+const emits = defineEmits<{
+	(e: 'update:modelValue', value: boolean): void
 }>()
+
+const modelValue = computed({
+	get: () => props.modelValue,
+	set: (value) => emits('update:modelValue', value),
+})
+
+const close = () => {
+	emits('update:modelValue', false)
+}
 
 const storeMenu = useMenuStore()
 const menuNameStore = computed(() => storeMenu.menuName)
@@ -28,13 +58,13 @@ const customContentTransition = {
 }
 
 const handleBeforeOpen = () => {
-	if (!document.body.classList.contains('lock-js') || menuNameStore.value !== 'navigation') {
+	if (props.modelValue || menuNameStore.value === 'navigation') {
 		useScrollController.disableScroll()
 	}
 }
 
 const handleClosed = () => {
-	if (document.body.classList.contains('lock-js') && menuNameStore.value !== 'navigation') {
+	if (!props.modelValue || menuNameStore.value !== 'navigation') {
 		useScrollController.enableScroll()
 	}
 }
@@ -42,21 +72,30 @@ const handleClosed = () => {
 
 <template>
 	<VueFinalModal
+		v-model="modelValue"
+		v-bind="$attrs"
+		:modal-id="modalId"
+		:lock-scroll="lockScroll"
+		:overlay-transition="customOverlayTransition"
+		:content-transition="customContentTransition"
+		:click-to-close="clickToClose"
+		:esc-to-close="escToClose"
+		:hide-overlay="hideOverlay"
+		:swipe-to-close="swipeToClose"
 		class="modal-container"
 		content-class="modal-content"
 		overlay-class="modal-overlay"
-		:overlay-transition="customOverlayTransition"
-		:content-transition="customContentTransition"
-		:lock-scroll="false"
-		:modal-id="modalSettings.name"
-		:click-to-close="modalSettings.clickToClose"
-		:esc-to-close="modalSettings.escToClose"
-		:hide-overlay="modalSettings.hideOverlay"
 		@before-open="handleBeforeOpen"
 		@closed="handleClosed"
 	>
 		<div class="modal-inner">
-			<button class="modal-close-btn" aria-label="Закрыть модальное окно" @click="$vfm.closeAll">
+			<button
+				class="modal-close-btn"
+				type="button"
+				aria-label="Закрыть модальное окно"
+				:disabled="isLoading"
+				@click="close"
+			>
 				<IconClose class="icon-close" />
 			</button>
 			<div v-if="$slots.header" class="modal-header">
