@@ -16,9 +16,10 @@ const emit = defineEmits<{
 	(e: 'deleteCurrentTask', value: number): void
 }>()
 
-const storeTasks = useTasksStore()
 const inputHiddenFlag = ref<boolean>(true)
 const inputValue = ref<string>('')
+
+const storeTasks = useTasksStore()
 const changeTaskStore = (currentIndex: number, inputValue: string) => storeTasks.changeTask(currentIndex, inputValue)
 const changeTagsStore = (currentIndex: number, selectedTags: ITag[]) =>
 	storeTasks.changeTags(currentIndex, selectedTags)

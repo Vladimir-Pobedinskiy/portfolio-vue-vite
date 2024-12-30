@@ -14,15 +14,11 @@ const description = ref<IDescription>({
 	title: null,
 	descriptionList: null,
 })
-const textareaValue = ref('')
-const tags = ref([
-	{ title: 'home', selected: false },
-	{ title: 'travel', selected: false },
-	{ title: 'work', selected: false },
-])
+const textareaValue = ref<string>('')
 const selectedTags = ref<ITag[]>([])
 
 const storeTasks = useTasksStore()
+const tags = computed(() => storeTasks.tags.map((tag) => tag))
 const taskListStore = computed(() => storeTasks.tasks)
 const changeTasksStore = (textareaValue: string, dateTask: string, selectedTags: ITag[]) =>
 	storeTasks.changeTasks(textareaValue, dateTask, selectedTags)

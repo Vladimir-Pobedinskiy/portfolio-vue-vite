@@ -94,7 +94,6 @@ const editSelectedTags = () => {
 				<span class="modal-tags-title s2">Выберите теги</span>
 			</template>
 			<template #body>
-				{{ taskListTagsStore }}
 				<TaskTagList :tags="combinedTags" @handle-selected-tag="handleSelectedTag" />
 				<button class="modal-tags-btn-save btn btn-small" type="button" @click="editSelectedTags">Сохранить</button>
 			</template>

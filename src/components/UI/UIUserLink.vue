@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
 import IconUser from '@/assets/icons/icon-user.svg'
 </script>
 
