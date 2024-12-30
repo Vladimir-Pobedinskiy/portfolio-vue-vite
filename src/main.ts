@@ -8,7 +8,14 @@ import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import App from '@/App.vue'
 import { router } from '@/router'
 import { initializeApp } from 'firebase/app'
+
+import { createVfm } from 'vue-final-modal'
+import 'vue-final-modal/style.css'
+import { autoAnimatePlugin } from '@formkit/auto-animate/vue'
 import { IMaskDirective } from 'vue-imask'
+
+// Глобальные компоненты
+import UIBreadcrumbs from '@/components/UI/UIBreadcrumbs.vue'
 
 const firebaseConfig = {
 	apiKey: 'AIzaSyCDTf05XkPQ-KOSsr13C74-dKWK8dpOLUg',
@@ -28,6 +35,13 @@ const app = createApp(App)
 
 app.use(pinia)
 app.use(router)
+
+const vfm = createVfm()
+app.use(vfm)
+app.use(autoAnimatePlugin)
 app.directive('imask', IMaskDirective as Directive)
+
+// Регистрируем глобальные компоненты
+app.component('UIBreadcrumbs', UIBreadcrumbs)
 
 app.mount('#app')

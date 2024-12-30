@@ -17,8 +17,8 @@ const menuName = computed(() => storeMenu.menuName)
 const toggleState = (name: string) => storeMenu.toggleState(name)
 
 const nav = ref<INav[]>([])
-const db = getFirestore()
 
+const db = getFirestore()
 const isLoading = ref<boolean>(false)
 const getLinks = async (): Promise<void> => {
 	try {
@@ -27,9 +27,6 @@ const getLinks = async (): Promise<void> => {
 		const docSnap = await getDoc(docRef)
 		// docSnap.exists()) проверяет, был ли вообще найден документ. Если его нет return undefined
 		nav.value = docSnap.exists() ? [...docSnap.data().nav] : []
-		// const getData = query(collection(db, 'general'))
-		// const listDocs = await getDocs(getData)
-		// const res = listDocs.docs.map((doc) => doc.data())
 	} catch (error: any) {
 		console.error('general header error', error)
 		throw error
