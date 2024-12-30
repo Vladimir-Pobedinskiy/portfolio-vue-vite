@@ -21,24 +21,20 @@ export const routes: RouteRecordRaw[] = [
 	{
 		path: '/',
 		name: 'home-view',
-		beforeEnter: [auth],
 		component: () => import('@/views/home-view.vue'),
 	},
 	{
 		path: '/about',
 		name: 'about-view',
-		beforeEnter: [auth],
 		component: () => import('@/views/about-view.vue'),
 	},
 	{
 		path: '/tasks',
 		name: 'tasks-view',
-		beforeEnter: [auth],
 		component: () => import('@/views/tasks-view.vue'),
 	},
 	{
 		path: '/:pathMatch(.*)*',
-		beforeEnter: [auth],
 		component: () => import('@/views/not-found-view.vue'),
 	},
 ]

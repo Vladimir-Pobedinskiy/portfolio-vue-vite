@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import AppHeader from '@/components/App/AppHeader.vue'
+import AppFooter from '@/components/App/AppFooter.vue'
 import ModalError from '@/components/Modals/ModalError.vue'
 </script>
 
@@ -13,6 +14,7 @@ import ModalError from '@/components/Modals/ModalError.vue'
 		</RouterView>
 	</main>
 
+	<AppFooter />
 	<ModalError />
 </template>
 
