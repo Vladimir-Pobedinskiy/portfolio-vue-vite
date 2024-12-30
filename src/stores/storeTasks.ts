@@ -9,6 +9,7 @@ export const useTasksStore = defineStore(
 			{ title: 'home', selected: false },
 			{ title: 'travel', selected: false },
 			{ title: 'work', selected: false },
+			{ title: 'rest', selected: false },
 		])
 		const tasks = ref<ITask[]>([])
 

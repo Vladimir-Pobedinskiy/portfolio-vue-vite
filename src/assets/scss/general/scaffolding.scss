@@ -69,14 +69,6 @@ body.lock {
 	}
 }
 
-.offset-page-br {
-	padding: 32px 0 56px;
-
-	@media (min-width: $desktop) {
-		padding: 64px 0 90px;
-	}
-}
-
 .offset {
 	padding: 28px 0;
 
@@ -85,27 +77,9 @@ body.lock {
 	}
 }
 
-.offset-page {
-	.offset {
-		padding: 28px 0 10px;
-
-		@media (min-width: $desktop) {
-			padding: 60px 0 0;
-		}
-	}
-}
-
 .title {
 	margin-bottom: 32px;
 	text-transform: uppercase;
-
-	@media (min-width: $desktop) {
-		margin-bottom: 40px;
-	}
-}
-
-.section-title {
-	margin-bottom: 32px;
 
 	@media (min-width: $desktop) {
 		margin-bottom: 40px;
@@ -160,5 +134,27 @@ body.lock {
 		@media (min-width: $desktop) {
 			border-bottom: 2px solid $color-black;
 		}
+	}
+}
+
+.empty-template {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100%;
+
+	&__inner {
+		padding: 32px 16px;
+		background-color: $color-vue-bg;
+		border-radius: 8px;
+		text-align: center;
+	}
+
+	&__title {
+		margin-bottom: 24px;
+	}
+
+	&__error {
+		margin-bottom: 12px;
 	}
 }

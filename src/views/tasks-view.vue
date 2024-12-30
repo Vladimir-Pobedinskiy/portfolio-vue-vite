@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, reactive, computed } from 'vue'
 import { getFirestore, query, collection, getDocs } from 'firebase/firestore'
 import AppLoading from '@/components/App/AppLoading.vue'
 import TaskList from '@/components/Tasks/TaskList.vue'
@@ -8,35 +8,41 @@ import { useTasksStore } from '@/stores/storeTasks'
 import { useVfm } from 'vue-final-modal'
 import type { ITag, IBreadcrumb, IDescription } from '@/interfaces'
 
-const vfm = useVfm()
-const breadcrumbs = ref<IBreadcrumb[]>([])
-const description = ref<IDescription>({
-	title: null,
-	descriptionList: null,
+interface IState {
+	isLoaded: boolean
+	breadcrumbs: IBreadcrumb[] | undefined
+	description: IDescription | undefined
+}
+const state = reactive<IState>({
+	isLoaded: false,
+	breadcrumbs: undefined,
+	description: undefined,
 })
-const textareaValue = ref<string>('')
-const selectedTags = ref<ITag[]>([])
 
 const storeTasks = useTasksStore()
-const tags = computed(() => storeTasks.tags.map((tag) => tag))
+const tags = computed(() => storeTasks.tags.map((tag: ITag) => tag))
 const taskListStore = computed(() => storeTasks.tasks)
 const changeTasksStore = (textareaValue: string, dateTask: string, selectedTags: ITag[]) =>
 	storeTasks.changeTasks(textareaValue, dateTask, selectedTags)
 const deleteTaskStore = (index: number) => storeTasks.deleteTask(index)
 const clearTasksStore = () => storeTasks.clearTasks()
 
+const vfm = useVfm()
 const db = getFirestore()
 const isLoading = ref<boolean>(false)
+const errorMessage = ref<any>(null)
 const getLinks = async (): Promise<void> => {
 	try {
 		isLoading.value = true
 		const getData = query(collection(db, 'tasks'))
 		const listDocs = await getDocs(getData)
 		const res = listDocs.docs.map((doc) => doc.data())
-		breadcrumbs.value = [...res[0].breadcrumbs]
-		description.value = { ...res[0].description }
+		state.breadcrumbs = [...res[0].breadcrumbs]
+		state.description = { ...res[0].description }
+		state.isLoaded = true
 	} catch (error: any) {
 		vfm.open('modal-error')
+		errorMessage.value = error
 		console.error('tasks error', error)
 		throw error
 	} finally {
@@ -44,6 +50,9 @@ const getLinks = async (): Promise<void> => {
 	}
 }
 getLinks()
+
+const textareaValue = ref<string>('')
+const selectedTags = ref<ITag[]>([])
 
 const dateTask = () => {
 	const currentDate = new Date()
@@ -93,17 +102,19 @@ const onSubmit = () => {
 </script>
 
 <template>
-	<div class="tasks-view offset-page-br">
-		<template v-if="isLoading">
+	<div class="tasks-view offset-page">
+		<template v-if="isLoading && !state.isLoaded">
 			<AppLoading :is-loading="isLoading" />
 		</template>
-		<template v-else>
+		<template v-else-if="state.isLoaded && !errorMessage">
 			<div class="container">
-				<UIBreadcrumbs :breadcrumbs="breadcrumbs" />
-				<h1 class="tasks-view__title title h1">{{ description.title }}</h1>
+				<UIBreadcrumbs :breadcrumbs="state.breadcrumbs" />
+				<h1 class="tasks-view__title title h1">{{ state?.description?.title }}</h1>
 
 				<ul class="description-list">
-					<li class="description-item p1" v-for="(item, i) in description.descriptionList" :key="i">{{ item }}</li>
+					<li class="description-item p1" v-for="(item, i) in state?.description?.descriptionList" :key="i">
+						{{ item }}
+					</li>
 				</ul>
 
 				<section class="tasks-view__section offset">
@@ -141,6 +152,19 @@ const onSubmit = () => {
 						</div>
 					</div>
 				</section>
+			</div>
+		</template>
+		<template v-else-if="!state.isLoaded && errorMessage">
+			<div class="empty-template offset-page">
+				<div class="container">
+					<div class="empty-template__inner">
+						<p class="empty-template__title h2">Ошибка!</p>
+						<p class="empty-template__error s2">{{ errorMessage }}</p>
+						<p class="empty-template__text p1">
+							Сервер недоступен! Попробуйте зайти позже. Извините за временные неудобства!
+						</p>
+					</div>
+				</div>
 			</div>
 		</template>
 	</div>
