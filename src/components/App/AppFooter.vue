@@ -48,6 +48,7 @@ const currentYear = computed(() => new Date().getFullYear())
 .footer {
 	padding: 30px 0;
 	background-color: $color-vue;
+	z-index: 999;
 
 	@media (min-width: $desktop) {
 		padding: 40px 0;

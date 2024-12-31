@@ -23,10 +23,3 @@ export interface ITask {
 	date: string
 	tags: ITag[]
 }
-
-export interface IModalSettings {
-	name: string
-	clickToClose: boolean
-	escToClose: boolean
-	hideOverlay: boolean
-}

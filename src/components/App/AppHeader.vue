@@ -47,7 +47,7 @@ const handleBurgerClick = () => {
 }
 
 const navigation = ref<HTMLElement | null>(null)
-useSwipeHandler(navigation, menuName, 'left', screens.desktop)
+useSwipeHandler(navigation, 'navigation', 'left', screens.desktop)
 </script>
 
 <template>

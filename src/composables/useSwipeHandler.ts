@@ -6,14 +6,14 @@ import { useMenuStore } from '@/stores/storeMenu'
 
 export const useSwipeHandler = (
 	target: Ref<HTMLElement | null>,
-	menuName: Ref,
+	menuName: string,
 	directionSwipe: 'left' | 'right' | 'up' | 'down',
 	breakpoint: string
 ) => {
 	// Флаг для предотвращения многократной отработки одного свайпа
 	const swipeProcessed = ref<boolean>(false)
 	const storeMenu = useMenuStore()
-	const toggleState = (menuName: Ref) => storeMenu.toggleState(menuName.value)
+	const toggleState = (menuName: string) => storeMenu.toggleState(menuName)
 
 	const handleSwipe = () => {
 		const { direction } = useSwipe(target, {
@@ -27,7 +27,7 @@ export const useSwipeHandler = (
 			},
 			onSwipeEnd: (e: TouchEvent, direction: UseSwipeDirection) => {
 				if (e.type === 'touchend' && swipeProcessed.value && direction === directionSwipe) {
-					toggleState(menuName.value)
+					toggleState(menuName)
 				}
 				swipeProcessed.value = false
 			},

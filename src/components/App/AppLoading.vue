@@ -28,7 +28,8 @@ withDefaults(
 	justify-content: center;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(39, 39, 42, 0.6);
+	background-color: rgba(44, 60, 74, 35%);
+	backdrop-filter: blur(5.95px);
 
 	&.loading-local {
 		position: absolute;
@@ -43,7 +44,6 @@ withDefaults(
 	&__spinner {
 		width: 40px;
 		height: 40px;
-		backdrop-filter: blur(5.95px);
 		border: 4px solid rgba(66, 135, 196, 35%);
 		border-left-color: $color-vue;
 		border-radius: 50%;

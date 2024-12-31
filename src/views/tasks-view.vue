@@ -143,7 +143,7 @@ const onSubmit = () => {
 				</section>
 			</div>
 		</template>
-		<template v-else-if="!state.isLoaded && errorMessage">
+		<template v-else>
 			<div class="empty-template offset-page">
 				<div class="container">
 					<div class="empty-template__inner">
@@ -203,6 +203,7 @@ const onSubmit = () => {
 		margin: 0 0 32px auto;
 		display: flex;
 		justify-content: flex-end;
+		width: fit-content;
 	}
 }
 </style>
