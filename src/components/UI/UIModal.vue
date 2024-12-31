@@ -121,7 +121,8 @@ const handleClosed = () => {
 }
 
 .modal-overlay.vfm__overlay {
-	background-color: rgba(0, 0, 0, 80%);
+	background-color: rgba(44, 60, 74, 35%);
+	backdrop-filter: blur(5.95px);
 }
 
 .modal-content {

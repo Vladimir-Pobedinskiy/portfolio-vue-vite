@@ -1,16 +1,18 @@
 <script setup lang="ts">
 withDefaults(
 	defineProps<{
-		isLoading: boolean
+		isLoading?: boolean
+		isLoadingLocal?: boolean
 	}>(),
 	{
 		isLoading: false,
+		isLoadingLocal: false,
 	}
 )
 </script>
 
 <template>
-	<div v-if="isLoading" class="loading">
+	<div v-if="isLoading || isLoadingLocal" :class="['loading', { 'loading-local': isLoadingLocal }]">
 		<span class="loading__spinner"></span>
 	</div>
 </template>
@@ -28,11 +30,21 @@ withDefaults(
 	height: 100%;
 	background-color: rgba(39, 39, 42, 0.6);
 
+	&.loading-local {
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+		height: 100%;
+	}
+
 	&__spinner {
 		width: 40px;
 		height: 40px;
 		backdrop-filter: blur(5.95px);
-		border: 4px solid rgba(66, 135, 196, 0.35);
+		border: 4px solid rgba(66, 135, 196, 35%);
 		border-left-color: $color-vue;
 		border-radius: 50%;
 		animation: progress-circular 1s infinite linear;

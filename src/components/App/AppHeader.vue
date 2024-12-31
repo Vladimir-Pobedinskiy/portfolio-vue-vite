@@ -91,7 +91,10 @@ useSwipeHandler(navigation, menuName, 'left', screens.desktop)
 
 <style lang="scss">
 .header {
-	position: relative;
+	width: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
 	padding: 20px 0;
 	min-height: 66px;
 	background-color: $color-vue;

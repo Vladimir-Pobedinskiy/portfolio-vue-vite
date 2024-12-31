@@ -48,6 +48,15 @@ const handleSelectedTag = () => {
 		color 0.2s ease,
 		border-color 0.2s ease;
 
+	@media (min-width: $desktop) {
+		transition: border-color 0.3s ease;
+
+		&:hover {
+			border-color: $color-violet;
+			transition: border-color 0.3s ease;
+		}
+	}
+
 	&.selected {
 		background-color: $color-violet;
 		border-color: $color-violet;

@@ -108,6 +108,7 @@ const editSelectedTags = () => {
 
 		<button
 			:class="currentTags.length ? 'modal-tags-btn-open' : 'btn btn-small'"
+			type="button"
 			aria-label="Открыть модальное окно"
 			@click="handleShowModalTags(true)"
 		>

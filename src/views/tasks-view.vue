@@ -7,6 +7,7 @@ import TaskTagList from '@/components/Tasks/TaskTagList.vue'
 import { useTasksStore } from '@/stores/storeTasks'
 import { useVfm } from 'vue-final-modal'
 import type { ITag, IBreadcrumb, IDescription } from '@/interfaces'
+import { getCurrentDate } from '@/utils/utils'
 
 interface IState {
 	isLoaded: boolean
@@ -22,8 +23,8 @@ const state = reactive<IState>({
 const storeTasks = useTasksStore()
 const tags = computed(() => storeTasks.tags.map((tag: ITag) => tag))
 const taskListStore = computed(() => storeTasks.tasks)
-const changeTasksStore = (textareaValue: string, dateTask: string, selectedTags: ITag[]) =>
-	storeTasks.changeTasks(textareaValue, dateTask, selectedTags)
+const changeTasksStore = (textareaValue: string, date: string, selectedTags: ITag[]) =>
+	storeTasks.changeTasks(textareaValue, date, selectedTags)
 const deleteTaskStore = (index: number) => storeTasks.deleteTask(index)
 const clearTasksStore = () => storeTasks.clearTasks()
 
@@ -54,18 +55,6 @@ getLinks()
 const textareaValue = ref<string>('')
 const selectedTags = ref<ITag[]>([])
 
-const dateTask = () => {
-	const currentDate = new Date()
-	const day = String(currentDate.getDate()).padStart(2, '0')
-	const month = String(currentDate.getMonth() + 1).padStart(2, '0') // Месяцы начинаются с 0
-	const year = currentDate.getFullYear()
-	const hours = String(currentDate.getHours()).padStart(2, '0')
-	const minutes = String(currentDate.getMinutes()).padStart(2, '0')
-	const seconds = String(currentDate.getSeconds()).padStart(2, '0')
-
-	return `${day}.${month}.${year}, ${hours}:${minutes}:${seconds}`
-}
-
 const handleSelectedTag = (tag: ITag) => {
 	tag.selected ? (tag.selected = false) : (tag.selected = true)
 
@@ -89,7 +78,7 @@ const handleSelectedTag = (tag: ITag) => {
 
 const onSubmit = () => {
 	if (textareaValue.value.length) {
-		changeTasksStore(textareaValue.value.trim(), dateTask(), selectedTags.value)
+		changeTasksStore(textareaValue.value.trim(), getCurrentDate(), selectedTags.value)
 		textareaValue.value = ''
 		selectedTags.value.length = 0
 		tags.value.forEach((item) => {
@@ -104,7 +93,7 @@ const onSubmit = () => {
 <template>
 	<div class="tasks-view offset-page">
 		<template v-if="isLoading && !state.isLoaded">
-			<AppLoading :is-loading="isLoading" />
+			<AppLoading :is-loading-local="isLoading" />
 		</template>
 		<template v-else-if="state.isLoaded && !errorMessage">
 			<div class="container">
