@@ -34,6 +34,11 @@ export const routes: RouteRecordRaw[] = [
 		component: () => import('@/views/tasks-view.vue'),
 	},
 	{
+		path: '/heroes',
+		name: 'heroes-view',
+		component: () => import('@/views/heroes-view.vue'),
+	},
+	{
 		path: '/:catchAll(.*)*',
 		component: () => import('@/views/not-found-view.vue'),
 	},

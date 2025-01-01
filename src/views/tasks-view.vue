@@ -32,7 +32,7 @@ const vfm = useVfm()
 const db = getFirestore()
 const isLoading = ref<boolean>(false)
 const errorMessage = ref<any>(null)
-const getLinks = async (): Promise<void> => {
+const getData = async (): Promise<void> => {
 	try {
 		isLoading.value = true
 		const getData = query(collection(db, 'tasks'))
@@ -50,7 +50,7 @@ const getLinks = async (): Promise<void> => {
 		isLoading.value = false
 	}
 }
-getLinks()
+getData()
 
 const textareaValue = ref<string>('')
 const selectedTags = ref<ITag[]>([])
