@@ -1,13 +1,15 @@
 <script setup lang="ts">
+import type { IHeroPreview } from '@/interfaces/heroes'
+
 defineProps<{
-	hero: any
+	hero: IHeroPreview
 }>()
 </script>
 
 <template>
 	<div class="hero-card">
 		<div class="hero-card__img-wrapper">
-			<img class="hero-card__img" :src="hero.imgUrl" :alt="hero.title" />
+			<img class="hero-card__img" :src="hero.img.url" :alt="hero.img.alt" />
 		</div>
 		<span class="hero-card__title h3">{{ hero.title }}</span>
 		<div class="hero-card__body">
@@ -19,7 +21,7 @@ defineProps<{
 				</li>
 			</ul>
 		</div>
-		<router-link class="hero-card__link s4" :to="`${$route.path}/${hero.alias}`">See more info</router-link>
+		<RouterLink class="hero-card__link s4" :to="`${$route.path}/${hero.alias}`">See more info</RouterLink>
 	</div>
 </template>
 

@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { SwiperSlide } from 'swiper/vue'
 import { Navigation, Autoplay, Keyboard } from 'swiper/modules'
-import HeroCard from '@/components/Hero/HeroCard.vue'
 import UISlider from '@/components/UI/UISlider.vue'
+import HeroCard from '@/components/Hero/HeroCard.vue'
+import type { IHeroPreview } from '@/interfaces/heroes'
 import IconArrow from '@/assets/icons/icon-arrow-forward.svg'
 
 defineProps<{
-	heroList: any
+	heroList: IHeroPreview[]
 }>()
 
 const modules = [Navigation, Autoplay, Keyboard]
@@ -19,8 +19,8 @@ const swiperOptions = {
 	},
 	keyboard: true,
 	navigation: {
-		nextEl: '.hero-swiper__button-next',
-		prevEl: '.hero-swiper__button-prev',
+		nextEl: '.hero-slider__button-next',
+		prevEl: '.hero-slider__button-prev',
 	},
 	breakpoints: {
 		320: {
@@ -56,33 +56,33 @@ const swiperOptions = {
 </script>
 
 <template>
-	<section class="hero-swiper offset">
-		<div class="hero-swiper__top">
-			<h2 class="hero-swiper__title h1">Герои</h2>
-			<div class="hero-swiper__navigation-wrapper">
+	<section class="hero-slider offset">
+		<div class="hero-slider__top">
+			<h2 class="hero-slider__title h1">Герои</h2>
+			<div class="hero-slider__navigation-wrapper">
 				<span class="visually-hidden">Стрелки навигации по слайдеру</span>
-				<button class="hero-swiper__button-prev swiper-button-prev" type="button">
+				<button class="hero-slider__button-prev swiper-button-prev" type="button">
 					<span class="visually-hidden">К предыдущему слайду</span>
-					<IconArrow class="hero-swiper__button-icon hero-swiper__button--prev-icon" />
+					<IconArrow class="hero-slider__button-icon hero-slider__button--prev-icon" />
 				</button>
-				<button class="hero-swiper__button-next swiper-button-next" type="button">
+				<button class="hero-slider__button-next swiper-button-next" type="button">
 					<span class="visually-hidden">К следующему слайду</span>
-					<IconArrow class="hero-swiper__button-icon hero-swiper__button--next-icon" />
+					<IconArrow class="hero-slider__button-icon hero-slider__button--next-icon" />
 				</button>
 			</div>
 		</div>
-		<div class="hero-swiper__inner">
-			<UISlider :modules="modules" :swiper-options="swiperOptions" class-name="hero-swiper__list">
-				<swiper-slide v-for="(hero, i) in heroList" :key="i" class="hero-swiper__slide">
-					<HeroCard :hero="hero" />
-				</swiper-slide>
+		<div class="hero-slider__inner">
+			<UISlider :modules="modules" :swiper-options="swiperOptions" :slides="heroList">
+				<template #slider-content="{ slide }">
+					<HeroCard :hero="slide" />
+				</template>
 			</UISlider>
 		</div>
 	</section>
 </template>
 
 <style lang="scss">
-.hero-swiper {
+.hero-slider {
 	&__top {
 		margin-bottom: 24px;
 
@@ -113,26 +113,16 @@ const swiperOptions = {
 		}
 	}
 
-	&__list {
-		overflow: hidden;
-	}
-
-	&__slide {
-		display: flex;
-		flex-direction: column;
-		height: auto !important;
-	}
-
 	&__button-icon {
-		width: 32px;
-		height: 32px;
-		fill: $color-white;
-		transition: fill 0.3s ease;
+		width: 40px;
+		height: 40px;
+		color: $color-white;
+		transition: color 0.3s ease;
 	}
 }
 
-.hero-swiper__button-prev.swiper-button-prev,
-.hero-swiper__button-next.swiper-button-next {
+.hero-slider__button-prev.swiper-button-prev,
+.hero-slider__button-next.swiper-button-next {
 	display: none;
 
 	@media (min-width: $desktop) {
@@ -153,9 +143,9 @@ const swiperOptions = {
 				background-color 0.3s ease,
 				border-color 0.3s ease;
 
-			.hero-swiper__button-icon {
-				fill: $color-white;
-				transition: fill 0.3s ease;
+			.hero-slider__button-icon {
+				color: $color-white;
+				transition: color 0.3s ease;
 			}
 		}
 
@@ -167,26 +157,22 @@ const swiperOptions = {
 	}
 }
 
-.hero-swiper__button-prev.swiper-button-prev.swiper-button-disabled,
-.hero-swiper__button-next.swiper-button-next.swiper-button-disabled {
+.hero-slider__button-prev.swiper-button-prev.swiper-button-disabled,
+.hero-slider__button-next.swiper-button-next.swiper-button-disabled {
 	background-color: $color-gray-disabled;
 	border: none;
 	transition:
 		background-color 0.3s ease,
-		fill 0.3s ease;
+		color 0.3s ease;
 	cursor: default;
 
-	.hero-swiper__button-icon {
-		fill: $color-gray-light;
-		transition: fill 0.3s ease;
+	.hero-slider__button-icon {
+		color: $color-gray-light;
+		transition: color 0.3s ease;
 	}
 }
 
-.hero-swiper__button--prev-icon {
+.hero-slider__button--prev-icon {
 	transform: rotate(-180deg);
-}
-
-.swiper-wrapper {
-	will-change: transform;
 }
 </style>

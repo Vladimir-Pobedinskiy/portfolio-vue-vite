@@ -1,24 +1,17 @@
-<script>
-import { Swiper } from 'swiper/vue'
+<script setup lang="ts">
+import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
-export default {
-	name: 'UISlider',
-	components: { Swiper },
-	props: {
-		swiperOptions: {
-			type: Object,
-			required: true
-		},
-		className: {
-			type: String,
-			required: true
-		}
-	}
-}
+
+defineProps<{
+	swiperOptions: any
+	slides: any
+}>()
 </script>
 
 <template>
-	<swiper
+	<Swiper
+		v-bind="$attrs"
+		class="slider"
 		:slidesPerView="swiperOptions.slidesPerView"
 		:spaceBetween="swiperOptions.spaceBetween"
 		:speed="swiperOptions.speed"
@@ -28,6 +21,18 @@ export default {
 		:navigation="swiperOptions.navigation"
 		:breakpoints="swiperOptions.breakpoints"
 	>
-		<slot />
-	</swiper>
+		<SwiperSlide v-for="(slide, i) in slides" :key="i" class="slider__slide">
+			<slot name="slider-content" :slide="slide" />
+		</SwiperSlide>
+	</Swiper>
 </template>
+
+<style lang="scss">
+.slider {
+	overflow: hidden;
+}
+
+.swiper-wrapper {
+	will-change: transform;
+}
+</style>

@@ -1,12 +1,15 @@
 export const heroes = {
 	list: [
 		{
-			id: '1',
+			id: 1,
 			alias: 'barbarian',
 			title: 'The Barbarian',
 			descr:
 				'The Barbarian is a kilt-clad Scottish warrior with an angry, battle-ready expression, hungry for destruction. He has Killer yellow horseshoe mustache.',
-			imgUrl: '/img/hero/barbarian.png',
+			img: {
+				url: '/img/hero/barbarian.png',
+				alt: 'The Barbarian',
+			},
 			lvl: '4',
 			info: [
 				{
@@ -24,12 +27,15 @@ export const heroes = {
 			],
 		},
 		{
-			id: '2',
+			id: 2,
 			alias: 'archer',
 			title: 'The Archer',
 			descr:
 				'The Archer is a female warrior with sharp eyes. She wears a short, light green dress, a hooded cape, a leather belt and an attached small pouch.',
-			imgUrl: '/img/hero/archer.png',
+			img: {
+				url: '/img/hero/archer.png',
+				alt: 'The Archer',
+			},
 			lvl: '4',
 			info: [
 				{
@@ -47,12 +53,15 @@ export const heroes = {
 			],
 		},
 		{
-			id: '3',
+			id: 3,
 			alias: 'giant',
 			title: 'The Giant',
 			descr:
 				'Slow, steady and powerful, Giants are massive warriors that soak up huge amounts of damage. Show them a turret or cannon and you will see their fury unleashed!',
-			imgUrl: '/img/hero/giant.png',
+			img: {
+				url: '/img/hero/giant.png',
+				alt: 'The Giant',
+			},
 			lvl: '4',
 			info: [
 				{
@@ -70,12 +79,15 @@ export const heroes = {
 			],
 		},
 		{
-			id: '4',
+			id: 4,
 			alias: 'goblin',
 			title: 'The Goblin',
 			descr:
 				'These pesky little creatures only have eyes for one thing: LOOT! They are faster than a Spring Trap, and their hunger for resources is limitless.',
-			imgUrl: '/img/hero/goblin.png',
+			img: {
+				url: '/img/hero/goblin.png',
+				alt: 'The Goblin',
+			},
 			lvl: '5',
 			info: [
 				{
@@ -93,12 +105,15 @@ export const heroes = {
 			],
 		},
 		{
-			id: '5',
+			id: 5,
 			alias: 'wizard',
 			title: 'The Wizard',
 			descr:
 				'The Wizard is a terrifying presence on the battlefield. Pair him up with some of his fellows and cast concentrated blasts of destruction on anything, land or sky!',
-			imgUrl: '/img/hero/wizard.png',
+			img: {
+				url: '/img/hero/wizard.png',
+				alt: 'The Wizard',
+			},
 			lvl: '6',
 			info: [
 				{
