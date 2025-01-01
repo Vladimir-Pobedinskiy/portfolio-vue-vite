@@ -34,7 +34,7 @@ export const routes: RouteRecordRaw[] = [
 		component: () => import('@/views/tasks-view.vue'),
 	},
 	{
-		path: '/:pathMatch(.*)*',
+		path: '/:catchAll(.*)*',
 		component: () => import('@/views/not-found-view.vue'),
 	},
 ]
