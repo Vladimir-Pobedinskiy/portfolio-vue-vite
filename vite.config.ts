@@ -13,7 +13,7 @@ export default defineConfig({
 	preview: {
 		port: 8080,
 	},
-	base: 'https://vladimir-pobedinskiy.github.io/',
+	base: '',
 	plugins: [vue(), vueDevTools(), svgLoader({ svgo: false })],
 	resolve: {
 		alias: {
