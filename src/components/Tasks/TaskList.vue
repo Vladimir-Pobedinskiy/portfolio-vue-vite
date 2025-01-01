@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import TaskListItem from '@/components/Tasks/TaskListItem.vue'
-import type { ITask } from '@/interfaces'
+import type { ITask } from '@/interfaces/tasks'
 
 defineProps<{
 	taskList: ITask[]

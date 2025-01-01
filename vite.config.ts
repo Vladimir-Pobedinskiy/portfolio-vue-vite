@@ -8,7 +8,7 @@ import path from 'path'
 export default defineConfig(({ mode }) => {
 	const env = loadEnv(mode, process.cwd(), '')
 	return {
-		base: env.NODE_ENV === 'production' ? '/portfolio/' : '/',
+		base: env.NODE_ENV === 'production' ? '/portfolio-vue-vite/' : '/',
 		server: {
 			port: 8080,
 		},

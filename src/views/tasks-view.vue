@@ -6,7 +6,8 @@ import TaskList from '@/components/Tasks/TaskList.vue'
 import TaskTagList from '@/components/Tasks/TaskTagList.vue'
 import { useTasksStore } from '@/stores/storeTasks'
 import { useVfm } from 'vue-final-modal'
-import type { ITag, IBreadcrumb, IDescription } from '@/interfaces'
+import type { IBreadcrumb, IDescription } from '@/interfaces/app'
+import type { ITag } from '@/interfaces/tasks'
 import { getCurrentDate } from '@/utils/utils'
 
 interface IState {

@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import ModalTags from '@/components/Modals/ModalTags.vue'
 import TaskTagList from '@/components/Tasks/TaskTagList.vue'
-import type { ITag, ITask } from '@/interfaces'
+import type { ITag, ITask } from '@/interfaces/tasks'
 import { useTasksStore } from '@/stores/storeTasks'
 import IconClose from '@/assets/icons/icon-close.svg'
 import IconEdit from '@/assets/icons/icon-edit.svg'

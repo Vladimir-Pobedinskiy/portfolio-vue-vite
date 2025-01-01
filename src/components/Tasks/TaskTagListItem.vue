@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ITag } from '@/interfaces'
+import type { ITag } from '@/interfaces/tasks'
 
 const props = withDefaults(
 	defineProps<{

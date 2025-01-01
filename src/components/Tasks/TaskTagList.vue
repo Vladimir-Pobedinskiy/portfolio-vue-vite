@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import TaskTagListItem from '@/components/Tasks/TaskTagListItem.vue'
-import type { ITag } from '@/interfaces'
+import type { ITag } from '@/interfaces/tasks'
 
 withDefaults(
 	defineProps<{

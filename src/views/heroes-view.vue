@@ -5,7 +5,7 @@ import { getFirestore, query, collection, getDocs } from 'firebase/firestore'
 // @ts-ignore
 import { heroes } from '~/moke/heroes.js'
 import { useVfm } from 'vue-final-modal'
-import type { IBreadcrumb, IDescription } from '@/interfaces'
+import type { IBreadcrumb, IDescription } from '@/interfaces/app'
 import AppLoading from '@/components/App/AppLoading.vue'
 import HeroSlider from '@/components/Hero/HeroSlider.vue'
 

@@ -4,7 +4,7 @@ import UIModal from '@/components/UI/UIModal.vue'
 import TaskTagList from '@/components/Tasks/TaskTagList.vue'
 import { useTasksStore } from '@/stores/storeTasks'
 import IconEdit from '@/assets/icons/icon-edit.svg'
-import type { ITag } from '@/interfaces'
+import type { ITag } from '@/interfaces/tasks'
 
 const props = defineProps<{
 	currentTags: ITag[]

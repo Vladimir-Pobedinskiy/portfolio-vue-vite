@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import type { ITag, ITask } from '@/interfaces'
+import type { ITag, ITask } from '@/interfaces/tasks'
 
 export const useTasksStore = defineStore(
 	'tasks',

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { getFirestore, getDoc, doc } from 'firebase/firestore'
-import type { INav } from '@/interfaces'
+import type { INav } from '@/interfaces/app'
 
 // const navLinks = computed(() => store.getters.navLinks)
 const nav = ref<INav[]>([])

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
-import type { INav } from '@/interfaces'
+import type { INav } from '@/interfaces/app'
 import { getFirestore, getDoc, doc } from 'firebase/firestore'
 import { useRoute } from 'vue-router'
 import { useDesktopHandler } from '@/composables/useDesktopHandler'
