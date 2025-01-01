@@ -21,9 +21,11 @@ defineProps<{
 		:navigation="swiperOptions.navigation"
 		:breakpoints="swiperOptions.breakpoints"
 	>
-		<SwiperSlide v-for="(slide, i) in slides" :key="i" class="slider__slide">
-			<slot name="slider-content" :slide="slide" />
-		</SwiperSlide>
+		<template v-if="$slots['slider-content']">
+			<SwiperSlide v-for="(slide, i) in slides" :key="i" class="slider__slide">
+				<slot name="slider-content" :slide="slide" />
+			</SwiperSlide>
+		</template>
 	</Swiper>
 </template>
 

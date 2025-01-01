@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IBreadcrumb } from '@/interfaces'
+import type { IBreadcrumb } from '@/interfaces/app'
 
 defineProps<{
 	breadcrumbs: IBreadcrumb[]

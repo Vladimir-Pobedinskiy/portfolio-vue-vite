@@ -72,8 +72,8 @@ const handleClosed = () => {
 
 <template>
 	<VueFinalModal
-		v-model="modelValue"
 		v-bind="$attrs"
+		v-model="modelValue"
 		:modal-id="modalId"
 		:lock-scroll="lockScroll"
 		:overlay-transition="customOverlayTransition"
