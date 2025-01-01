@@ -7,13 +7,13 @@ import svgLoader from 'vite-svg-loader'
 
 // https://vite.dev/config/
 export default defineConfig({
+	base: '/',
 	server: {
 		port: 8080,
 	},
 	preview: {
 		port: 8080,
 	},
-	base: '',
 	plugins: [vue(), vueDevTools(), svgLoader({ svgo: false })],
 	resolve: {
 		alias: {
