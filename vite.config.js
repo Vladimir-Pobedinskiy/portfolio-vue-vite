@@ -5,7 +5,7 @@ import vueDevTools from 'vite-plugin-vue-devtools';
 import svgLoader from 'vite-svg-loader';
 // https://vite.dev/config/
 export default defineConfig({
-    base: 'portfolio-vue-vite',
+    base: '/portfolio-vue-vite/',
     server: {
         port: 8080,
     },
