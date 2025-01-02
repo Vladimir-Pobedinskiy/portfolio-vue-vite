@@ -4,11 +4,11 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 import svgLoader from 'vite-svg-loader'
 import path from 'path'
 
-// https://vite.dev/config/
 export default defineConfig(({ mode }) => {
 	const env = loadEnv(mode, process.cwd(), '')
+	const isProduction = env.NODE_ENV === 'production'
 	return {
-		base: env.NODE_ENV === 'production' ? '/portfolio-vue-vite/' : '/',
+		base: isProduction ? '/portfolio-vue-vite/' : '/',
 		server: {
 			port: 8080,
 		},
@@ -23,13 +23,30 @@ export default defineConfig(({ mode }) => {
 				'~': path.resolve(__dirname, './'),
 			},
 		},
+		build: {
+			assetsDir: './',
+			rollupOptions: {
+				output: {
+					assetFileNames: (assetInfo) => {
+						let extType = assetInfo.name?.split('.').at(1)
+						if (extType) {
+							if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
+								extType = 'img'
+							}
+							return `${extType}/[name]-[hash][extname]`
+						}
+						return `[extname]/[name]-[hash][extname]`
+					},
+				},
+			},
+		},
 		css: {
 			preprocessorOptions: {
 				scss: {
 					additionalData: `
-        @import "./src/assets/scss/general/variables";
-        @import "./src/assets/scss/mixins/mixins";
-      `,
+                        @import "./src/assets/scss/general/variables";
+                        @import "./src/assets/scss/mixins/mixins";
+                    `,
 				},
 			},
 		},
