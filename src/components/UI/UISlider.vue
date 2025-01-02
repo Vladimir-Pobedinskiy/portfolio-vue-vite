@@ -22,7 +22,7 @@ defineProps<{
 		class="slider"
 	>
 		<template v-if="$slots['slider-content']">
-			<SwiperSlide v-for="(slide, i) in slides" :key="i" class="slider__slide">
+			<SwiperSlide v-for="slide in slides" :key="slide.id" class="slider__slide">
 				<slot name="slider-content" :slide="slide" />
 			</SwiperSlide>
 		</template>
