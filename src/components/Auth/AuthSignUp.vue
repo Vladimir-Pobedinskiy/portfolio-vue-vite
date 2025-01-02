@@ -154,7 +154,7 @@ const onSubmit = async (): Promise<void> => {
 				Нажимая кнопку «Зарегистрироваться», я соглашаюсь на обработку персональных данных
 			</span>
 			<div class="sign-up__sign-up-wrapper">
-				<span class="sign-up__sign-up-title p3">Вы уже зарегистрированы?</span>
+				<span class="sign-up__sign-up-title p3">Зарегистрированы?</span>
 				<button class="sign-up__sign-up-btn" type="button" :disabled="isLoading" @click="$router.push('/login')">
 					Войдите
 				</button>

@@ -116,18 +116,9 @@ const onSubmit = async (): Promise<void> => {
 				</button>
 			</div>
 
-			<div class="login__password-recovery-btn-wrapper">
-				<button
-					class="login__password-recovery-btn p3"
-					type="button"
-					:disabled="isLoading"
-					@click="$router.push('/password-recovery/')"
-				>
-					Забыли пароль?
-				</button>
-			</div>
 			<button class="login__btn-submit btn" type="submit" :disabled="isLoading">Войти</button>
 			<div class="login__btn-wrapper">
+				<span class="sign-up__sign-up-title p3">Не зарегистрированы?</span>
 				<button class="login__btn" type="button" :disabled="isLoading" @click="$router.push('/registration')">
 					Зарегистрироваться
 				</button>
@@ -138,28 +129,6 @@ const onSubmit = async (): Promise<void> => {
 
 <style lang="scss">
 .login {
-	&__password-recovery-btn-wrapper {
-		margin-bottom: 24px;
-		width: 100%;
-		display: flex;
-		justify-content: flex-end;
-	}
-
-	&__password-recovery-btn {
-		position: relative;
-		background-color: transparent;
-
-		&::after {
-			content: '';
-			position: absolute;
-			left: 0;
-			top: 102%;
-			width: 100%;
-			height: 1px;
-			background-color: $color-gray-dark;
-		}
-	}
-
 	&__btn-submit.btn {
 		margin-bottom: 16px;
 		width: 100%;
