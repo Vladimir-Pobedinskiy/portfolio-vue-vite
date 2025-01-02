@@ -34,7 +34,6 @@ withDefaults(
 <template>
 	<Vue3Marquee
 		v-bind="$attrs"
-		class="ui-marquee"
 		:direction="direction"
 		:duration="duration"
 		:pause-on-hover="pauseOnHover"
@@ -45,6 +44,7 @@ withDefaults(
 		:gradient-length="gradientLength"
 		:vertical="vertical"
 		:animate-on-overflow-only="animateOnOverflowOnly"
+		class="ui-marquee"
 	>
 		<template v-if="$slots['marquee-content']">
 			<slot name="marquee-content" />

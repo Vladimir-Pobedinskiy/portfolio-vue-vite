@@ -36,6 +36,17 @@ useSwipeHandler(navigation, 'navigation', 'left', screens.desktop)
 	<header class="header">
 		<div class="container">
 			<div class="header__inner">
+				<button
+					v-if="!isDesktop"
+					:class="['burger-btn', { active: menuName === 'navigation' }]"
+					type="button"
+					@click="handleBurgerClick"
+				>
+					<span class="burger-btn__label">
+						<span class="visually-hidden">открыть меню</span>
+					</span>
+				</button>
+
 				<template v-if="route.name === 'home-view'">
 					<span class="header__logo h4">PORTFOLIO</span>
 				</template>
@@ -50,22 +61,11 @@ useSwipeHandler(navigation, 'navigation', 'left', screens.desktop)
 					</ul>
 				</div>
 
-				<ul v-if="isDesktop" class="nav-user">
+				<ul class="nav-user">
 					<li class="nav-user__item">
 						<UIUserLink />
 					</li>
 				</ul>
-
-				<button
-					v-if="!isDesktop"
-					:class="['burger-btn', { active: menuName === 'navigation' }]"
-					type="button"
-					@click="handleBurgerClick"
-				>
-					<span class="burger-btn__label">
-						<span class="visually-hidden">открыть меню</span>
-					</span>
-				</button>
 			</div>
 		</div>
 	</header>

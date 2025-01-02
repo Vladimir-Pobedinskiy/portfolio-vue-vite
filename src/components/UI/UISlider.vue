@@ -11,7 +11,6 @@ defineProps<{
 <template>
 	<Swiper
 		v-bind="$attrs"
-		class="slider"
 		:slidesPerView="swiperOptions.slidesPerView"
 		:spaceBetween="swiperOptions.spaceBetween"
 		:speed="swiperOptions.speed"
@@ -20,6 +19,7 @@ defineProps<{
 		:pagination="swiperOptions.pagination"
 		:navigation="swiperOptions.navigation"
 		:breakpoints="swiperOptions.breakpoints"
+		class="slider"
 	>
 		<template v-if="$slots['slider-content']">
 			<SwiperSlide v-for="(slide, i) in slides" :key="i" class="slider__slide">
