@@ -1,26 +1,9 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import { getFirestore, getDoc, doc } from 'firebase/firestore'
-import type { INav } from '@/interfaces/app'
+import { computed } from 'vue'
+import { useGeneralStore } from '@/stores/storeGeneral'
 
-// const navLinks = computed(() => store.getters.navLinks)
-const nav = ref<INav[]>([])
-const db = getFirestore()
-const isLoading = ref<boolean>(false)
-const getLinks = async (): Promise<void> => {
-	try {
-		isLoading.value = true
-		const docRef = doc(db, 'general', '9azrkqLoosCRB7x11WmH')
-		const docSnap = await getDoc(docRef)
-		nav.value = docSnap.exists() ? [...docSnap.data().nav] : []
-	} catch (error: any) {
-		console.error('general header error', error)
-		throw error
-	} finally {
-		isLoading.value = false
-	}
-}
-getLinks()
+const storeGeneral = useGeneralStore()
+const navStore = computed(() => storeGeneral.nav)
 
 const currentYear = computed(() => new Date().getFullYear())
 </script>
@@ -31,7 +14,7 @@ const currentYear = computed(() => new Date().getFullYear())
 			<div class="footer__inner">
 				<div class="footer__top">
 					<ul class="nav-list">
-						<li v-for="(item, i) in nav" :key="i" class="nav-item">
+						<li v-for="(item, i) in navStore" :key="i" class="nav-item">
 							<RouterLink class="nav-link p1 hover-from-center" :to="`${item.url}`">{{ item.title }}</RouterLink>
 						</li>
 					</ul>

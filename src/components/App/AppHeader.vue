@@ -1,40 +1,22 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
-import { getFirestore, getDoc, doc } from 'firebase/firestore'
 import { useRoute } from 'vue-router'
-import type { INav } from '@/interfaces/app'
+import { useGeneralStore } from '@/stores/storeGeneral'
+import { useMenuStore } from '@/stores/storeMenu'
 import { useDesktopHandler } from '@/composables/useDesktopHandler'
 import { useSwipeHandler } from '@/composables/useSwipeHandler'
-import { useMenuStore } from '@/stores/storeMenu'
 import { screens } from '@/utils/utils'
 import UIUserLink from '@/components/UI/UIUserLink.vue'
 
 const route = useRoute()
 const { isDesktop } = useDesktopHandler(screens.desktop)
 
+const storeGeneral = useGeneralStore()
+const navStore = computed(() => storeGeneral.nav)
+
 const storeMenu = useMenuStore()
 const menuName = computed(() => storeMenu.menuName)
 const toggleState = (name: string) => storeMenu.toggleState(name)
-
-const nav = ref<INav[]>([])
-
-const db = getFirestore()
-const isLoading = ref<boolean>(false)
-const getLinks = async (): Promise<void> => {
-	try {
-		isLoading.value = true
-		const docRef = doc(db, 'general', '9azrkqLoosCRB7x11WmH')
-		const docSnap = await getDoc(docRef)
-		// docSnap.exists()) проверяет, был ли вообще найден документ. Если его нет return undefined
-		nav.value = docSnap.exists() ? [...docSnap.data().nav] : []
-	} catch (error: any) {
-		console.error('general header error', error)
-		throw error
-	} finally {
-		isLoading.value = false
-	}
-}
-getLinks()
 
 watch(route, () => {
 	if (menuName.value === 'navigation') {
@@ -62,7 +44,7 @@ useSwipeHandler(navigation, 'navigation', 'left', screens.desktop)
 				</template>
 				<div ref="navigation" :class="['header__nav-list-wrapper', { active: menuName === 'navigation' }]">
 					<ul class="nav-list">
-						<li v-for="(item, i) in nav" :key="i" class="nav-item">
+						<li v-for="(item, i) in navStore" :key="i" class="nav-item">
 							<RouterLink class="nav-link p1 hover-from-center" :to="`${item.url}`">{{ item.title }}</RouterLink>
 						</li>
 					</ul>
