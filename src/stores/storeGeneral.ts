@@ -15,7 +15,7 @@ export const useGeneralStore = defineStore('general', () => {
 			const docSnap = await getDoc(docRef)
 			nav.value = docSnap.exists() ? [...docSnap.data().nav] : []
 		} catch (error: any) {
-			console.error('general header error', error)
+			console.error('general from store error', error)
 			throw error
 		} finally {
 			isLoading.value = false

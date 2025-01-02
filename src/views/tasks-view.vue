@@ -162,7 +162,9 @@ const onSubmit = () => {
 
 <style lang="scss">
 .tasks-view {
+	position: relative;
 	height: 100%;
+	width: 100%;
 	background-color: $bg;
 
 	&__section {
