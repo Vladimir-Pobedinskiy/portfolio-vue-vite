@@ -30,38 +30,6 @@
 	transform: translateY(3px);
 }
 
-// TransitionGroup
-
-/* 1. declare transition */
-.fade-move,
-.fade-enter-active,
-.fade-leave-active {
-	transition: all 0.4s cubic-bezier(0.55, 0, 0.1, 1);
-}
-
-/* 2. declare enter from and leave to state */
-.fade-enter-from {
-	opacity: 0;
-	transform: scaleY(0.01) translate(30px, 0);
-	transition:
-		transform 0.4s ease-in-out,
-		opacity 0.4s ease-in-out;
-}
-
-.fade-leave-to {
-	opacity: 0;
-	transform: scaleY(0.01) translate(30px, 0);
-	transition:
-		transform 0.4s ease-in-out,
-		opacity 0.4s ease-in-out;
-}
-
-/* 3. ensure leaving items are taken out of layout flow so that moving
-      animations can be calculated correctly. */
-.fade-leave-active {
-	position: absolute;
-}
-
 /* bounce */
 .bounce-enter-active {
 	animation: bounce 0.2s;
@@ -85,23 +53,7 @@
 	}
 }
 
-/* bounce */
-.bounce-in-enter-active {
-	animation: bounce-in 0.3s;
-}
-
-@keyframes bounce-in {
-	0% {
-		opacity: 0.3;
-		transform: translateY(-5px) scale(0.8);
-	}
-
-	100% {
-		opacity: 1;
-		transform: translateY(0) scale(1);
-	}
-}
-
+/* progress-circular */
 @keyframes progress-circular {
 	0% {
 		transform: rotate(0deg);
