@@ -130,6 +130,13 @@ body.lock {
 }
 
 .nav-link {
+	display: inline-block;
+	width: 100%;
+
+	@media (min-width: $desktop) {
+		width: fit-content;
+	}
+
 	&.active {
 		@media (min-width: $desktop) {
 			border-bottom: 2px solid $color-black;
