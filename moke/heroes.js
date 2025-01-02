@@ -18,7 +18,7 @@ export const heroes = {
 				},
 				{
 					title: 'speed',
-					value: '16',
+					value: '17',
 				},
 				{
 					title: 'price',
