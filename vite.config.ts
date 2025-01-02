@@ -25,20 +25,6 @@ export default defineConfig(({ mode }) => {
 		},
 		build: {
 			assetsDir: './',
-			rollupOptions: {
-				output: {
-					assetFileNames: (assetInfo) => {
-						let extType = assetInfo.name?.split('.').at(1)
-						if (extType) {
-							if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
-								extType = 'img'
-							}
-							return `${extType}/[name]-[hash][extname]`
-						}
-						return `[extname]/[name]-[hash][extname]`
-					},
-				},
-			},
 		},
 		css: {
 			preprocessorOptions: {
