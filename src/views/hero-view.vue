@@ -30,7 +30,7 @@ const getHero = async (): Promise<void> => {
 		const getData = query(collection(db, `${route.params.slug}`))
 		const listDocs = await getDocs(getData)
 
-		if (!listDocs.docs.length || !listDocs.docs) {
+		if (!listDocs.docs || !listDocs.docs.length) {
 			router.replace({ name: 'not-found-view' })
 		} else {
 			const res = listDocs.docs.map((doc) => doc.data())
@@ -96,7 +96,9 @@ getHero()
 
 <style lang="scss">
 .hero-view {
+	position: relative;
 	height: 100%;
+	width: 100%;
 
 	&__inner {
 		height: 100%;
@@ -155,7 +157,7 @@ getHero()
 	&__back-link {
 		display: block;
 		margin: 0 auto;
-		padding: 8px 16px;
+		padding: 10px 16px;
 		width: 100%;
 		max-width: 350px;
 		border: 1px solid $color-orange;
