@@ -18,22 +18,22 @@ const description = {
 		{
 			type: 'Благотворительный фонд',
 			title: 'Фонд "Вера в детство"',
-			url: 'https://veravdetstvo.com/',
+			url: 'https://veravdetstvo.com',
 		},
 		{
 			type: 'Интернет-магазин',
 			title: 'Интернет-магазин мебели "STOPМебель"',
-			url: 'https://stop-mebel.com/',
+			url: 'https://stop-mebel.com',
 		},
 		{
 			type: 'Интернет-магазин',
 			title: 'Интернет-магазин ювелирных изделий "Центр обручальных колец"',
-			url: 'https://centr-kolec.ru/',
+			url: 'https://centr-kolec.ru',
 		},
 		{
 			type: 'Многостраничный сайт',
 			title: 'Многостраничный сайт по ремонту "Alvic center"',
-			url: 'https://alviccenter.ru/',
+			url: 'https://alviccenter.ru',
 		},
 	],
 }
@@ -59,7 +59,7 @@ const description = {
 
 					<div class="home-view__previews-links">
 						<template v-for="(item, i) in description.portfolioList" :key="i">
-							<a class="home-view__previews-link" :href="item.url" target="_blank">
+							<a class="home-view__previews-link" :href="`${item.url}`" target="_blank">
 								<p class="home-view__previews-item-type s2">{{ item.type }}</p>
 								<p class="home-view__previews-item-title p1">{{ item.title }}</p>
 								<span class="home-view__span btn btn-small"> Перейти на сайт </span>
