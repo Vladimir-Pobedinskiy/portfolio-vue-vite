@@ -122,6 +122,7 @@ const onSubmit = () => {
 
 					<div class="tasks-view__content">
 						<button
+							v-if="taskListStore.length"
 							class="tasks-view__clear-btn btn btn-small"
 							:disabled="!taskListStore.length"
 							type="button"

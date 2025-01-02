@@ -137,6 +137,8 @@ useSwipeHandler(navigation, 'navigation', 'left', screens.desktop)
 }
 
 .nav-user {
+	z-index: 999;
+
 	@media (min-width: $desktop) {
 		display: flex;
 		align-items: center;
