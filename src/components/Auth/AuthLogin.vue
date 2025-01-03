@@ -118,7 +118,7 @@ const onSubmit = async (): Promise<void> => {
 
 			<button class="login__btn-submit btn" type="submit" :disabled="isLoading">Войти</button>
 			<div class="login__btn-wrapper">
-				<span class="sign-up__sign-up-title p3">Не зарегистрированы?</span>
+				<span class="login__login-title p3">Не зарегистрированы?</span>
 				<button class="login__btn" type="button" :disabled="isLoading" @click="$router.push('/registration')">
 					Зарегистрироваться
 				</button>
@@ -138,6 +138,12 @@ const onSubmit = async (): Promise<void> => {
 		display: flex;
 		align-items: center;
 		justify-content: flex-end;
+	}
+
+	&__login-title {
+		display: inline-block;
+		margin-right: 12px;
+		line-height: 1.4;
 	}
 
 	&__btn {

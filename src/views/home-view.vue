@@ -2,7 +2,7 @@
 const description = {
 	title: 'В этом портфолио реализовано:',
 	descriptionList: [
-		'Установка и настройка Vite с TypeScript',
+		'Установка и настройка Vite (Vue 3 с TypeScript)',
 		'Настройка vite.config.ts',
 		'Установка и настройка Vue-router для навигации и Pinia для управления состоянием',
 		'Использование Composition API совместно с TypeScript',
