@@ -1,6 +1,6 @@
 export interface IHeroPreview {
 	id: number
-	alias: string
+	url: string
 	title: string
 	descr: string
 	img: {
@@ -16,7 +16,7 @@ export interface IHeroPreview {
 
 export interface IHero {
 	id: number
-	alias: string
+	url: string
 	title: string
 	descr: string
 	img: {

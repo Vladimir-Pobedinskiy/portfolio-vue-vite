@@ -21,7 +21,7 @@ defineProps<{
 				</li>
 			</ul>
 		</div>
-		<RouterLink class="hero-card__link s4" :to="`${$route.path}/${hero.alias}`">See more info</RouterLink>
+		<RouterLink class="hero-card__link s4" :to="hero.url">See more info</RouterLink>
 	</div>
 </template>
 

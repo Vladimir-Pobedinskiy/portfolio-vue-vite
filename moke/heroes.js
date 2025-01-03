@@ -2,7 +2,7 @@ export const heroes = {
 	list: [
 		{
 			id: 1,
-			alias: 'barbarian',
+			url: '/heroes/barbarian',
 			title: 'The Barbarian',
 			descr:
 				'The Barbarian is a kilt-clad Scottish warrior with an angry, battle-ready expression, hungry for destruction. He has Killer yellow horseshoe mustache.',
@@ -28,7 +28,7 @@ export const heroes = {
 		},
 		{
 			id: 2,
-			alias: 'archer',
+			url: '/heroes/archer',
 			title: 'The Archer',
 			descr:
 				'The Archer is a female warrior with sharp eyes. She wears a short, light green dress, a hooded cape, a leather belt and an attached small pouch.',
@@ -54,7 +54,7 @@ export const heroes = {
 		},
 		{
 			id: 3,
-			alias: 'giant',
+			url: '/heroes/giant',
 			title: 'The Giant',
 			descr:
 				'Slow, steady and powerful, Giants are massive warriors that soak up huge amounts of damage. Show them a turret or cannon and you will see their fury unleashed!',
@@ -80,7 +80,7 @@ export const heroes = {
 		},
 		{
 			id: 4,
-			alias: 'goblin',
+			url: '/heroes/goblin',
 			title: 'The Goblin',
 			descr:
 				'These pesky little creatures only have eyes for one thing: LOOT! They are faster than a Spring Trap, and their hunger for resources is limitless.',
@@ -106,7 +106,7 @@ export const heroes = {
 		},
 		{
 			id: 5,
-			alias: 'wizard',
+			url: '/heroes/wizard',
 			title: 'The Wizard',
 			descr:
 				'The Wizard is a terrifying presence on the battlefield. Pair him up with some of his fellows and cast concentrated blasts of destruction on anything, land or sky!',
