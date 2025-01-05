@@ -7,7 +7,6 @@ export interface IHeroPreview {
 		url: string
 		alt: string
 	}
-	lvl: string
 	info: {
 		title: string
 		value: string
@@ -23,7 +22,6 @@ export interface IHero {
 		url: string
 		alt: string
 	}
-	lvl: string
 	info: {
 		title: string
 		value: string

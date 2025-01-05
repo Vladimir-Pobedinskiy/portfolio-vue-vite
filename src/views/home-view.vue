@@ -62,7 +62,7 @@ const description = {
 							<a class="home-view__previews-link" :href="`${item.url}`" target="_blank">
 								<p class="home-view__previews-item-type s2">{{ item.type }}</p>
 								<p class="home-view__previews-item-title p1">{{ item.title }}</p>
-								<span class="home-view__span btn btn-small"> Перейти на сайт </span>
+								<span class="home-view__fake-link btn btn-small"> Перейти на сайт </span>
 							</a>
 						</template>
 					</div>
@@ -128,7 +128,7 @@ const description = {
 		text-align: center;
 	}
 
-	&__span {
+	&__fake-link {
 		display: block;
 		margin-top: auto;
 		width: 100%;

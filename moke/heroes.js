@@ -10,7 +10,6 @@ export const heroes = {
 				url: 'https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/hero/barbarian.png',
 				alt: 'The Barbarian',
 			},
-			lvl: '4',
 			info: [
 				{
 					title: 'training',
@@ -36,7 +35,6 @@ export const heroes = {
 				url: 'https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/hero/archer.png',
 				alt: 'The Archer',
 			},
-			lvl: '4',
 			info: [
 				{
 					title: 'training',
@@ -62,7 +60,6 @@ export const heroes = {
 				url: 'https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/hero/giant.png',
 				alt: 'The Giant',
 			},
-			lvl: '4',
 			info: [
 				{
 					title: 'training',
@@ -88,7 +85,6 @@ export const heroes = {
 				url: 'https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/hero/goblin.png',
 				alt: 'The Goblin',
 			},
-			lvl: '5',
 			info: [
 				{
 					title: 'training',
@@ -114,7 +110,6 @@ export const heroes = {
 				url: 'https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/hero/wizard.png',
 				alt: 'The Wizard',
 			},
-			lvl: '6',
 			info: [
 				{
 					title: 'training',

@@ -142,7 +142,7 @@ const onSubmit = async (): Promise<void> => {
 
 	&__login-title {
 		display: inline-block;
-		margin-right: 12px;
+		margin-right: 20px;
 		line-height: 1.4;
 	}
 

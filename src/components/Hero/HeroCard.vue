@@ -8,34 +8,37 @@ defineProps<{
 
 <template>
 	<div class="hero-card">
-		<div class="hero-card__img-wrapper">
-			<img class="hero-card__img" :src="hero.img.url" :alt="hero.img.alt" />
-		</div>
-		<span class="hero-card__title h3">{{ hero.title }}</span>
-		<div class="hero-card__body">
-			<span class="hero-card__descr s5">{{ hero.descr }}</span>
-			<ul class="hero-card__statistic-list">
-				<li v-for="(item, i) in hero.info" :key="i" class="hero-card__statistic-item">
-					<span class="hero-card__statistic-value h3">{{ item.value }}</span>
-					<span class="hero-card__statistic-name p5">{{ item.title }}</span>
-				</li>
-			</ul>
-		</div>
-		<RouterLink class="hero-card__link s4" :to="hero.url">See more info</RouterLink>
+		<RouterLink class="hero-card__link" :to="hero.url">
+			<div class="hero-card__img-wrapper">
+				<img class="hero-card__img" :src="hero.img.url" :alt="hero.img.alt" />
+			</div>
+			<span class="hero-card__title h3">{{ hero.title }}</span>
+			<div class="hero-card__body">
+				<span class="hero-card__descr s5">{{ hero.descr }}</span>
+				<ul class="hero-card__statistic-list">
+					<li v-for="(item, i) in hero.info" :key="i" class="hero-card__statistic-item">
+						<span class="hero-card__statistic-value h3">{{ item.value }}</span>
+						<span class="hero-card__statistic-name p5">{{ item.title }}</span>
+					</li>
+				</ul>
+			</div>
+			<span class="hero-card__fake-link s4">See more info</span>
+		</RouterLink>
 	</div>
 </template>
 
 <style lang="scss">
 .hero-card {
-	padding: 16px;
-	width: 100%;
-	height: 100%;
-	max-width: 442px;
-	display: flex;
-	flex-direction: column;
-	border-radius: 16px;
-	text-align: center;
-	border: 1px solid rgb(227, 221, 221);
+	&__link {
+		padding: 16px;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		border-radius: 16px;
+		text-align: center;
+		border: 1px solid rgb(227, 221, 221);
+	}
 
 	&__img-wrapper {
 		width: 100%;
@@ -106,7 +109,7 @@ defineProps<{
 		}
 	}
 
-	&__link {
+	&__fake-link {
 		display: block;
 		margin-top: auto;
 		padding: 8px 16px;
