@@ -19,7 +19,7 @@ const deleteCurrentTask = (index: number) => {
 	<div v-auto-animate="{ duration: 300 }" class="task-list">
 		<TaskListItem
 			v-for="(task, index) in taskList"
-			:key="index"
+			:key="task.id"
 			:task="task"
 			:current-index="index"
 			@deleteCurrentTask="deleteCurrentTask(index)"

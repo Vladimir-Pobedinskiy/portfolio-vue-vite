@@ -4,6 +4,7 @@ export interface ITag {
 }
 
 export interface ITask {
+	id: string | number
 	title: string
 	date: string
 	tags: ITag[]

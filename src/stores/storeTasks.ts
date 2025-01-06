@@ -13,8 +13,9 @@ export const useTasksStore = defineStore(
 		])
 		const tasks = ref<ITask[]>([])
 
-		const changeTasks = (textareaValue: string, dateTask: string, taskTags: ITag[]) => {
+		const addTask = (id: string | number, textareaValue: string, dateTask: string, taskTags: ITag[]) => {
 			tasks.value.push({
+				id: id,
 				title: textareaValue,
 				date: dateTask,
 				tags: [...taskTags],
@@ -41,7 +42,7 @@ export const useTasksStore = defineStore(
 			tasks.value.splice(0)
 		}
 
-		return { tags, tasks, changeTasks, changeTask, changeTags, deleteTask, clearTasks }
+		return { tags, tasks, addTask, changeTask, changeTags, deleteTask, clearTasks }
 	},
 	{
 		persist: {

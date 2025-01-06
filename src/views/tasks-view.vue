@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, reactive, computed } from 'vue'
 import { getFirestore, query, collection, getDocs } from 'firebase/firestore'
+import { v4 as uuidv4 } from 'uuid'
 import AppLoading from '@/components/App/AppLoading.vue'
 import TaskList from '@/components/Tasks/TaskList.vue'
 import TaskTagList from '@/components/Tasks/TaskTagList.vue'
@@ -24,8 +25,8 @@ const state = reactive<IState>({
 const storeTasks = useTasksStore()
 const tags = computed(() => storeTasks.tags.map((tag: ITag) => tag))
 const taskListStore = computed(() => storeTasks.tasks)
-const changeTasksStore = (textareaValue: string, date: string, selectedTags: ITag[]) =>
-	storeTasks.changeTasks(textareaValue, date, selectedTags)
+const addTaskStore = (id: string | number, textareaValue: string, date: string, selectedTags: ITag[]) =>
+	storeTasks.addTask(id, textareaValue, date, selectedTags)
 const deleteTaskStore = (index: number) => storeTasks.deleteTask(index)
 const clearTasksStore = () => storeTasks.clearTasks()
 
@@ -79,7 +80,7 @@ const handleSelectedTag = (tag: ITag) => {
 
 const onSubmit = () => {
 	if (textareaValue.value.length) {
-		changeTasksStore(textareaValue.value.trim(), getCurrentDate(), selectedTags.value)
+		addTaskStore(uuidv4(), textareaValue.value.trim(), getCurrentDate(), selectedTags.value)
 		textareaValue.value = ''
 		selectedTags.value.length = 0
 		tags.value.forEach((item) => {
