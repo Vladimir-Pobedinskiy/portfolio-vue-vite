@@ -139,7 +139,9 @@ const onSubmit = () => {
 								</div>
 							</template>
 							<template v-else>
-								<p class="h3">Список задач пуст! Введите вашу первую задачу!</p>
+								<div class="tasks-view__empty">
+									<p class="h3">Список задач пуст! Введите вашу первую задачу!</p>
+								</div>
 							</template>
 						</div>
 					</div>
@@ -209,6 +211,14 @@ const onSubmit = () => {
 		display: flex;
 		justify-content: flex-end;
 		width: fit-content;
+	}
+
+	&__empty {
+		padding: 32px 12px;
+		width: 100%;
+		border-radius: 16px;
+		background-color: $color-vue-bg;
+		box-shadow: 0 30px 30px rgba(0, 0, 0, 4%);
 	}
 }
 </style>

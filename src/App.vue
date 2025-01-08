@@ -3,6 +3,7 @@ import { onMounted } from 'vue'
 import AppHeader from '@/components/App/AppHeader.vue'
 import AppFooter from '@/components/App/AppFooter.vue'
 import ModalError from '@/components/Modals/ModalError.vue'
+import UISplashScreen from '@/components/UI/UISplashScreen.vue'
 import { useInitMargins } from '@/composables/useInitMargins'
 
 onMounted(() => {
@@ -22,6 +23,7 @@ onMounted(() => {
 
 	<AppFooter />
 	<ModalError />
+	<UISplashScreen />
 </template>
 
 <style lang="scss">
