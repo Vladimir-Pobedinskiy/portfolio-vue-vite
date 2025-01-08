@@ -57,6 +57,7 @@ const animateSplashScreen = () => {
 		)
 	setTimeout(() => {
 		startSplashScreenStore(true)
+		useScrollController.enableScroll()
 	}, 7300)
 }
 
