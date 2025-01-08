@@ -45,6 +45,7 @@ const animateSplashScreen = () => {
 				duration: 7,
 				opacity: 0,
 				scale: 0.2,
+				translateY: '-90%',
 			}),
 			3.6
 		)
