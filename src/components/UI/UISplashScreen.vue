@@ -45,7 +45,7 @@ const animateSplashScreen = () => {
 				duration: 7,
 				opacity: 0,
 				scale: 0.2,
-				translateY: '-90%',
+				translateY: '-80%',
 			}),
 			3.6
 		)
@@ -54,12 +54,12 @@ const animateSplashScreen = () => {
 				duration: 0.5,
 				opacity: 0,
 			}),
-			7.1
+			6.8
 		)
 	setTimeout(() => {
 		startSplashScreenStore(true)
 		useScrollController.enableScroll()
-	}, 7300)
+	}, 7000)
 }
 
 onMounted(() => {
