@@ -13,6 +13,7 @@ onMounted(() => {
 
 <template>
 	<AppHeader />
+
 	<main class="main">
 		<RouterView v-slot="{ Component }">
 			<Transition name="page" mode="out-in">

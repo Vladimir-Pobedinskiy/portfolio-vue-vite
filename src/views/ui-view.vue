@@ -8,6 +8,8 @@ import { useVfm } from 'vue-final-modal'
 import type { IBreadcrumb, IDescription } from '@/interfaces/app'
 import AppLoading from '@/components/App/AppLoading.vue'
 import UIMarquee from '@/components/UI/UIMarquee.vue'
+import UITabs from '@/components/UI/UITabs.vue'
+import { Tab, TabPanel } from '@headlessui/vue'
 import type { IMarquee } from '@/interfaces/ui'
 
 interface IState {
@@ -46,6 +48,17 @@ const getData = async (): Promise<void> => {
 	}
 }
 getData()
+
+const tabs = ref([
+	{ title: 'Tab 1', content: 'Tab 1 Content', id: '0' },
+	{ title: 'Tab 2', content: 'Tab 2 Content', id: '1' },
+	{ title: 'Tab 3', content: 'Tab 3 Content', id: '2' },
+])
+
+const activeTab = ref<number>(0)
+const handleActiveTab = (index: number) => {
+	activeTab.value = index
+}
 </script>
 
 <template>
@@ -75,6 +88,27 @@ getData()
 						</div>
 					</template>
 				</UIMarquee>
+			</section>
+
+			<section class="ui-view__tabs offset">
+				<div class="container">
+					<h2 class="ui-view__marquee-title h2">Компонент "Tabs"</h2>
+					<UITabs v-model:active-tab="activeTab" @update:active-tab="handleActiveTab">
+						<template #tab-nav>
+							<Tab v-for="tab in tabs" :key="tab.id" v-slot="{ selected }" as="template">
+								<button :class="['tabs-nav-btn', { selected: selected }]" :disabled="isLoading" type="button">
+									{{ tab.title }}
+								</button>
+							</Tab>
+						</template>
+
+						<template #tab-panels>
+							<TabPanel v-for="tab in tabs" :key="tab.id" class="tabs-panel">
+								<p>{{ tab.content }}</p>
+							</TabPanel>
+						</template>
+					</UITabs>
+				</div>
 			</section>
 		</template>
 		<template v-else>
