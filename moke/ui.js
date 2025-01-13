@@ -23,3 +23,18 @@ export const marquee = {
 		},
 	],
 }
+
+export const heroesTabs = {
+	title: 'Компонент "Табы"',
+	nav: [
+		{
+			title: 'Wizard',
+		},
+		{
+			title: 'Archer',
+		},
+		{
+			title: 'Giant',
+		},
+	],
+}

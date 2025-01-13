@@ -5,3 +5,10 @@ export interface IMarquee {
 		title: string
 	}[]
 }
+
+export interface ITabs {
+	title: string
+	nav: {
+		title: string
+	}[]
+}
