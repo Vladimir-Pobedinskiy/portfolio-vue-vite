@@ -28,6 +28,12 @@ export const useTasksStore = defineStore(
 				}
 			})
 		}
+		const deleteTask = (index: number) => {
+			tasks.value.splice(index, 1)
+		}
+		const clearTasks = () => {
+			tasks.value.splice(0)
+		}
 		const changeTags = (index: number, selectedTags: ITag[]) => {
 			tasks.value.forEach((task: ITask, i: number) => {
 				if (i === index) {
@@ -35,14 +41,8 @@ export const useTasksStore = defineStore(
 				}
 			})
 		}
-		const deleteTask = (index: number) => {
-			tasks.value.splice(index, 1)
-		}
-		const clearTasks = () => {
-			tasks.value.splice(0)
-		}
 
-		return { tags, tasks, addTask, changeTask, changeTags, deleteTask, clearTasks }
+		return { tags, tasks, addTask, changeTask, deleteTask, clearTasks, changeTags }
 	},
 	{
 		persist: {
