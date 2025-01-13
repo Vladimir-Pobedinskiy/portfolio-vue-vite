@@ -16,14 +16,6 @@ withDefaults(
 		defaultOpenIndex: undefined,
 	}
 )
-
-const activeIndex = ref<number | null>(null)
-
-const handleDisclosureClick = (index: number, close: () => void, refs: any) => {
-	console.log('refs', refs)
-	console.log(index)
-	activeIndex.value = activeIndex.value === index ? null : index
-}
 </script>
 
 <template>
@@ -36,15 +28,11 @@ const handleDisclosureClick = (index: number, close: () => void, refs: any) => {
 				v-slot="{ open, close }"
 				class="disclosure__item"
 			>
-				<DisclosureButton
-					as="div"
-					class="disclosure__item-trigger"
-					@click="handleDisclosureClick(i, close, $refs.panel)"
-				>
+				<DisclosureButton as="div" class="disclosure__item-trigger">
 					<span class="disclosure__item-title h4">{{ item.title }}</span>
 					<IconCaret :class="['disclosure__item-icon', { open: open }]" />
 				</DisclosureButton>
-				<DisclosurePanel as="div" ref="panel" class="disclosure__item-panel">
+				<DisclosurePanel as="div" class="disclosure__item-panel">
 					<div v-dompurify-html="item.text" class="disclosure__item-panel-content user-content p4"></div>
 				</DisclosurePanel>
 			</Disclosure>
