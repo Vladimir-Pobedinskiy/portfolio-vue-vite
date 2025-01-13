@@ -34,6 +34,3 @@ coverage
 *.sw?
 
 *.tsbuildinfo
-
-# Others
-package-lock.json
