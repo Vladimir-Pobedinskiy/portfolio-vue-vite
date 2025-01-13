@@ -24,7 +24,7 @@ defineProps<{
 
 <style lang="scss">
 .marquee-unit {
-	&__marquee-title {
+	&__title {
 		margin-bottom: 32px;
 
 		@media (min-width: $desktop) {

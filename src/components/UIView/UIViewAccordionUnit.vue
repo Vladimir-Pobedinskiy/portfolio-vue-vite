@@ -10,7 +10,7 @@ defineProps<{
 	<section class="accordion-unit offset">
 		<div class="container">
 			<h2 class="accordion-unit__title h2">Компонент "Accordion"</h2>
-			<UIAccordion :list="accordion.accordionList" :default-open="true" :default-open-index="1" />
+			<UIAccordion :list="accordion.accordionList" :default-open-index="0" />
 		</div>
 	</section>
 </template>

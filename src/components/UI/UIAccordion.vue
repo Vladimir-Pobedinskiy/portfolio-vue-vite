@@ -13,7 +13,7 @@ withDefaults(
 	}>(),
 	{
 		defaultOpen: false,
-		defaultOpenIndex: undefined,
+		defaultOpenIndex: 0,
 	}
 )
 </script>
@@ -23,7 +23,7 @@ withDefaults(
 		<template v-for="(item, i) in list" :key="i">
 			<Disclosure
 				v-auto-animate="{ duration: 300 }"
-				:default-open="defaultOpenIndex ? defaultOpen && i === defaultOpenIndex : defaultOpen"
+				:default-open="!defaultOpen ? i === defaultOpenIndex : defaultOpen"
 				as="div"
 				v-slot="{ open, close }"
 				class="disclosure__item"
