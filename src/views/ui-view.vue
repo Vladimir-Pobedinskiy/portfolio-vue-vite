@@ -3,13 +3,14 @@ import { ref, reactive } from 'vue'
 import { getFirestore, query, collection, getDocs } from 'firebase/firestore'
 /* eslint-disable-next-line */
 // @ts-ignore
-import { marquee, heroesTabs } from '~/moke/ui.js'
+import { marquee, heroesTabs, accordion } from '~/moke/ui.js'
 import { useVfm } from 'vue-final-modal'
 import type { IBreadcrumb, IDescription } from '@/interfaces/app'
 import AppLoading from '@/components/App/AppLoading.vue'
 import UIMarquee from '@/components/UI/UIMarquee.vue'
 import UITabs from '@/components/UI/UITabs.vue'
 import { Tab, TabPanel } from '@headlessui/vue'
+import UIAccordion from '@/components/UI/UIAccordion.vue'
 import type { IMarquee, ITabs } from '@/interfaces/ui'
 
 interface IState {
@@ -18,6 +19,7 @@ interface IState {
 	description: IDescription | undefined
 	marquee: IMarquee | undefined
 	tabs: ITabs | undefined
+	accordion: any
 }
 const state = reactive<IState>({
 	isLoaded: false,
@@ -25,6 +27,7 @@ const state = reactive<IState>({
 	description: undefined,
 	marquee: marquee ? marquee : undefined,
 	tabs: heroesTabs ? heroesTabs : undefined,
+	accordion: accordion ? accordion : undefined,
 })
 
 const vfm = useVfm()
@@ -150,6 +153,13 @@ const handleActiveTab = (index: number) => {
 							</TabPanel>
 						</template>
 					</UITabs>
+				</div>
+			</section>
+
+			<section class="ui-view__accordion-unit offset">
+				<div class="container">
+					<h2 class="ui-view__accordion-unit-title h2">Компонент "Accordion"</h2>
+					<UIAccordion :list="state.accordion.accordionList" />
 				</div>
 			</section>
 

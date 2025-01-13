@@ -13,6 +13,7 @@ import { createVfm } from 'vue-final-modal'
 import 'vue-final-modal/style.css'
 import { autoAnimatePlugin } from '@formkit/auto-animate/vue'
 import { IMaskDirective } from 'vue-imask'
+import VueDOMPurifyHTML from 'vue-dompurify-html'
 
 // Глобальные компоненты
 import UIBreadcrumbs from '@/components/UI/UIBreadcrumbs.vue'
@@ -39,6 +40,7 @@ app.use(router)
 const vfm = createVfm()
 app.use(vfm)
 app.use(autoAnimatePlugin)
+app.use(VueDOMPurifyHTML)
 app.directive('imask', IMaskDirective as Directive)
 
 // Регистрируем глобальные компоненты
