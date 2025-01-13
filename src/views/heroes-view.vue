@@ -7,6 +7,7 @@ import { heroes } from '~/moke/heroes.js'
 import { useVfm } from 'vue-final-modal'
 import type { IBreadcrumb, IDescription } from '@/interfaces/app'
 import AppLoading from '@/components/App/AppLoading.vue'
+import DescriptionUnit from '@/components/DescriptionUnit.vue'
 import HeroSlider from '@/components/Hero/HeroSlider.vue'
 
 interface IState {
@@ -55,14 +56,7 @@ getData()
 		<template v-else-if="state.isLoaded && !errorMessage">
 			<div class="container">
 				<UIBreadcrumbs :breadcrumbs="state.breadcrumbs" />
-				<h1 class="heroes-view__title title h1">{{ state?.description?.title }}</h1>
-
-				<ul class="description-list">
-					<li class="description-item p1" v-for="(item, i) in state?.description?.descriptionList" :key="i">
-						{{ item }}
-					</li>
-				</ul>
-
+				<DescriptionUnit :description="state.description" />
 				<HeroSlider :hero-list="state.heroesList" />
 			</div>
 		</template>

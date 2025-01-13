@@ -43,7 +43,6 @@ withDefaults(
 <style lang="scss">
 .disclosure {
 	&__item {
-		padding: 24px 0;
 		border-bottom: 1px solid $color-black;
 
 		&:first-child {
@@ -52,6 +51,7 @@ withDefaults(
 	}
 
 	&__item-trigger {
+		padding: 24px 0;
 		width: 100%;
 		display: flex;
 		align-items: center;
@@ -61,9 +61,6 @@ withDefaults(
 		@media (min-width: $desktop) {
 			cursor: pointer;
 		}
-	}
-
-	&__item-title {
 	}
 
 	&__item-icon {
@@ -79,10 +76,11 @@ withDefaults(
 	}
 
 	&__item-panel {
-		padding-top: 12px;
+		margin-top: -12px;
 	}
 
 	&__item-panel-content {
+		padding-bottom: 24px;
 	}
 }
 </style>

@@ -115,20 +115,6 @@ body.lock {
 	}
 }
 
-// стили списка описания приложения
-.description-list {
-	padding-left: 22px;
-}
-
-.description-item {
-	margin-bottom: 8px;
-	list-style: disc;
-
-	&:last-child {
-		margin-bottom: 0;
-	}
-}
-
 .nav-link {
 	&.active {
 		@media (min-width: $desktop) {

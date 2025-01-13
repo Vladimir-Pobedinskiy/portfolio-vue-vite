@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import DescriptionUnit from '@/components/DescriptionUnit.vue'
+
 const description = {
 	title: 'В этом портфолио реализовано:',
 	descriptionList: [
@@ -43,16 +45,7 @@ const description = {
 	<main>
 		<div class="home-view offset-page">
 			<div class="container">
-				<h1 class="home-view__title title h2">{{ description.title }}</h1>
-				<ul class="home-view__description-list description-list">
-					<li
-						class="home-view__description-list-item description-item p1"
-						v-for="(item, i) in description.descriptionList"
-						:key="i"
-					>
-						{{ item }}
-					</li>
-				</ul>
+				<DescriptionUnit :description="description" />
 
 				<div class="home-view__previews offset">
 					<p class="home-view__previews-title h3">{{ description.portfolioTitle }}</p>

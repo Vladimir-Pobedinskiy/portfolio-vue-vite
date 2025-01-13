@@ -3,6 +3,7 @@ import { ref, reactive, computed } from 'vue'
 import { getFirestore, query, collection, getDocs } from 'firebase/firestore'
 import { v4 as uuidv4 } from 'uuid'
 import AppLoading from '@/components/App/AppLoading.vue'
+import DescriptionUnit from '@/components/DescriptionUnit.vue'
 import TaskList from '@/components/Tasks/TaskList.vue'
 import TaskTagList from '@/components/Tasks/TaskTagList.vue'
 import { useTasksStore } from '@/stores/storeTasks'
@@ -100,16 +101,10 @@ const onSubmit = () => {
 		<template v-else-if="state.isLoaded && !errorMessage">
 			<div class="container">
 				<UIBreadcrumbs :breadcrumbs="state.breadcrumbs" />
-				<h1 class="tasks-view__title title h1">{{ state?.description?.title }}</h1>
-
-				<ul class="description-list">
-					<li class="description-item p1" v-for="(item, i) in state?.description?.descriptionList" :key="i">
-						{{ item }}
-					</li>
-				</ul>
+				<DescriptionUnit :description="state.description" />
 
 				<section class="tasks-view__section offset">
-					<h2 class="tasks-view__title title h1">Список задач</h2>
+					<h2 class="tasks-view__title title h2">Список задач</h2>
 
 					<div class="tasks-view__form-wrapper">
 						<form name="tasks-form" action="#" method="POST" class="tasks-view__form" @submit.prevent="onSubmit">
