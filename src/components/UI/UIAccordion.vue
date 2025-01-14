@@ -1,25 +1,28 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
+import type { IAccordionItem } from '@/interfaces/ui'
+import IconClose from '@/assets/icons/icon-close.svg'
 import IconCaret from '@/assets/icons/icon-caret.svg'
 
 withDefaults(
 	defineProps<{
-		list: any
+		list: IAccordionItem[] | undefined
 		/** Все открытые по умолчанию */
 		defaultOpen?: boolean
 		/** Индекс открытого элемента по умолчанию */
 		defaultOpenIndex?: number | undefined
+		typeIcon?: 'caret-icon' | 'close-icon'
 	}>(),
 	{
 		defaultOpen: false,
 		defaultOpenIndex: 0,
+		typeIcon: 'close-icon',
 	}
 )
 </script>
 
 <template>
-	<div ref="disclosure" class="disclosure">
+	<div class="disclosure">
 		<template v-for="(item, i) in list" :key="i">
 			<Disclosure
 				v-auto-animate="{ duration: 300 }"
@@ -30,7 +33,12 @@ withDefaults(
 			>
 				<DisclosureButton as="div" class="disclosure__item-trigger">
 					<span class="disclosure__item-title h4">{{ item.title }}</span>
-					<IconCaret :class="['disclosure__item-icon', { open: open }]" />
+					<template v-if="typeIcon === 'close-icon'">
+						<IconClose :class="['disclosure__item-icon', { open: open }]" />
+					</template>
+					<template v-else>
+						<IconCaret :class="['disclosure__item-icon disclosure__item-icon_caret', { open: open }]" />
+					</template>
 				</DisclosureButton>
 				<DisclosurePanel as="div" class="disclosure__item-panel">
 					<div v-dompurify-html="item.text" class="disclosure__item-panel-content user-content p4"></div>
@@ -66,12 +74,23 @@ withDefaults(
 	&__item-icon {
 		width: 24px;
 		height: 24px;
-		transform: rotate(0);
+		transform: rotate(-45deg);
 		transition: transform 0.4s ease;
 
 		&.open {
-			transform: rotate(180deg);
+			transform: rotate(0);
 			transition: transform 0.4s ease;
+		}
+
+		&_caret {
+			width: 30px;
+			height: 30px;
+			transform: rotate(0);
+
+			&.open {
+				transform: rotate(180deg);
+				transition: transform 0.4s ease;
+			}
 		}
 	}
 

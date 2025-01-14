@@ -12,3 +12,13 @@ export interface ITabs {
 		title: string
 	}[]
 }
+
+export interface IAccordionItem {
+	title: string
+	text: string
+}
+
+export interface IAccordion {
+	title: string
+	accordionList: IAccordionItem[]
+}

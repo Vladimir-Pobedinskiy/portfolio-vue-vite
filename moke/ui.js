@@ -40,7 +40,7 @@ export const heroesTabs = {
 }
 
 export const accordion = {
-	title: 'Компонент аккордион',
+	title: 'Компонент "Accordion"',
 	accordionList: [
 		{
 			title: 'Аккордион заголовок 1',

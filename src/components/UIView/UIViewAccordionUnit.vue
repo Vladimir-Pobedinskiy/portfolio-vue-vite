@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import UIAccordion from '@/components/UI/UIAccordion.vue'
+import type { IAccordion } from '@/interfaces/ui'
 
 defineProps<{
-	accordion: any
+	accordion: IAccordion | undefined
 }>()
 </script>
 
 <template>
 	<section class="accordion-unit offset">
 		<div class="container">
-			<h2 class="accordion-unit__title h2">Компонент "Accordion"</h2>
-			<UIAccordion :list="accordion.accordionList" :default-open-index="0" />
+			<h2 class="accordion-unit__title h2">{{ accordion?.title }}</h2>
+			<UIAccordion :list="accordion?.accordionList" :default-open-index="0" />
 		</div>
 	</section>
 </template>

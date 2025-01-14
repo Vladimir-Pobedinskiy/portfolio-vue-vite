@@ -11,7 +11,7 @@ import DescriptionUnit from '@/components/DescriptionUnit.vue'
 import UIViewTabsUnit from '@/components/UIView/UIViewTabsUnit.vue'
 import UIViewAccordionUnit from '@/components/UIView/UIViewAccordionUnit.vue'
 import UIViewMarqueeUnit from '@/components/UIView/UIViewMarqueeUnit.vue'
-import type { IMarquee, ITabs } from '@/interfaces/ui'
+import type { IMarquee, ITabs, IAccordion } from '@/interfaces/ui'
 
 interface IState {
 	isLoaded: boolean
@@ -19,7 +19,7 @@ interface IState {
 	description: IDescription | undefined
 	marquee: IMarquee | undefined
 	tabs: ITabs | undefined
-	accordion: any
+	accordion: IAccordion | undefined
 }
 const state = reactive<IState>({
 	isLoaded: false,
