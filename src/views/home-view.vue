@@ -12,7 +12,7 @@ const description = {
 		'Обработка несуществующих routes',
 		'Registration & Login через Firebase',
 		'Адаптивная верстка по принципу Mobile First',
-		'На других views реализованы мини-приложения, такие как "Список задач" и другие...',
+		'На других views демонстрируются мои "Коммерческие проекты" и "Pet-проекты"',
 	],
 }
 </script>
@@ -32,7 +32,7 @@ const description = {
 						<ul>
 							<li>
 								<p class="home-view__about-description p1">
-									Frontend разработчик с практическим опытом работы с Vue 3 и Nuxt (версии 2 и 3). Специализируюсь на
+									Frontend разработчик с практическим опытом работы на Vue 3 и Nuxt (версии 2 и 3). Специализируюсь на
 									использовании как Options API, так и Composition API совместно с Typescript. Разработал с нуля
 									несколько проектов на Nuxt 3 и имею полноценное портфолио на Vue 3. Постоянно совершенствую свои
 									навыки и стремлюсь к профессиональному росту в области frontend-разработки.
@@ -60,10 +60,25 @@ const description = {
 <style lang="scss">
 .home-view {
 	&__about {
+		position: relative;
 		margin-bottom: 48px;
 		display: grid;
 		grid-template-columns: 100%;
 		grid-gap: 24px;
+
+		&::after {
+			content: '';
+			position: absolute;
+			left: 0;
+			bottom: -24px;
+			height: 1px;
+			width: 100%;
+			background-color: $color-vue;
+
+			@media (min-width: $desktop) {
+				bottom: -40px;
+			}
+		}
 
 		@media (min-width: $tablet) {
 			grid-template-columns: repeat(12, 1fr);
@@ -98,8 +113,12 @@ const description = {
 			list-style: disc;
 		}
 
-		p {
+		li {
 			margin-bottom: 12px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
 		}
 	}
 }
