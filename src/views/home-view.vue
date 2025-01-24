@@ -14,30 +14,6 @@ const description = {
 		'Адаптивная верстка по принципу Mobile First',
 		'На других views реализованы мини-приложения, такие как "Список задач" и другие...',
 	],
-	portfolioTitle:
-		'Представленные ниже проекты демонстрируют мои навыки и опыт в разработке фронтенда. Разработаны с нуля на Nuxt 3 и Nuxt.js 2, также верстка в связке с Vue 3',
-	portfolioList: [
-		{
-			type: 'Благотворительный фонд',
-			title: 'Фонд "Вера в детство"',
-			url: 'https://veravdetstvo.com',
-		},
-		{
-			type: 'Интернет-магазин',
-			title: 'Интернет-магазин мебели "STOPМебель"',
-			url: 'https://stop-mebel.com',
-		},
-		{
-			type: 'Интернет-магазин',
-			title: 'Интернет-магазин ювелирных изделий "Центр обручальных колец"',
-			url: 'https://centr-kolec.ru',
-		},
-		{
-			type: 'Многостраничный сайт',
-			title: 'Многостраничный сайт по ремонту "Alvic center"',
-			url: 'https://alviccenter.ru',
-		},
-	],
 }
 </script>
 
@@ -45,21 +21,37 @@ const description = {
 	<main>
 		<div class="home-view offset-page">
 			<div class="container">
-				<DescriptionUnit :description="description" />
-
-				<div class="home-view__previews offset">
-					<p class="home-view__previews-title h3">{{ description.portfolioTitle }}</p>
-
-					<div class="home-view__previews-links">
-						<template v-for="(item, i) in description.portfolioList" :key="i">
-							<a class="home-view__previews-link" :href="`${item.url}`" target="_blank">
-								<p class="home-view__previews-item-type s2">{{ item.type }}</p>
-								<p class="home-view__previews-item-title p1">{{ item.title }}</p>
-								<span class="home-view__fake-link btn btn-small"> Перейти на сайт </span>
-							</a>
-						</template>
+				<div class="home-view__about">
+					<div class="home-view__about-left-side">
+						<div class="home-view__about-img-wrapper">
+							<img src="https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/vlad-photo.jpg" alt="Владимир" />
+						</div>
+						<p class="home-view__about-name s1">Владимир Побединский</p>
+					</div>
+					<div class="home-view__about-right-side">
+						<ul>
+							<li>
+								<p class="home-view__about-description p1">
+									Frontend разработчик с практическим опытом работы с Vue 3 и Nuxt (версии 2 и 3). Специализируюсь на
+									использовании как Options API, так и Composition API совместно с Typescript. Разработал с нуля
+									несколько проектов на Nuxt 3 и имею полноценное портфолио на Vue 3. Постоянно совершенствую свои
+									навыки и стремлюсь к профессиональному росту в области frontend-разработки.
+								</p>
+							</li>
+							<li>
+								<p class="home-view__about-description p1">
+									Образование: Пензенский государственный университет (бывший ППИ). Факультет информатики и
+									вычислительной техники (ФВТ)
+								</p>
+							</li>
+							<li>
+								<p class="home-view__about-description p1">Дополнительное образование: курс по Vue.js от TOCODE</p>
+							</li>
+						</ul>
 					</div>
 				</div>
+
+				<DescriptionUnit :description="description" />
 			</div>
 		</div>
 	</main>
@@ -67,64 +59,48 @@ const description = {
 
 <style lang="scss">
 .home-view {
-	&__previews {
-		padding-bottom: 0;
-	}
-
-	&__previews-title {
-		margin-bottom: 32px;
-
-		@media (min-width: $desktop) {
-			margin-bottom: 40px;
-		}
-	}
-
-	&__previews-links {
+	&__about {
+		margin-bottom: 48px;
 		display: grid;
 		grid-template-columns: 100%;
-		grid-gap: 12px;
+		grid-gap: 24px;
 
 		@media (min-width: $tablet) {
-			grid-template-columns: repeat(2, 1fr);
+			grid-template-columns: repeat(12, 1fr);
 		}
 
 		@media (min-width: $desktop) {
-			grid-template-columns: repeat(4, 1fr);
-			grid-gap: 20px;
+			margin-bottom: 80px;
 		}
 	}
 
-	&__previews-link {
-		display: flex;
-		flex-direction: column;
-		padding: 16px;
-		border-radius: 8px;
-		background-color: $color-vue-bg;
-
-		@media (min-width: $desktop) {
-			transition: background-color 0.3s;
-
-			&:hover {
-				background-color: $color-vue;
-				transition: background-color 0.3s;
-			}
+	&__about-left-side {
+		@media (min-width: $tablet) {
+			grid-column: 1 / 5;
 		}
 	}
 
-	&__previews-item-type {
-		margin-bottom: 12px;
-		text-align: center;
-	}
-
-	&__previews-item-title {
-		margin-bottom: 24px;
-		text-align: center;
-	}
-
-	&__fake-link {
-		display: block;
-		margin-top: auto;
+	&__about-img-wrapper {
+		margin-bottom: 32px;
 		width: 100%;
+		max-width: 350px;
+		border-radius: 50%;
+		overflow: hidden;
+	}
+
+	&__about-right-side {
+		@media (min-width: $tablet) {
+			grid-column: 5 / -1;
+		}
+
+		ul {
+			padding-left: 22px;
+			list-style: disc;
+		}
+
+		p {
+			margin-bottom: 12px;
+		}
 	}
 }
 </style>
