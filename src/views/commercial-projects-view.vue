@@ -38,7 +38,7 @@ const getData = async (): Promise<void> => {
 getData()
 
 const portfolio = {
-	portfolioTitle: 'Мои коммерческие проекты (разработка с нуля)',
+	portfolioTitle: 'Коммерческие проекты (разработка с нуля)',
 	portfolioList: [
 		{
 			type: 'Благотворительный фонд',
