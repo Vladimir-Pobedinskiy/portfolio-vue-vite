@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import DescriptionUnit from '@/components/DescriptionUnit.vue'
+import { useBaguetteBox } from '@/composables/useBaguetteBox'
 
 const description = {
 	title: 'В этом портфолио реализовано:',
@@ -15,6 +16,8 @@ const description = {
 		'На других views демонстрируются мои "Коммерческие проекты" и "Pet-проекты"',
 	],
 }
+
+useBaguetteBox('.gallery-baguettebox-js')
 </script>
 
 <template>
@@ -22,21 +25,29 @@ const description = {
 		<div class="home-view offset-page">
 			<div class="container">
 				<div class="home-view__about">
-					<div class="home-view__about-left-side">
-						<div class="home-view__about-img-wrapper">
-							<img src="https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/vlad-photo.jpg" alt="Владимир" />
-						</div>
+					<div class="home-view__about-left-side gallery-baguettebox-js">
+						<a
+							class="home-view__about-img-link"
+							href="https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/vlad-photo.jpg"
+						>
+							<div class="home-view__about-img-wrapper">
+								<img
+									src="https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/vlad-photo.jpg"
+									alt="Владимир"
+								/>
+							</div>
+						</a>
 						<p class="home-view__about-name s1">Владимир Побединский</p>
 					</div>
 					<div class="home-view__about-right-side">
 						<ul>
 							<li>
 								<p class="home-view__about-description p1">
-									Frontend-разработчик (стаж работы более 3 лет) с практическим опытом работы на Vue 3 и Nuxt (версии 2
-									и 3). Специализируюсь на использовании как Options API, так и Composition API совместно с Typescript.
+									Frontend-разработчик (стаж работы более 3 лет) с практическим опытом работы на Vue и Nuxt (версии 2 и
+									3). Специализируюсь на использовании как Options API, так и Composition API совместно с Typescript.
 									Разработал с нуля несколько проектов на Nuxt 3 и Nuxt.js 2, имею полноценное портфолио на Vue 3.
 									Постоянно совершенствую свои навыки и стремлюсь к профессиональному росту в области
-									frontend-разработки.
+									frontend-разработки
 								</p>
 							</li>
 							<li>

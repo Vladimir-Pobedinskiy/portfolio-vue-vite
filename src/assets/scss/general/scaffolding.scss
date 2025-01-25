@@ -117,9 +117,7 @@ body.lock {
 
 .nav-link {
 	&.active {
-		@media (min-width: $desktop) {
-			border-bottom: 2px solid $color-black;
-		}
+		border-bottom: 2px solid $color-black;
 	}
 }
 
