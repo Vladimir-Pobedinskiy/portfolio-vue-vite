@@ -128,6 +128,7 @@ const projects = {
 
 		@media (min-width: $tablet) {
 			grid-template-columns: repeat(2, 1fr);
+			grid-gap: 20px;
 		}
 	}
 

@@ -34,6 +34,8 @@ useBaguetteBox('.gallery-baguettebox-js')
 								<img
 									src="https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/vlad-photo.jpg"
 									alt="Владимир"
+									width="350px"
+									height="350px"
 								/>
 							</div>
 						</a>
