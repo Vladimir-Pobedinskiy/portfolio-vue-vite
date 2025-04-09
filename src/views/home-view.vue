@@ -146,8 +146,9 @@ useBaguetteBox('.gallery-baguettebox-js')
 
 	&__about-img-wrapper {
 		margin-bottom: 32px;
-		width: 100%;
 		width: 250px;
+		min-width: 250px;
+		height: 250px;
 		border-radius: 50%;
 		overflow: hidden;
 
