@@ -45,7 +45,7 @@ useBaguetteBox('.gallery-baguettebox-js')
 								</a>
 								<div class="home-view__about-left-side-inner-content">
 									<p class="home-view__about-name s1">Владимир Побединский</p>
-									<p class="home-view__about-position s3">Frontend-разработчик (Vue и Nuxt)</p>
+									<p class="home-view__about-position s3">Frontend-разработчик (Vue и Nuxt) | Верстальщик</p>
 									<ul>
 										<li>
 											<a class="home-view__about-social-link" href="https://vk.com/id9716085" target="_blank">
