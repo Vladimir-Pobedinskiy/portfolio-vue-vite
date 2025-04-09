@@ -4,6 +4,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { getFirestore, query, collection, getDocs } from 'firebase/firestore'
 import { useVfm } from 'vue-final-modal'
 import AppLoading from '@/components/App/AppLoading.vue'
+import { useBaguetteBox } from '@/composables/useBaguetteBox'
 import type { IBreadcrumb } from '@/interfaces/app'
 import type { IHero } from '@/interfaces/heroes'
 
@@ -48,6 +49,8 @@ const getHero = async (): Promise<void> => {
 	}
 }
 getHero()
+
+useBaguetteBox('.hero-gallery-baguettebox-js')
 </script>
 
 <template>
@@ -58,10 +61,12 @@ getHero()
 		<template v-else-if="state.hero && state.isLoaded && !errorMessage">
 			<div class="container">
 				<UIBreadcrumbs :breadcrumbs="state.breadcrumbs" />
-				<div class="hero-view__inner">
-					<div class="hero-view__img-wrapper">
-						<img :src="state.hero.img.url" :alt="state.hero.img.alt" />
-					</div>
+				<div class="hero-view__inner hero-gallery-baguettebox-js">
+					<a class="hero-view__link hero-gallery-baguettebox-js" :href="state.hero.img.url">
+						<div class="hero-view__img-wrapper">
+							<img :src="state.hero.img.url" :alt="state.hero.img.alt" />
+						</div>
+					</a>
 					<div class="hero-view__info">
 						<h1 class="hero-view__title h1">{{ state.hero.title }}</h1>
 						<p class="hero-view__descr s4">{{ state.hero.descr }}</p>

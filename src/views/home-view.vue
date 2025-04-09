@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import DescriptionUnit from '@/components/DescriptionUnit.vue'
 import { useBaguetteBox } from '@/composables/useBaguetteBox'
+import IconVk from '@/assets/icons/icon-vk.svg'
+import IconTg from '@/assets/icons/icon-tg.svg'
 
 const description = {
-	title: 'В этом портфолио реализовано:',
+	title: 'В портфолио реализовано:',
 	descriptionList: [
 		'Установка и настройка Vite (Vue 3 с TypeScript)',
 		'Настройка vite.config.ts',
@@ -25,31 +27,51 @@ useBaguetteBox('.gallery-baguettebox-js')
 		<div class="home-view offset-page">
 			<div class="container">
 				<div class="home-view__about">
-					<div class="home-view__about-left-side gallery-baguettebox-js">
-						<a
-							class="home-view__about-img-link"
-							href="https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/vlad-photo.jpg"
-						>
-							<div class="home-view__about-img-wrapper">
-								<img
-									src="https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/vlad-photo.jpg"
-									alt="Владимир"
-									width="350px"
-									height="350px"
-								/>
+					<div class="home-view__about-inner">
+						<div class="home-view__about-left-side gallery-baguettebox-js">
+							<div class="home-view__about-left-side-inner">
+								<a
+									class="home-view__about-img-link"
+									href="https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/vlad-photo.jpg"
+								>
+									<div class="home-view__about-img-wrapper">
+										<img
+											src="https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/vlad-photo.jpg"
+											alt="Владимир"
+											width="350px"
+											height="350px"
+										/>
+									</div>
+								</a>
+								<div class="home-view__about-left-side-inner-content">
+									<p class="home-view__about-name s1">Владимир Побединский</p>
+									<p class="home-view__about-position s3">Frontend-разработчик (Vue и Nuxt)</p>
+									<ul>
+										<li>
+											<a class="home-view__about-social-link" href="https://vk.com/id9716085" target="_blank">
+												<IconVk class="home-view__about-icon" /> <span>/id9716085</span>
+											</a>
+										</li>
+										<li>
+											<a class="home-view__about-social-link" href="https://t.me/vldmrtl058" target="_blank">
+												<IconTg class="home-view__about-icon" /> <span>@vldmrtl058</span>
+											</a>
+										</li>
+									</ul>
+								</div>
 							</div>
-						</a>
-						<p class="home-view__about-name s1">Владимир Побединский</p>
+						</div>
+						<div class="home-view__about-right-side"></div>
 					</div>
-					<div class="home-view__about-right-side">
+
+					<div class="home-view__about-content">
 						<ul>
 							<li>
 								<p class="home-view__about-description p1">
-									Frontend-разработчик (стаж работы более 3 лет) с практическим опытом работы на Vue и Nuxt (версии 2 и
-									3). Специализируюсь на использовании как Options API, так и Composition API совместно с Typescript.
-									Разработал с нуля несколько проектов на Nuxt 3 и Nuxt.js 2, имею полноценное портфолио на Vue 3.
-									Постоянно совершенствую свои навыки и стремлюсь к профессиональному росту в области
-									frontend-разработки
+									Frontend-разработчик с практическим опытом работы на Vue и Nuxt (версии 2 и 3). Специализируюсь на
+									использовании как Options API, так и Composition API совместно с Typescript. Разработал с нуля
+									несколько проектов на Nuxt 3 и Nuxt.js 2, имею полноценное портфолио на Vue 3. Постоянно совершенствую
+									свои навыки и стремлюсь к профессиональному росту в области frontend-разработки
 								</p>
 							</li>
 							<li>
@@ -76,9 +98,6 @@ useBaguetteBox('.gallery-baguettebox-js')
 	&__about {
 		position: relative;
 		margin-bottom: 48px;
-		display: grid;
-		grid-template-columns: 100%;
-		grid-gap: 24px;
 
 		&::after {
 			content: '';
@@ -94,32 +113,74 @@ useBaguetteBox('.gallery-baguettebox-js')
 			}
 		}
 
-		@media (min-width: $tablet) {
-			grid-template-columns: repeat(12, 1fr);
-		}
-
 		@media (min-width: $desktop) {
 			margin-bottom: 80px;
 		}
 	}
 
+	&__about-inner {
+		margin-bottom: 32px;
+		display: grid;
+		grid-template-columns: 100%;
+		grid-gap: 24px;
+
+		@media (min-width: $desktop) {
+			grid-template-columns: repeat(12, 1fr);
+		}
+	}
+
 	&__about-left-side {
-		@media (min-width: $tablet) {
-			grid-column: 1 / 5;
+		@media (min-width: $desktop) {
+			grid-column: 1 / 10;
+		}
+	}
+
+	&__about-left-side-inner {
+		display: flex;
+		flex-direction: column;
+
+		@media (min-width: $desktop) {
+			flex-direction: row;
 		}
 	}
 
 	&__about-img-wrapper {
 		margin-bottom: 32px;
 		width: 100%;
-		max-width: 350px;
+		width: 250px;
 		border-radius: 50%;
 		overflow: hidden;
+
+		@media (min-width: $desktop) {
+			margin-right: 32px;
+			margin-bottom: 0;
+		}
 	}
 
-	&__about-right-side {
-		@media (min-width: $tablet) {
-			grid-column: 5 / -1;
+	&__about-name {
+		margin-bottom: 8px;
+	}
+
+	&__about-position {
+		margin-bottom: 24px;
+	}
+
+	&__about-social-link {
+		margin-bottom: 12px;
+		width: fit-content;
+		display: flex;
+		align-items: center;
+	}
+
+	&__about-icon {
+		margin-right: 16px;
+		width: 40px;
+		height: 40px;
+	}
+
+	&__about-content {
+		@media (min-width: $desktop) {
+			grid-column: 10 / -1;
 		}
 
 		ul {

@@ -23,6 +23,6 @@ export function useBaguetteBox(selector: string) {
 			},
 		}
 
-		baguetteBox.run(selector, options)
+		if (selector) baguetteBox.run(selector, options)
 	})
 }
