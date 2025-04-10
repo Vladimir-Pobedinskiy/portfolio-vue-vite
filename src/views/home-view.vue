@@ -46,12 +46,12 @@ useBaguetteBox('.gallery-baguettebox-js')
 								<div class="home-view__about-left-side-inner-content">
 									<p class="home-view__about-name s1">Владимир Побединский</p>
 									<p class="home-view__about-position s3">Frontend-разработчик (Vue и Nuxt) | Верстальщик</p>
-									<ul>
-										<li>
+									<ul class="home-view__about-social-list">
+										<li class="home-view__about-social-item">
 											<a class="home-view__about-social-link" href="https://vk.com/id9716085" target="_blank">
 												<IconVk class="home-view__about-icon" /> <span>/id9716085</span>
 											</a>
-										</li>
+										</li class="home-view__about-social-item">
 										<li>
 											<a class="home-view__about-social-link" href="https://t.me/vldmrtl058" target="_blank">
 												<IconTg class="home-view__about-icon" /> <span>@vldmrtl058</span>
@@ -119,12 +119,12 @@ useBaguetteBox('.gallery-baguettebox-js')
 	}
 
 	&__about-inner {
-		margin-bottom: 32px;
 		display: grid;
 		grid-template-columns: 100%;
 		grid-gap: 24px;
 
 		@media (min-width: $desktop) {
+			margin-bottom: 32px;
 			grid-template-columns: repeat(12, 1fr);
 		}
 	}
@@ -144,30 +144,54 @@ useBaguetteBox('.gallery-baguettebox-js')
 		}
 	}
 
-	&__about-img-wrapper {
-		margin-bottom: 32px;
-		width: 280px;
+  &__about-img-link {
+    margin-bottom: 32px;
+    width: 280px;
 		min-width: 280px;
 		height: 280px;
 		border-radius: 50%;
 		overflow: hidden;
 
+
 		@media (min-width: $desktop) {
 			margin-right: 32px;
 			margin-bottom: 0;
 		}
+  }
+
+	&__about-img-wrapper {
+		width: 280px;
+		min-width: 280px;
+		height: 280px;
+		border-radius: 50%;
+		overflow: hidden;
 	}
 
 	&__about-name {
-		margin-bottom: 8px;
+		margin-bottom: 4px;
+
+		@media (min-width: $desktop) {
+			margin-bottom: 8px;
+		}
 	}
 
 	&__about-position {
-		margin-bottom: 24px;
+		margin-bottom: 16px;
+
+		@media (min-width: $desktop) {
+			margin-bottom: 24px;
+		}
 	}
 
+  &__about-social-item {
+    margin-bottom: 12px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
 	&__about-social-link {
-		margin-bottom: 12px;
 		width: fit-content;
 		display: flex;
 		align-items: center;
