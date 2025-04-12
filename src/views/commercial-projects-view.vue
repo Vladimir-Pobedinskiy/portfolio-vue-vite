@@ -41,6 +41,10 @@ const portfolio = {
 	portfolioTitle: 'Коммерческие проекты',
 	portfolioList: [
 		{
+			img: {
+				url: 'https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/case/case-img-1.jpg',
+				alt: 'image',
+			},
 			type: 'Благотворительный фонд',
 			title: 'Фонд "Вера в детство"',
 			description:
@@ -48,6 +52,10 @@ const portfolio = {
 			url: 'https://veravdetstvo.com',
 		},
 		{
+			img: {
+				url: 'https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/case/case-img-2.jpg',
+				alt: 'image',
+			},
 			type: 'Интернет-магазин',
 			title: 'Интернет-магазин мебели "STOPМебель"',
 			description:
@@ -55,12 +63,20 @@ const portfolio = {
 			url: 'https://stop-mebel.com',
 		},
 		{
+			img: {
+				url: 'https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/case/case-img-3.jpg',
+				alt: 'image',
+			},
 			type: 'Интернет-магазин',
 			title: 'Интернет-магазин ювелирных изделий "Центр обручальных колец"',
 			description: 'Проект разработан с использованием Nuxt 2 — фреймворка для создания веб-приложений на Vue.js',
 			url: 'https://centr-kolec.ru',
 		},
 		{
+			img: {
+				url: 'https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/case/case-img-4.jpg',
+				alt: 'image',
+			},
 			type: 'Многостраничный сайт',
 			title: 'Многостраничный сайт по ремонту "Alvic center"',
 			description:
@@ -85,11 +101,16 @@ const portfolio = {
 
 					<div class="commercial-projects-view__previews-links">
 						<template v-for="(item, i) in portfolio.portfolioList" :key="i">
-							<a class="commercial-projects-view__previews-link" :href="`${item.url}`" target="_blank">
-								<p class="commercial-projects-view__previews-item-type s2">{{ item.type }}</p>
-								<p class="commercial-projects-view__previews-item-title p1">{{ item.title }}</p>
-								<p class="commercial-projects-view__previews-item-title p2">{{ item.description }}</p>
-								<span class="commercial-projects-view__fake-link btn btn-small"> Перейти на сайт </span>
+							<a class="commercial-projects-view__previews-link hover-scale" :href="`${item.url}`" target="_blank">
+								<div class="commercial-projects-view__previews-link-img-wrapper hover-scale-img-wrapper">
+									<img class="hover-scale-img" :src="item.img.url" :alt="item.img.alt" />
+								</div>
+								<div class="commercial-projects-view__content">
+									<p class="commercial-projects-view__previews-item-type s2">{{ item.type }}</p>
+									<p class="commercial-projects-view__previews-item-title p1">{{ item.title }}</p>
+									<p class="commercial-projects-view__previews-item-title p2">{{ item.description }}</p>
+									<span class="commercial-projects-view__fake-link btn btn-small"> Перейти на сайт </span>
+								</div>
 							</a>
 						</template>
 					</div>
@@ -145,18 +166,20 @@ const portfolio = {
 	&__previews-link {
 		display: flex;
 		flex-direction: column;
-		padding: 16px;
+		border: 1px solid $color-vue-bg;
 		border-radius: 8px;
 		background-color: $color-vue-bg;
+	}
 
-		@media (min-width: $desktop) {
-			transition: background-color 0.3s;
+	&__previews-link-img-wrapper {
+		border-radius: 8px 8px 0 0;
+		overflow: hidden;
+	}
 
-			&:hover {
-				background-color: $color-vue;
-				transition: background-color 0.3s;
-			}
-		}
+	&__content {
+		display: flex;
+		flex-direction: column;
+		padding: 16px;
 	}
 
 	&__previews-item-type {

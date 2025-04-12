@@ -53,10 +53,7 @@
 		&:hover {
 			.hover-scale-img {
 				transform: scale(1.03);
-				opacity: 0.9;
-				transition:
-					transform 0.5s ease,
-					opacity 0.5s ease;
+				transition: transform 0.5s ease;
 			}
 		}
 
@@ -69,9 +66,7 @@
 		.hover-scale-img {
 			@media (min-width: $desktop) {
 				will-change: transform;
-				transition:
-					transform 0.5s ease,
-					opacity 0.5s ease;
+				transition: transform 0.5s ease;
 			}
 		}
 	}

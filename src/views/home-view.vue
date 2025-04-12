@@ -68,7 +68,7 @@ useBaguetteBox('.gallery-baguettebox-js')
 						<ul>
 							<li>
 								<p class="home-view__about-description p1">
-									Frontend-разработчик с практическим опытом работы на Vue и Nuxt (версии 2 и 3). Специализируюсь на
+									Frontend-разработчик с практическим опытом работы на Vue и Nuxt. Специализируюсь на
 									использовании как Options API, так и Composition API совместно с Typescript. Разработал с нуля
 									несколько проектов на Nuxt 3 и Nuxt.js 2, имею полноценное портфолио на Vue 3. Постоянно совершенствую
 									свои навыки и стремлюсь к профессиональному росту в области frontend-разработки
