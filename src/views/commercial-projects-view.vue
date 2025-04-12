@@ -155,11 +155,12 @@ const portfolio = {
 	&__previews-links {
 		display: grid;
 		grid-template-columns: 100%;
-		grid-gap: 12px;
+		grid-gap: 20px;
 
 		@media (min-width: $tablet) {
 			grid-template-columns: repeat(2, 1fr);
 			grid-gap: 20px;
+			row-gap: 24px;
 		}
 	}
 
