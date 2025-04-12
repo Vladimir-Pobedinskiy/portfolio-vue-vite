@@ -108,7 +108,7 @@ const portfolio = {
 								<div class="commercial-projects-view__content">
 									<p class="commercial-projects-view__previews-item-type s2">{{ item.type }}</p>
 									<p class="commercial-projects-view__previews-item-title p1">{{ item.title }}</p>
-									<p class="commercial-projects-view__previews-item-title p2">{{ item.description }}</p>
+									<p class="commercial-projects-view__previews-item-text p2">{{ item.description }}</p>
 									<span class="commercial-projects-view__fake-link btn btn-small"> Перейти на сайт </span>
 								</div>
 							</a>
@@ -172,8 +172,13 @@ const portfolio = {
 	}
 
 	&__previews-link-img-wrapper {
+		height: 244px;
 		border-radius: 8px 8px 0 0;
 		overflow: hidden;
+
+		@media (min-width: $desktop) {
+			height: 254px;
+		}
 	}
 
 	&__content {
@@ -183,13 +188,26 @@ const portfolio = {
 	}
 
 	&__previews-item-type {
+		margin-bottom: 8px;
+		text-align: center;
+
+		@media (min-width: $desktop) {
+			margin-bottom: 12px;
+		}
+	}
+
+	&__previews-item-title {
 		margin-bottom: 12px;
 		text-align: center;
 	}
 
-	&__previews-item-title {
-		margin-bottom: 24px;
+	&__previews-item-text {
+		margin-bottom: 16px;
 		text-align: center;
+
+		@media (min-width: $desktop) {
+			margin-bottom: 24px;
+		}
 	}
 
 	&__fake-link {
