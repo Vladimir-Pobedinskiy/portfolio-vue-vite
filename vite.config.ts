@@ -8,12 +8,14 @@ export default defineConfig(({ mode }) => {
 	const env = loadEnv(mode, process.cwd(), '')
 	const isProduction = env.NODE_ENV === 'production'
 	return {
-		base: isProduction ? 'https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/' : '/',
+		base: isProduction ? '/portfolio-vue-vite/' : '/',
 		server: {
 			port: 8080,
+			historyApiFallback: true, // Добавлено для dev-сервера
 		},
 		preview: {
 			port: 8080,
+			historyApiFallback: true, // Добавлено для preview
 		},
 		publicDir: 'public',
 		plugins: [vue(), vueDevTools(), svgLoader({ svgo: false })],
@@ -25,6 +27,7 @@ export default defineConfig(({ mode }) => {
 		},
 		build: {
 			assetsDir: './',
+			outDir: 'dist',
 		},
 		css: {
 			preprocessorOptions: {
