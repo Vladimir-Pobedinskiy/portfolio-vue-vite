@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Redirecting...</title>
+		<script>
+			// Сохраняем путь для перенаправления
+			sessionStorage.redirect = location.pathname
+			// Перенаправляем на главную страницу
+			location.replace(location.pathname.startsWith('/portfolio-vue-vite') ? '/portfolio-vue-vite/' : '/')
+		</script>
+	</head>
+	<body>
+		<!-- Пустое тело, так как сразу делаем редирект -->
+	</body>
+</html>
