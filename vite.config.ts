@@ -10,11 +10,9 @@ export default defineConfig(({ mode }) => {
 		base: env.BASE_URL,
 		server: {
 			port: 8080,
-			historyApiFallback: true, // Добавлено для dev-сервера
 		},
 		preview: {
 			port: 8080,
-			historyApiFallback: true, // Добавлено для preview
 		},
 		publicDir: 'public',
 		plugins: [vue(), vueDevTools(), svgLoader({ svgo: false })],
