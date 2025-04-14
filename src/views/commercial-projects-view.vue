@@ -186,6 +186,7 @@ const portfolio = {
 		display: flex;
 		flex-direction: column;
 		padding: 16px;
+		flex: 1 1 auto;
 	}
 
 	&__previews-item-type {
