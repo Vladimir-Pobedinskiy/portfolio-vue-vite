@@ -6,9 +6,8 @@ import path from 'path'
 
 export default defineConfig(({ mode }) => {
 	const env = loadEnv(mode, process.cwd(), '')
-	const isProduction = env.NODE_ENV === 'production'
 	return {
-		base: isProduction ? '/portfolio-vue-vite/' : '/',
+		base: env.BASE_URL,
 		server: {
 			port: 8080,
 		},
@@ -25,6 +24,7 @@ export default defineConfig(({ mode }) => {
 		},
 		build: {
 			assetsDir: './',
+			outDir: 'dist',
 		},
 		css: {
 			preprocessorOptions: {
