@@ -53,8 +53,8 @@ const preventInvalidKeys = (event: KeyboardEvent) => {
 </script>
 
 <template>
-	<div :class="['label-wrapper', { error: errorValue }, { disabled: disabled }]">
-		<label v-bind="$attrs" :class="['label', { error: errorValue }, { disabled: disabled }]">
+	<div v-bind="$attrs" :class="['label-wrapper', { error: errorValue }, { disabled: disabled }]">
+		<label class="label">
 			<input
 				v-model="value"
 				:id="id"
