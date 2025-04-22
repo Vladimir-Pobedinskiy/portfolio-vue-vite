@@ -6,12 +6,12 @@ import * as Yup from 'yup'
 import { useLoadingStore } from '@/stores/storeLoading'
 import { useUserStore } from '@/stores/storeUser'
 import AppLoading from '@/components/App/AppLoading.vue'
+import UIInput from '@/components/UI/UIInput.vue'
 /*
   - getAuth: информация о пользователе в системе;
   - signInWithEmailAndPassword: вход с помощью email & password;
 */
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
-import UIInput from '@/components/UI/UIInput.vue'
 
 const router = useRouter()
 

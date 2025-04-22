@@ -7,7 +7,7 @@ const props = withDefaults(
 	defineProps<{
 		id?: string
 		inputKey?: string
-		type: 'text' | 'password' | 'search' | 'number' | 'file' | 'email'
+		type: 'text' | 'password' | 'number' | 'email' | 'tel'
 		name: string
 		placeholder: string
 		min?: number
@@ -60,10 +60,12 @@ const preventInvalidKeys = (event: KeyboardEvent) => {
 				:id="id"
 				:class="['label__input l-input', { error: errorValue }]"
 				:type="type !== 'password' ? type : isShowPassword ? 'text' : 'password'"
+				v-imask="type === 'tel' ? { mask: '+7 (000) 000-00-00' } : undefined"
 				:name="name"
-				placeholder=" "
+				:placeholder="type === 'tel' ? '+7 ' : ' '"
 				:max="type === 'number' ? max : undefined"
 				:min="type === 'number' ? min : undefined"
+				:autocomplete="autocomplete"
 				:disabled="disabled"
 				@keydown="preventInvalidKeys"
 			/>

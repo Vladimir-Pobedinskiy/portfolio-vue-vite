@@ -3,17 +3,15 @@ import { ref, reactive, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { Form as VeeValidateForm, Field } from 'vee-validate'
 import * as Yup from 'yup'
-import { passwordVisibility } from '@/utils/utils'
 import { useLoadingStore } from '@/stores/storeLoading'
 import { useUserStore } from '@/stores/storeUser'
 import AppLoading from '@/components/App/AppLoading.vue'
+import UIInput from '@/components/UI/UIInput.vue'
 /*
   - getAuth: информация о пользователе в системе;
   - createUserWithEmailAndPassword: регистрация пользователя с помощью email & password;
 */
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
-import IconEye from '@/assets/icons/icon-eye-input-password.svg'
-import IconEyeHidden from '@/assets/icons/icon-eye-input-password-hidden.svg'
 
 const router = useRouter()
 
@@ -35,12 +33,10 @@ const form = reactive<IForm>({
 	password: '',
 })
 const schema = Yup.object().shape({
-	name: Yup.string().required('Имя обязательно для заполнения'),
+	name: Yup.string().required('Имя обязательно для заполнения').min(2, 'Введите минимум 2 символа'),
 	tel: Yup.string().required('Телефон обязателен для заполнения').min(18, 'Неверный формат номера телефона'),
 	email: Yup.string().required('Email обязателен для заполнения').email('Неверный формат электронной почты'),
-	password: Yup.string()
-		.required('Пароль обязателен для заполнения')
-		.min(2, 'Пароль должен содержать минимум 6 символов'),
+	password: Yup.string().required('Пароль обязателен для заполнения').min(6, 'Неверный пароль'),
 })
 
 const loadingStore = useLoadingStore()
@@ -48,14 +44,11 @@ const isLoading = computed(() => loadingStore.isLoading)
 const startLoading = () => loadingStore.startLoading()
 const endLoading = () => loadingStore.endLoading()
 
-const togglePasswordVisibility = (event: Event) => {
-	passwordVisibility(event)
-}
-
 const onSubmit = async (): Promise<void> => {
 	try {
 		startLoading()
 		const response = await createUserWithEmailAndPassword(getAuth(), form.email, form.password)
+
 		setUser((await response.user.getIdTokenResult()).token)
 		form.name = ''
 		form.tel = ''
@@ -67,7 +60,7 @@ const onSubmit = async (): Promise<void> => {
 		if (error instanceof Error) {
 			formRef.value.setErrors({ password: `${error.message}` })
 		} else {
-			console.error('Error fetching AuthLogin:', error)
+			console.error('Error fetching AuthSignUp:', error)
 			throw error
 		}
 	} finally {
@@ -91,63 +84,54 @@ const onSubmit = async (): Promise<void> => {
 			@submit="onSubmit"
 			v-slot="{ errors }"
 		>
-			<div class="sign-up__form-item label-wrap" :class="{ error: errors.name }">
-				<label class="label">
-					<Field v-model.trim="form.name" class="label__input l-input" type="text" name="name" placeholder=" " />
-					<span class="label__input-title l-input">Имя</span>
-					<span class="error-message marker">{{ errors.name }}</span>
-				</label>
-			</div>
-
-			<div class="sign-up__form-item label-wrap" :class="{ error: errors.tel }">
-				<label class="label">
-					<Field
-						v-model="form.tel"
-						v-imask="{ mask: '+7 (000) 000-00-00' }"
-						class="label__input l-input"
-						type="tel"
-						name="tel"
-						placeholder="+7 "
-					/>
-					<span class="label__input-title l-input">Телефон </span>
-					<span class="error-message marker">{{ errors.tel }}</span>
-				</label>
-			</div>
-
-			<div class="sign-up__form-item label-wrap" :class="{ error: errors.email }">
-				<label class="label">
-					<Field v-model="form.email" class="label__input l-input" type="email" name="email" placeholder=" " />
-					<span class="label__input-title l-input">Электронная почта</span>
-					<span class="error-message marker">{{ errors.email }}</span>
-				</label>
-			</div>
-
-			<div class="sign-up__form-item label-wrap" :class="{ error: errors.password }">
-				<label class="label">
-					<Field
-						v-model="form.password"
-						class="label__input l-input"
-						type="password"
-						name="password"
-						placeholder=" "
-						autocomplete="off"
-						:disabled="isLoading"
-					/>
-					<span class="label__input-title l-input">Пароль </span>
-					<span class="error-message marker">{{ errors.password }}</span>
-				</label>
-				<button
-					class="toggle-password-visibility-btn"
-					data-show="false"
-					type="button"
-					tabindex="1"
+			<Field v-slot="{ field }" type="name" name="name">
+				<UIInput
+					v-bind="field"
+					v-model:value="form.name"
+					v-model:error-value="errors.name"
+					type="text"
+					name="name"
+					placeholder="Имя"
 					:disabled="isLoading"
-					@click="togglePasswordVisibility"
-				>
-					<IconEye class="icon-eye-password" />
-					<IconEyeHidden class="icon-eye-password-hidden" />
-				</button>
-			</div>
+				/>
+			</Field>
+
+			<Field v-slot="{ field }" type="tel" name="tel">
+				<UIInput
+					v-bind="field"
+					v-model:value="form.tel"
+					v-model:error-value="errors.tel"
+					type="tel"
+					name="tel"
+					placeholder="Телефон"
+					:disabled="isLoading"
+				/>
+			</Field>
+
+			<Field v-slot="{ field }" validate-on-change type="email" name="email">
+				<UIInput
+					v-bind="field"
+					v-model:value="form.email"
+					v-model:error-value="errors.email"
+					type="email"
+					name="email"
+					placeholder="Электронная почта"
+					:disabled="isLoading"
+				/>
+			</Field>
+
+			<Field v-slot="{ field }" type="password" name="password">
+				<UIInput
+					v-bind="field"
+					v-model:value="form.password"
+					v-model:error-value="errors.password"
+					type="password"
+					name="password"
+					placeholder="Пароль"
+					autocomplete="off"
+					:disabled="isLoading"
+				/>
+			</Field>
 
 			<button class="sign-up__btn-submit btn" type="submit" :disabled="isLoading">Зарегистрироваться</button>
 			<span class="sign-up__form-agreement p4">

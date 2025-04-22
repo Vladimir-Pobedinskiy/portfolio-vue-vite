@@ -25,20 +25,6 @@ export const priceFormatter = (value: number) => {
 	return `${parts.join(',')} ₽`
 }
 
-/* Показ пароля */
-export const passwordVisibility = (event: any) => {
-	const toggle = event.currentTarget
-	const input = toggle.previousElementSibling.children[0]
-
-	if (input.type === 'password') {
-		input.setAttribute('type', 'text')
-		toggle.setAttribute('data-show', true)
-	} else {
-		input.setAttribute('type', 'password')
-		toggle.setAttribute('data-show', false)
-	}
-}
-
 /* clear Object */
 export const clearObject = (obj: any) => {
 	Object.keys(obj).forEach((key) => {
