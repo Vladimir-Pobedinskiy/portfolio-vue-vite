@@ -67,15 +67,15 @@ const onSubmit = async (): Promise<void> => {
 	<div class="login">
 		<VeeValidateForm
 			ref="formRef"
+			v-slot="{ errors }"
+			:validation-schema="schema"
 			name="login"
 			action="#"
 			method="POST"
 			class="login__form"
-			:validation-schema="schema"
 			@submit="onSubmit"
-			v-slot="{ errors }"
 		>
-			<Field v-slot="{ field }" validate-on-change type="email" name="email">
+			<Field v-slot="{ field }" validate-on-change name="email">
 				<UIInput
 					v-bind="field"
 					v-model:value="form.email"
@@ -87,7 +87,7 @@ const onSubmit = async (): Promise<void> => {
 				/>
 			</Field>
 
-			<Field v-slot="{ field }" type="password" name="password">
+			<Field v-slot="{ field }" name="password">
 				<UIInput
 					v-bind="field"
 					v-model:value="form.password"

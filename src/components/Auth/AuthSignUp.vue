@@ -25,18 +25,23 @@ interface IForm {
 	tel: string
 	email: string
 	password: string
+	repeatPassword: string
 }
 const form = reactive<IForm>({
 	name: '',
 	tel: '',
 	email: '',
 	password: '',
+	repeatPassword: '',
 })
 const schema = Yup.object().shape({
-	name: Yup.string().required('Имя обязательно для заполнения').min(2, 'Введите минимум 2 символа'),
+	name: Yup.string().trim().required('Имя обязательно для заполнения').min(2, 'Введите минимум 2 символа'),
 	tel: Yup.string().required('Телефон обязателен для заполнения').min(18, 'Неверный формат номера телефона'),
 	email: Yup.string().required('Email обязателен для заполнения').email('Неверный формат электронной почты'),
-	password: Yup.string().required('Пароль обязателен для заполнения').min(6, 'Неверный пароль'),
+	password: Yup.string().required('Обязательное поле').min(6, 'Минимум 6 символов'),
+	repeatPassword: Yup.string()
+		.oneOf([Yup.ref('password')], 'Пароли не совпадают')
+		.required('Обязательное поле'),
 })
 
 const loadingStore = useLoadingStore()
@@ -54,11 +59,12 @@ const onSubmit = async (): Promise<void> => {
 		form.tel = ''
 		form.email = ''
 		form.password = ''
+		form.repeatPassword = ''
 		await formRef.value.resetForm()
 		router.push({ name: 'personal-account-view' })
 	} catch (error: unknown) {
 		if (error instanceof Error) {
-			formRef.value.setErrors({ password: `${error.message}` })
+			formRef.value.setErrors({ repeatPassword: `${error.message}` })
 		} else {
 			console.error('Error fetching AuthSignUp:', error)
 			throw error
@@ -76,15 +82,15 @@ const onSubmit = async (): Promise<void> => {
 	<div class="sign-up">
 		<VeeValidateForm
 			ref="formRef"
+			v-slot="{ errors }"
+			:validation-schema="schema"
 			name="sign-up-form"
 			action="#"
 			method="POST"
 			class="sign-up__form"
-			:validation-schema="schema"
 			@submit="onSubmit"
-			v-slot="{ errors }"
 		>
-			<Field v-slot="{ field }" type="name" name="name">
+			<Field v-slot="{ field }" name="name">
 				<UIInput
 					v-bind="field"
 					v-model:value="form.name"
@@ -96,7 +102,7 @@ const onSubmit = async (): Promise<void> => {
 				/>
 			</Field>
 
-			<Field v-slot="{ field }" type="tel" name="tel">
+			<Field v-slot="{ field }" name="tel">
 				<UIInput
 					v-bind="field"
 					v-model:value="form.tel"
@@ -108,7 +114,7 @@ const onSubmit = async (): Promise<void> => {
 				/>
 			</Field>
 
-			<Field v-slot="{ field }" validate-on-change type="email" name="email">
+			<Field v-slot="{ field }" validate-on-change name="email">
 				<UIInput
 					v-bind="field"
 					v-model:value="form.email"
@@ -120,7 +126,7 @@ const onSubmit = async (): Promise<void> => {
 				/>
 			</Field>
 
-			<Field v-slot="{ field }" type="password" name="password">
+			<Field v-slot="{ field }" name="password">
 				<UIInput
 					v-bind="field"
 					v-model:value="form.password"
@@ -128,6 +134,19 @@ const onSubmit = async (): Promise<void> => {
 					type="password"
 					name="password"
 					placeholder="Пароль"
+					autocomplete="off"
+					:disabled="isLoading"
+				/>
+			</Field>
+
+			<Field v-slot="{ field }" name="repeatPassword">
+				<UIInput
+					v-bind="field"
+					v-model:value="form.repeatPassword"
+					v-model:error-value="errors.repeatPassword"
+					type="password"
+					name="repeatPassword"
+					placeholder="Повторите пароль"
 					autocomplete="off"
 					:disabled="isLoading"
 				/>
