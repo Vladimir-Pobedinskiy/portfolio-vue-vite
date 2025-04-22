@@ -3,7 +3,6 @@ import { ref, reactive, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { Form as VeeValidateForm, Field } from 'vee-validate'
 import * as Yup from 'yup'
-import { passwordVisibility } from '@/utils/utils'
 import { useLoadingStore } from '@/stores/storeLoading'
 import { useUserStore } from '@/stores/storeUser'
 import AppLoading from '@/components/App/AppLoading.vue'
@@ -12,8 +11,7 @@ import AppLoading from '@/components/App/AppLoading.vue'
   - signInWithEmailAndPassword: вход с помощью email & password;
 */
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
-import IconEye from '@/assets/icons/icon-eye-input-password.svg'
-import IconEyeHidden from '@/assets/icons/icon-eye-input-password-hidden.svg'
+import UIInput from '@/components/UI/UIInput.vue'
 
 const router = useRouter()
 
@@ -39,10 +37,6 @@ const loadingStore = useLoadingStore()
 const isLoading = computed(() => loadingStore.isLoading)
 const startLoading = () => loadingStore.startLoading()
 const endLoading = () => loadingStore.endLoading()
-
-const togglePasswordVisibility = (event: Event) => {
-	passwordVisibility(event)
-}
 
 const onSubmit = async (): Promise<void> => {
 	try {
@@ -81,40 +75,30 @@ const onSubmit = async (): Promise<void> => {
 			@submit="onSubmit"
 			v-slot="{ errors }"
 		>
-			<div class="login__form-item label-wrap" :class="{ error: errors.email }">
-				<label class="label">
-					<Field v-model="form.email" class="label__input l-input" type="email" name="email" placeholder=" " />
-					<span class="label__input-title l-input">Электронная почта</span>
-					<span class="error-message marker">{{ errors.email }}</span>
-				</label>
-			</div>
-
-			<div class="login__form-item label-wrap" :class="{ error: errors.password }">
-				<label class="label">
-					<Field
-						v-model="form.password"
-						class="label__input l-input"
-						type="password"
-						name="password"
-						placeholder=" "
-						autocomplete="off"
-						:disabled="isLoading"
-					/>
-					<span class="label__input-title l-input">Пароль</span>
-					<span class="error-message marker">{{ errors.password }}</span>
-				</label>
-				<button
-					class="toggle-password-visibility-btn"
-					data-show="false"
-					type="button"
-					tabindex="1"
+			<Field v-slot="{ field }" validate-on-change type="email" name="email">
+				<UIInput
+					v-bind="field"
+					v-model:value="form.email"
+					v-model:error-value="errors.email"
+					type="email"
+					name="email"
+					placeholder="Электронная почта"
 					:disabled="isLoading"
-					@click="togglePasswordVisibility"
-				>
-					<IconEye class="icon-eye-password" />
-					<IconEyeHidden class="icon-eye-password-hidden" />
-				</button>
-			</div>
+				/>
+			</Field>
+
+			<Field v-slot="{ field }" type="password" name="password">
+				<UIInput
+					v-bind="field"
+					v-model:value="form.password"
+					v-model:error-value="errors.password"
+					type="password"
+					name="password"
+					placeholder="Пароль"
+					autocomplete="off"
+					:disabled="isLoading"
+				/>
+			</Field>
 
 			<button class="login__btn-submit btn" type="submit" :disabled="isLoading">Войти</button>
 			<div class="login__btn-wrapper">
