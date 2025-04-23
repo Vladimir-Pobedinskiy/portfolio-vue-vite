@@ -9,7 +9,7 @@
 				Запрашиваемая вами страница не существует. Возможно она была удалена или был введён неверный адрес в адресной
 				строке.
 			</p>
-			<RouterLink class="not-found-view__btn btn" :to="{ name: 'home-view' }">На главную</RouterLink>
+			<RouterLink class="not-found-view__btn btn-primary" :to="{ name: 'home-view' }">На главную</RouterLink>
 		</div>
 	</div>
 </template>

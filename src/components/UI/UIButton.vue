@@ -1,4 +1,59 @@
-.btn {
+<script setup lang="ts">
+const props = withDefaults(
+	defineProps<{
+		id?: string
+		btnKey?: string
+		type: 'button' | 'submit'
+		text: string
+		/** размер кнопки */
+		size?: 'small'
+		/** вариант отображения кнопки */
+		variant?: 'primary' | 'secondary'
+		/** булевое значение для отображения кнопки на всю ширину */
+		full?: boolean
+		disabled?: boolean
+	}>(),
+	{
+		type: 'button',
+		text: '',
+		variant: 'primary',
+		full: false,
+		disabled: false,
+	}
+)
+const emits = defineEmits<{
+	(e: 'click', event: MouseEvent): void
+}>()
+
+const onClick = (event: MouseEvent) => {
+	if (props.disabled) {
+		event.preventDefault()
+	} else {
+		emits('click', event)
+	}
+}
+</script>
+
+<template>
+	<button
+		v-bind="$attrs"
+		:id="id"
+		:btn-key="btnKey"
+		:class="[`btn-${variant}`, `${size}`, { full: full }, { disabled: disabled }]"
+		:type="type"
+		:disabled="disabled"
+		@click="onClick"
+	>
+		{{ text }}
+		<template v-if="$slots.content">
+			<slot name="content" />
+		</template>
+	</button>
+</template>
+
+<style lang="scss">
+.btn-primary,
+.btn-secondary {
 	padding: 10px 14px;
 	width: 100%;
 	outline: transparent;
@@ -11,11 +66,6 @@
 	font-size: 14px;
 	font-weight: 450;
 	line-height: 1.4;
-	background-color: $color-gray-dark;
-	color: $color-white;
-	transition:
-		background-color 0.4s ease,
-		color 0.4s ease;
 
 	@media (min-width: $mobile-big) {
 		padding: 12px 24px;
@@ -24,6 +74,18 @@
 		font-size: 18px;
 		line-height: 1.35;
 	}
+
+	&.full {
+		width: 100%;
+	}
+}
+
+.btn-primary {
+	background-color: $color-gray-dark;
+	color: $color-white;
+	transition:
+		background-color 0.4s ease,
+		color 0.4s ease;
 
 	@media (min-width: $desktop-small) {
 		&:hover {
@@ -55,8 +117,8 @@
 			color 0.4s ease;
 	}
 
-	// btn-small
-	&.btn-small {
+	// small
+	&.small {
 		min-height: 42px;
 		padding: 8px 16px;
 		font-size: 16px;
@@ -71,18 +133,6 @@
 // btn-secondary
 
 .btn-secondary {
-	padding: 10px 14px;
-	width: 100%;
-	outline: transparent;
-	border-radius: 16px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-	font-family: $font;
-	font-size: 14px;
-	font-weight: 450;
-	line-height: 1.4;
 	background-color: $color-white;
 	color: $color-gray-dark;
 	border: 1px solid $color-gray-dark;
@@ -91,29 +141,6 @@
 		color 0.4s ease,
 		border-color 0.4s ease;
 
-	svg {
-		margin-left: 8px;
-		width: 20px;
-		height: 20px;
-		fill: $color-gray-dark;
-		transition:
-			fill 0.4s ease,
-			transform 0.4s ease;
-	}
-
-	@media (min-width: $mobile-big) {
-		padding: 12px 24px;
-		font-weight: 450;
-		font-size: 18px;
-		line-height: 1.35;
-		width: fit-content;
-
-		svg {
-			width: 24px;
-			height: 24px;
-		}
-	}
-
 	@media (min-width: $desktop-small) {
 		&:hover {
 			background-color: $color-gray-dark;
@@ -121,14 +148,6 @@
 			transition:
 				background-color 0.4s ease,
 				color 0.4s ease;
-
-			svg {
-				fill: $color-white;
-				transform: translate(4px, -4px);
-				transition:
-					fill 0.4s ease,
-					transform 0.4s ease;
-			}
 		}
 	}
 
@@ -137,15 +156,7 @@
 		color: $color-white;
 		transition:
 			background-color 0.4s ease,
-			color 0.4s ease,
-			fill 0.4s ease;
-
-		svg {
-			fill: $color-white;
-			transition:
-				fill 0.4s ease,
-				transform 0.4s ease;
-		}
+			color 0.4s ease;
 	}
 
 	&:disabled {
@@ -157,11 +168,6 @@
 			background-color 0.4s ease,
 			color 0.4s ease,
 			border-color 0.4s ease;
-
-		svg {
-			fill: $color-gray-light;
-			transition: fill 0.4s ease;
-		}
 	}
 
 	&.disabled {
@@ -173,11 +179,6 @@
 			background-color 0.4s ease,
 			color 0.4s ease,
 			border-color 0.4s ease;
-
-		svg {
-			fill: $color-gray-light;
-			transition: fill 0.4s ease;
-		}
 	}
 
 	&.active {
@@ -185,59 +186,15 @@
 		color: $color-white;
 		transition:
 			background-color 0.4s ease,
-			color 0.4s ease,
-			fill 0.4s ease;
-
-		svg {
-			fill: $color-white;
-			transition:
-				fill 0.4s ease,
-				transform 0.4s ease;
-		}
+			color 0.4s ease;
 	}
 
-	// btn-secondary-small
-	&.btn-secondary-small {
+	// small
+	&.small {
 		min-height: 42px;
 		padding: 8px 16px;
 		font-size: 16px;
 		line-height: 1.4;
-
-		svg {
-			width: 20px;
-			height: 20px;
-		}
 	}
 }
-
-.btn-orange {
-	display: block;
-	margin-top: auto;
-	padding: 8px 16px;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-	font-family: $font;
-	font-size: 16px;
-	font-weight: 450;
-	line-height: 1.4;
-	border: 1px solid $color-orange;
-	border-radius: 16px;
-	background-color: $color-orange;
-	color: $color-white;
-	transition:
-		background-color 0.3s ease,
-		border-color 0.3s ease;
-
-	@media (min-width: $desktop) {
-		&:hover {
-			border-color: $color-orange-hover;
-			background-color: $color-orange-hover;
-			transition:
-				background-color 0.3s ease,
-				border-color 0.3s ease;
-		}
-	}
-}
+</style>

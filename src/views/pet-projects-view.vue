@@ -79,7 +79,7 @@ const projects = {
 							<RouterLink class="pet-projects-view__previews-link" :to="`${item.url}`">
 								<p class="pet-projects-view__previews-item-type s2">{{ item.title }}</p>
 								<p class="pet-projects-view__previews-item-title p1">{{ item.description }}</p>
-								<span class="pet-projects-view__fake-link btn btn-small">Перейти</span>
+								<span class="pet-projects-view__fake-link btn-primary small">Перейти</span>
 							</RouterLink>
 						</template>
 					</div>

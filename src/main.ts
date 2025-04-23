@@ -17,6 +17,7 @@ import VueDOMPurifyHTML from 'vue-dompurify-html'
 
 // Глобальные компоненты
 import UIBreadcrumbs from '@/components/UI/UIBreadcrumbs.vue'
+import UIButton from '@/components/UI/UIButton.vue'
 
 const firebaseConfig = {
 	apiKey: 'AIzaSyCDTf05XkPQ-KOSsr13C74-dKWK8dpOLUg',
@@ -45,5 +46,6 @@ app.directive('imask', IMaskDirective as Directive)
 
 // Регистрируем глобальные компоненты
 app.component('UIBreadcrumbs', UIBreadcrumbs)
+app.component('UIButton', UIButton)
 
 app.mount('#app')

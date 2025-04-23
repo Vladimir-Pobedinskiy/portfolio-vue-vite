@@ -100,7 +100,15 @@ const onSubmit = async (): Promise<void> => {
 				/>
 			</Field>
 
-			<button class="login__btn-submit btn" type="submit" :disabled="isLoading">Войти</button>
+			<UIButton
+				class="login__btn-submit"
+				variant="primary"
+				:full="true"
+				type="submit"
+				:disabled="isLoading"
+				text="Войти"
+			/>
+
 			<div class="login__btn-wrapper">
 				<span class="login__login-title p3">Не зарегистрированы?</span>
 				<button class="login__btn" type="button" :disabled="isLoading" @click="$router.push('/registration')">
@@ -113,9 +121,8 @@ const onSubmit = async (): Promise<void> => {
 
 <style lang="scss">
 .login {
-	&__btn-submit.btn {
+	&__btn-submit {
 		margin-bottom: 16px;
-		width: 100%;
 	}
 
 	&__btn-wrapper {

@@ -142,26 +142,27 @@ const onSubmit = () => {
 
 							<TaskTagList :tags="tags" @handle-selected-tag="handleSelectedTag" />
 
-							<button
-								class="tasks-view__form-btn btn"
+							<UIButton
+								class="tasks-view__form-btn"
+								variant="primary"
 								type="submit"
 								:disabled="isLoading || isSubmitting || !meta.valid"
-							>
-								Добавить новую задачу
-							</button>
+								text="Добавить новую задачу"
+							/>
 						</VeeValidateForm>
 					</div>
 
 					<div class="tasks-view__content">
-						<button
+						<UIButton
 							v-if="taskListStore.length"
-							class="tasks-view__clear-btn btn btn-small"
-							:disabled="!taskListStore.length"
+							class="tasks-view__clear-btn"
+							variant="primary"
+							size="small"
 							type="button"
+							:disabled="!taskListStore.length"
+							text="Очистить задачи"
 							@click="clearTasksStore"
-						>
-							Очистить задачи
-						</button>
+						/>
 
 						<div v-auto-animate="{ duration: 300 }" class="tasks-view__task-list-wrapper">
 							<template v-if="taskListStore.length">
@@ -217,7 +218,7 @@ const onSubmit = () => {
 		align-items: center;
 	}
 
-	&__form-btn.btn {
+	&__form-btn {
 		width: 100%;
 		max-width: 300px;
 	}

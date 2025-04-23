@@ -109,7 +109,7 @@ const portfolio = {
 									<p class="commercial-projects-view__previews-item-type s2">{{ item.type }}</p>
 									<p class="commercial-projects-view__previews-item-title p1">{{ item.title }}</p>
 									<p class="commercial-projects-view__previews-item-text p2">{{ item.description }}</p>
-									<span class="commercial-projects-view__fake-link btn btn-small"> Перейти на сайт </span>
+									<span class="commercial-projects-view__fake-link btn-primary small"> Перейти на сайт </span>
 								</div>
 							</a>
 						</template>

@@ -17,7 +17,14 @@ const logout = async (): Promise<void> => {
 		<div class="container">
 			<div class="personal-account__top">
 				<h1 class="personal-account__title h2">Личный кабинет</h1>
-				<button class="personal-account__btn-out btn btn-small" type="button" @click="logout">Выйти</button>
+				<UIButton
+					class="personal-account__btn-out"
+					variant="primary"
+					size="small"
+					type="button"
+					text="Выйти"
+					@click="logout"
+				/>
 			</div>
 			<div class="personal-account__content">
 				<p class="p1">Контент персонального аккаунта</p>

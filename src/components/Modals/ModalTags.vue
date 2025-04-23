@@ -102,12 +102,21 @@ const editSelectedTags = () => {
 			</template>
 			<template #body>
 				<TaskTagList :tags="combinedTags" @handle-selected-tag="handleSelectedTag" />
-				<button class="modal-tags-btn-save btn btn-small" type="button" @click="editSelectedTags">Сохранить</button>
+
+				<UIButton
+					class="modal-tags-btn-save"
+					variant="primary"
+					size="small"
+					:full="true"
+					type="button"
+					text="Сохранить"
+					@click="editSelectedTags"
+				/>
 			</template>
 		</UIModal>
 
 		<button
-			:class="currentTags.length ? 'modal-tags-btn-open' : 'btn btn-small'"
+			:class="currentTags.length ? 'modal-tags-btn-open' : 'btn-primary small'"
 			type="button"
 			aria-label="Открыть модальное окно"
 			@click="handleShowModalTags(true)"
@@ -135,8 +144,7 @@ const editSelectedTags = () => {
 	height: 23px;
 }
 
-.modal-tags-btn-save.btn.btn-small {
+.modal-tags-btn-save {
 	margin-top: 24px;
-	width: 100%;
 }
 </style>

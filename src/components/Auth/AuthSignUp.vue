@@ -152,7 +152,15 @@ const onSubmit = async (): Promise<void> => {
 				/>
 			</Field>
 
-			<button class="sign-up__btn-submit btn" type="submit" :disabled="isLoading">Зарегистрироваться</button>
+			<UIButton
+				class="sign-up__btn-submit"
+				variant="primary"
+				:full="true"
+				type="submit"
+				:disabled="isLoading"
+				text="Зарегистрироваться"
+			/>
+
 			<span class="sign-up__form-agreement p4">
 				Нажимая кнопку «Зарегистрироваться», я соглашаюсь на обработку персональных данных
 			</span>
@@ -168,9 +176,8 @@ const onSubmit = async (): Promise<void> => {
 
 <style lang="scss">
 .sign-up {
-	&__btn-submit.btn {
+	&__btn-submit {
 		margin: 24px 0 12px;
-		width: 100%;
 	}
 
 	&__form-agreement {
