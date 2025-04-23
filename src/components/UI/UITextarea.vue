@@ -4,15 +4,16 @@ withDefaults(
 		id?: string
 		textareaKey?: string
 		placeholder: string
+		errorValue?: string
 		disabled?: boolean
 	}>(),
 	{
+		errorValue: '',
 		disabled: false,
 	}
 )
 
 const value = defineModel<string | number>('value')
-const errorValue = defineModel<string>('errorValue')
 </script>
 
 <template>

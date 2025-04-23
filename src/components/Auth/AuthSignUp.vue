@@ -94,7 +94,7 @@ const onSubmit = async (): Promise<void> => {
 				<UIInput
 					v-bind="field"
 					v-model:value="form.name"
-					v-model:error-value="errors.name"
+					:error-value="errors.name"
 					type="text"
 					name="name"
 					placeholder="Имя"
@@ -106,7 +106,7 @@ const onSubmit = async (): Promise<void> => {
 				<UIInput
 					v-bind="field"
 					v-model:value="form.tel"
-					v-model:error-value="errors.tel"
+					:error-value="errors.tel"
 					type="tel"
 					name="tel"
 					placeholder="Телефон"
@@ -118,7 +118,7 @@ const onSubmit = async (): Promise<void> => {
 				<UIInput
 					v-bind="field"
 					v-model:value="form.email"
-					v-model:error-value="errors.email"
+					:error-value="errors.email"
 					type="email"
 					name="email"
 					placeholder="Электронная почта"
@@ -130,7 +130,7 @@ const onSubmit = async (): Promise<void> => {
 				<UIInput
 					v-bind="field"
 					v-model:value="form.password"
-					v-model:error-value="errors.password"
+					:error-value="errors.password"
 					type="password"
 					name="password"
 					placeholder="Пароль"
@@ -143,7 +143,7 @@ const onSubmit = async (): Promise<void> => {
 				<UIInput
 					v-bind="field"
 					v-model:value="form.repeatPassword"
-					v-model:error-value="errors.repeatPassword"
+					:error-value="errors.repeatPassword"
 					type="password"
 					name="repeatPassword"
 					placeholder="Повторите пароль"

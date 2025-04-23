@@ -134,7 +134,7 @@ const onSubmit = () => {
 								<UITextarea
 									v-bind="field"
 									v-model:value="textareaValue"
-									v-model:error-value="errors.textareaValue"
+									:error-value="errors.textareaValue"
 									placeholder="Введите новую задачу"
 									:disabled="isLoading || isSubmitting"
 								/>

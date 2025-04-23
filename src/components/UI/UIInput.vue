@@ -12,6 +12,7 @@ const props = withDefaults(
 		placeholder: string
 		min?: number
 		max?: number
+		errorValue?: string
 		disabled?: boolean
 		autocomplete?: string
 	}>(),
@@ -20,13 +21,13 @@ const props = withDefaults(
 		placeholder: ' ',
 		min: 0,
 		max: 1000000000000,
+		errorValue: '',
 		disabled: false,
 		autocomplete: 'on',
 	}
 )
 
 const value = defineModel<string | number>('value')
-const errorValue = defineModel<string>('errorValue')
 
 const isShowPassword = ref<boolean>(false)
 const togglePasswordVisibility = () => {

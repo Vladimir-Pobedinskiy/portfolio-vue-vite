@@ -79,7 +79,7 @@ const onSubmit = async (): Promise<void> => {
 				<UIInput
 					v-bind="field"
 					v-model:value="form.email"
-					v-model:error-value="errors.email"
+					:error-value="errors.email"
 					type="email"
 					name="email"
 					placeholder="Электронная почта"
@@ -91,7 +91,7 @@ const onSubmit = async (): Promise<void> => {
 				<UIInput
 					v-bind="field"
 					v-model:value="form.password"
-					v-model:error-value="errors.password"
+					:error-value="errors.password"
 					type="password"
 					name="password"
 					placeholder="Пароль"
