@@ -34,6 +34,12 @@ const errorValue = defineModel<string>('errorValue')
 	width: 100%;
 	max-width: 1000px;
 	height: 150px;
+	pointer-events: all;
+
+	&.disabled {
+		opacity: 0.6;
+		pointer-events: none;
+	}
 
 	&.error {
 		margin-bottom: 32px;
@@ -46,12 +52,14 @@ const errorValue = defineModel<string>('errorValue')
 		border: 1px solid rgb(227, 221, 221);
 		border-radius: 12px;
 		outline: $color-vue-bg;
+		pointer-events: all;
 
 		&:disabled {
 			opacity: 0.3;
 			border-color: $color-gray-light;
 			background-color: $color-white;
 			cursor: default;
+			pointer-events: none;
 			transition:
 				border-color 0.3s ease,
 				background-color 0.3s ease;

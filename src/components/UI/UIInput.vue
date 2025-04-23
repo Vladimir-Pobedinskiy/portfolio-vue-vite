@@ -97,6 +97,7 @@ const preventInvalidKeys = (event: KeyboardEvent) => {
 	position: relative;
 	margin-bottom: 18px;
 	height: 44px;
+	pointer-events: all;
 
 	@media (min-width: $mobile-big) {
 		height: 56px;
@@ -104,6 +105,7 @@ const preventInvalidKeys = (event: KeyboardEvent) => {
 
 	&.disabled {
 		opacity: 0.6;
+		pointer-events: none;
 
 		.label__input-title {
 			color: $color-gray-light;
@@ -129,6 +131,7 @@ const preventInvalidKeys = (event: KeyboardEvent) => {
 		color: $color-black;
 		outline: transparent;
 		border-radius: 16px;
+		pointer-events: all;
 		transition: border-color 0.4s ease-in-out;
 
 		&:hover {
@@ -147,6 +150,7 @@ const preventInvalidKeys = (event: KeyboardEvent) => {
 			border-color: $color-gray-light;
 			background-color: $color-white;
 			cursor: default;
+			pointer-events: none;
 			transition:
 				border-color 0.3s ease,
 				background-color 0.3s ease;

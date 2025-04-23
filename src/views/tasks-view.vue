@@ -141,6 +141,7 @@ const onSubmit = () => {
 							</Field>
 
 							<TaskTagList :tags="tags" @handle-selected-tag="handleSelectedTag" />
+
 							<button
 								class="tasks-view__form-btn btn"
 								type="submit"
