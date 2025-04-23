@@ -25,8 +25,8 @@ const props = withDefaults(
 	}
 )
 
-const value = defineModel('value')
-const errorValue = defineModel('errorValue')
+const value = defineModel<string | number>('value')
+const errorValue = defineModel<string>('errorValue')
 
 const isShowPassword = ref<boolean>(false)
 const togglePasswordVisibility = () => {
@@ -58,6 +58,7 @@ const preventInvalidKeys = (event: KeyboardEvent) => {
 			<input
 				v-model="value"
 				:id="id"
+				:input-key="inputKey"
 				:class="['label__input l-input', { error: errorValue }]"
 				:type="type !== 'password' ? type : isShowPassword ? 'text' : 'password'"
 				v-imask="type === 'tel' ? { mask: '+7 (000) 000-00-00' } : undefined"
@@ -70,7 +71,7 @@ const preventInvalidKeys = (event: KeyboardEvent) => {
 				@keydown="preventInvalidKeys"
 			/>
 			<span class="label__input-title l-input">{{ placeholder }}</span>
-			<span class="error-message marker">{{ errorValue }}</span>
+			<span class="error-message">{{ errorValue }}</span>
 		</label>
 
 		<button

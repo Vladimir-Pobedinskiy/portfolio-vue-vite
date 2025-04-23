@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { ref, reactive, computed } from 'vue'
 import { getFirestore, query, collection, getDocs } from 'firebase/firestore'
+import { Form as VeeValidateForm, Field } from 'vee-validate'
+import * as Yup from 'yup'
 import { v4 as uuidv4 } from 'uuid'
 import AppLoading from '@/components/App/AppLoading.vue'
+import UITextarea from '@/components/UI/UITextarea.vue'
 import DescriptionUnit from '@/components/DescriptionUnit.vue'
 import TaskList from '@/components/Tasks/TaskList.vue'
 import TaskTagList from '@/components/Tasks/TaskTagList.vue'
@@ -56,8 +59,16 @@ const getData = async (): Promise<void> => {
 getData()
 
 const textareaValue = ref<string>('')
-const selectedTags = ref<ITag[]>([])
+const maxTextareaValue = 100
 
+const schema = Yup.object().shape({
+	textareaValue: Yup.string()
+		.trim()
+		.required('Обязательное поле!')
+		.max(maxTextareaValue, `Максимальное число символов: ${maxTextareaValue}`),
+})
+
+const selectedTags = ref<ITag[]>([])
 const handleSelectedTag = (tag: ITag) => {
 	tag.selected ? (tag.selected = false) : (tag.selected = true)
 
@@ -79,6 +90,7 @@ const handleSelectedTag = (tag: ITag) => {
 	}
 }
 
+const formRef = ref<any>(null)
 const onSubmit = () => {
 	if (textareaValue.value.length) {
 		addTaskStore(uuidv4(), textareaValue.value.trim(), getCurrentDate(), selectedTags.value)
@@ -89,6 +101,7 @@ const onSubmit = () => {
 				item.selected = false
 			}
 		})
+		formRef.value.resetForm()
 	}
 }
 </script>
@@ -107,13 +120,35 @@ const onSubmit = () => {
 					<h2 class="tasks-view__title title h2">Список задач</h2>
 
 					<div class="tasks-view__form-wrapper">
-						<form name="tasks-form" action="#" method="POST" class="tasks-view__form" @submit.prevent="onSubmit">
-							<textarea v-model="textareaValue" class="tasks-view__form-textarea" placeholder="Введите новую задачу" />
+						<VeeValidateForm
+							ref="formRef"
+							v-slot="{ errors, meta, isSubmitting }"
+							:validation-schema="schema"
+							name="tasks-form"
+							action="#"
+							method="POST"
+							class="tasks-view__form"
+							@submit="onSubmit"
+						>
+							<Field v-slot="{ field }" validate-on-input name="textareaValue">
+								<UITextarea
+									v-bind="field"
+									v-model:value="textareaValue"
+									v-model:error-value="errors.textareaValue"
+									placeholder="Введите новую задачу"
+									:disabled="isLoading || isSubmitting"
+								/>
+							</Field>
+
 							<TaskTagList :tags="tags" @handle-selected-tag="handleSelectedTag" />
-							<button class="tasks-view__form-btn btn" :disabled="!textareaValue.trim()" type="submit">
+							<button
+								class="tasks-view__form-btn btn"
+								type="submit"
+								:disabled="isLoading || isSubmitting || !meta.valid"
+							>
 								Добавить новую задачу
 							</button>
-						</form>
+						</VeeValidateForm>
 					</div>
 
 					<div class="tasks-view__content">
@@ -179,15 +214,6 @@ const onSubmit = () => {
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-	}
-
-	&__form-textarea {
-		padding: 16px;
-		width: 100%;
-		max-width: 1000px;
-		height: 150px;
-		border: 1px solid rgb(227, 221, 221);
-		border-radius: 12px;
 	}
 
 	&__form-btn.btn {
