@@ -132,8 +132,8 @@ const onSubmit = () => {
 						>
 							<Field v-slot="{ field }" validate-on-input name="textareaValue">
 								<UITextarea
-									v-bind="field"
 									v-model:value="textareaValue"
+									v-bind="field"
 									:error-value="errors.textareaValue"
 									placeholder="Введите новую задачу"
 									:disabled="isLoading || isSubmitting"
