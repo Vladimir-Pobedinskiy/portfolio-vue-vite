@@ -95,7 +95,7 @@ const onSubmit = async (): Promise<void> => {
 					type="password"
 					name="password"
 					placeholder="Пароль"
-					autocomplete="off"
+					autocomplete="on"
 					:disabled="isLoading"
 				/>
 			</Field>

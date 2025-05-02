@@ -49,6 +49,12 @@ useSwipeHandler(navigation, 'navigation', 'left', screens.desktop)
 <style lang="scss">
 $burger-height: 2px;
 
+.burger {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 // burger-btn
 .burger-btn {
 	position: relative;
