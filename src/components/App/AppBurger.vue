@@ -2,15 +2,15 @@
 import { ref, computed, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useGeneralStore } from '@/stores/storeGeneral'
-import { useDesktopHandler } from '@/composables/useDesktopHandler'
+import { useScreenHandler } from '@/composables/useScreenHandler'
 import { useMenuStore } from '@/stores/storeMenu'
 import { useSwipeHandler } from '@/composables/useSwipeHandler'
 import { screens } from '@/utils/utils'
-const { isDesktop } = useDesktopHandler(screens.desktop)
 import AppNavigation from '@/components/App/AppNavigation.vue'
 
 const route = useRoute()
 
+const { isMatchedScreen } = useScreenHandler(screens.desktop)
 const storeGeneral = useGeneralStore()
 const navStore = computed(() => storeGeneral.nav)
 
@@ -33,7 +33,7 @@ useSwipeHandler(navigation, 'navigation', 'left', screens.desktop)
 </script>
 
 <template>
-	<div v-if="!isDesktop" class="burger">
+	<div v-if="!isMatchedScreen" class="burger">
 		<button :class="['burger-btn', { active: menuName === 'navigation' }]" type="button" @click="handleBurgerClick">
 			<span class="burger-btn__label">
 				<span class="visually-hidden">открыть меню</span>

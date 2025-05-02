@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useGeneralStore } from '@/stores/storeGeneral'
-import { useDesktopHandler } from '@/composables/useDesktopHandler'
+import { useScreenHandler } from '@/composables/useScreenHandler'
 import { screens } from '@/utils/utils'
 import AppBurger from '@/components/App/AppBurger.vue'
 import AppLogo from '@/components/App/AppLogo.vue'
 import AppNavigation from '@/components/App/AppNavigation.vue'
 import UIUserLink from '@/components/UI/UIUserLink.vue'
 
-const { isDesktop } = useDesktopHandler(screens.desktop)
+const { isMatchedScreen } = useScreenHandler(screens.desktop)
 const storeGeneral = useGeneralStore()
 const navStore = computed(() => storeGeneral.nav)
 </script>
@@ -19,7 +19,7 @@ const navStore = computed(() => storeGeneral.nav)
 			<div class="header__inner">
 				<AppBurger />
 				<AppLogo />
-				<AppNavigation v-if="isDesktop" :nav="navStore" />
+				<AppNavigation v-if="isMatchedScreen" :nav="navStore" />
 				<UIUserLink />
 			</div>
 		</div>
