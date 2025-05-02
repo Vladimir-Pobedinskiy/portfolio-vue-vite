@@ -3,21 +3,23 @@ import type { Component } from 'vue'
 
 const props = withDefaults(
 	defineProps<{
-		as: 'button' | 'RouterLink' | 'a' | Component
-		id?: string
+		as: 'button' | 'RouterLink' | 'a' | 'span' | Component
 		btnKey?: string
 		/** для <RouterLink> */
-		to?: string
+		to?: { name: string } | string
 		/** для <a> */
 		href?: string
+		target?: string
 		/** для <button> */
 		type?: 'button' | 'submit'
-		/** размер */
-		size?: 'small'
 		/** вариант отображения */
-		variant?: 'primary' | 'secondary'
+		variant?: 'primary' | 'secondary' | 'third'
+		/** размер */
+		size?: 'small' | 'big'
 		/** для отображения на всю ширину */
 		full?: boolean
+		/** aria-label */
+		ariaLabel?: string
 		/** строковый контент */
 		label: string
 		disabled?: boolean
@@ -26,7 +28,9 @@ const props = withDefaults(
 		as: 'button',
 		type: 'button',
 		variant: 'primary',
+		size: 'big',
 		full: false,
+		ariaLabel: '',
 		label: '',
 		disabled: false,
 	}
@@ -49,14 +53,14 @@ const onClick = (event: MouseEvent) => {
 <template>
 	<Component
 		:is="as"
-		v-bind="$attrs"
-		:id="id"
 		:btn-key="btnKey"
 		:class="[`btn-${variant}`, `${size}`, { full: full }, { disabled: disabled }]"
 		:to="as === 'RouterLink' ? to : undefined"
 		:href="as === 'a' ? href : undefined"
+		:target="as === 'a' ? target : undefined"
 		:type="as === 'button' ? type : undefined"
-		:disabled="disabled"
+		:aria-label="ariaLabel ? ariaLabel : undefined"
+		:disabled="as !== 'span' ? disabled : undefined"
 		@click="onClick"
 	>
 		{{ label }}
@@ -69,7 +73,6 @@ const onClick = (event: MouseEvent) => {
 <style lang="scss">
 .btn-primary,
 .btn-secondary {
-	padding: 10px 14px;
 	width: 100%;
 	outline: transparent;
 	border-radius: 16px;
@@ -83,11 +86,24 @@ const onClick = (event: MouseEvent) => {
 	line-height: 1.4;
 
 	@media (min-width: $mobile-big) {
-		padding: 12px 24px;
 		width: fit-content;
-		font-weight: 450;
-		font-size: 18px;
 		line-height: 1.35;
+	}
+
+	&.small {
+		min-height: 42px;
+		padding: 8px 16px;
+		font-size: 16px;
+	}
+
+	&.big {
+		padding: 10px 14px;
+
+		@media (min-width: $mobile-big) {
+			padding: 12px 24px;
+			width: fit-content;
+			font-size: 18px;
+		}
 	}
 
 	&.full {
@@ -131,22 +147,9 @@ const onClick = (event: MouseEvent) => {
 			background-color 0.4s ease,
 			color 0.4s ease;
 	}
-
-	// small
-	&.small {
-		min-height: 42px;
-		padding: 8px 16px;
-		font-size: 16px;
-		line-height: 1.4;
-
-		@media (min-width: $mobile-big) {
-			line-height: 1.35;
-		}
-	}
 }
 
 // btn-secondary
-
 .btn-secondary {
 	background-color: $color-white;
 	color: $color-gray-dark;
@@ -203,13 +206,36 @@ const onClick = (event: MouseEvent) => {
 			background-color 0.4s ease,
 			color 0.4s ease;
 	}
+}
 
-	// small
+// btn-third
+.btn-third {
+	display: block;
+	width: 100%;
+	border: 1px solid $color-orange;
+	border-radius: 12px;
+	background-color: $color-orange;
+	color: $color-white;
+	transition:
+		background-color 0.3s ease,
+		border-color 0.3s ease;
+
+	@media (min-width: $desktop) {
+		&:hover {
+			border-color: $color-orange-hover;
+			background-color: $color-orange-hover;
+			transition:
+				background-color 0.3s ease,
+				border-color 0.3s ease;
+		}
+	}
+
 	&.small {
-		min-height: 42px;
 		padding: 8px 16px;
-		font-size: 16px;
-		line-height: 1.4;
+	}
+
+	&.big {
+		padding: 10px 16px;
 	}
 }
 </style>

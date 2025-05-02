@@ -22,13 +22,7 @@ const activeTab = computed({
 </script>
 
 <template>
-	<TabGroup
-		v-bind="$attrs"
-		:selected-index="activeTab"
-		as="div"
-		class="tabs"
-		@change="(index: number) => (activeTab = index)"
-	>
+	<TabGroup :selected-index="activeTab" as="div" class="tabs" @change="(index: number) => (activeTab = index)">
 		<TabList class="tabs-nav">
 			<template v-if="$slots['tab-nav']">
 				<slot name="tab-nav" />

@@ -79,7 +79,15 @@ const projects = {
 							<RouterLink class="pet-projects-view__previews-link" :to="`${item.url}`">
 								<p class="pet-projects-view__previews-item-type s2">{{ item.title }}</p>
 								<p class="pet-projects-view__previews-item-title p1">{{ item.description }}</p>
-								<span class="pet-projects-view__fake-link btn-primary small">Перейти</span>
+
+								<UIButton
+									as="span"
+									class="pet-projects-view__fake-link"
+									variant="primary"
+									size="small"
+									:full="true"
+									label="Перейти"
+								/>
 							</RouterLink>
 						</template>
 					</div>
@@ -163,7 +171,6 @@ const projects = {
 	&__fake-link {
 		display: block;
 		margin-top: auto;
-		width: 100%;
 	}
 }
 </style>

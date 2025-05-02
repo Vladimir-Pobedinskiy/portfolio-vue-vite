@@ -109,7 +109,15 @@ const portfolio = {
 									<p class="commercial-projects-view__previews-item-type s2">{{ item.type }}</p>
 									<p class="commercial-projects-view__previews-item-title p1">{{ item.title }}</p>
 									<p class="commercial-projects-view__previews-item-text p2">{{ item.description }}</p>
-									<span class="commercial-projects-view__fake-link btn-primary small"> Перейти на сайт </span>
+
+									<UIButton
+										as="span"
+										class="commercial-projects-view__fake-link"
+										variant="primary"
+										size="small"
+										:full="true"
+										label="Перейти на сайт"
+									/>
 								</div>
 							</a>
 						</template>
@@ -215,7 +223,6 @@ const portfolio = {
 	&__fake-link {
 		display: block;
 		margin-top: auto;
-		width: 100%;
 	}
 }
 </style>

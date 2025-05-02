@@ -22,7 +22,15 @@ defineProps<{
 					</li>
 				</ul>
 			</div>
-			<span class="hero-card__fake-link s4">See more info</span>
+
+			<UIButton
+				as="span"
+				class="hero-card__fake-link s4"
+				variant="third"
+				size="small"
+				:full="true"
+				label="See more info"
+			/>
 		</RouterLink>
 	</div>
 </template>
@@ -110,27 +118,7 @@ defineProps<{
 	}
 
 	&__fake-link {
-		display: block;
 		margin-top: auto;
-		padding: 8px 16px;
-		width: 100%;
-		border: 1px solid $color-orange;
-		border-radius: 16px;
-		background-color: $color-orange;
-		color: $color-white;
-		transition:
-			background-color 0.3s ease,
-			border-color 0.3s ease;
-
-		@media (min-width: $desktop) {
-			&:hover {
-				border-color: $color-orange-hover;
-				background-color: $color-orange-hover;
-				transition:
-					background-color 0.3s ease,
-					border-color 0.3s ease;
-			}
-		}
 	}
 }
 </style>

@@ -146,6 +146,7 @@ const onSubmit = () => {
 								as="button"
 								class="tasks-view__form-btn"
 								variant="primary"
+								size="big"
 								type="submit"
 								:disabled="isLoading || isSubmitting || !meta.valid"
 								label="Добавить новую задачу"

@@ -33,7 +33,6 @@ withDefaults(
 
 <template>
 	<Vue3Marquee
-		v-bind="$attrs"
 		:direction="direction"
 		:duration="duration"
 		:pause-on-hover="pauseOnHover"

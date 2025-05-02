@@ -76,9 +76,16 @@ useBaguetteBox('.hero-gallery-baguettebox-js')
 								<span class="hero-view__statistic-name p5">{{ item.title }}</span>
 							</li>
 						</ul>
-						<div>
-							<RouterLink class="hero-view__back-link" :to="{ name: 'heroes-view' }">Back to heroes</RouterLink>
-						</div>
+
+						<UIButton
+							as="RouterLink"
+							:to="{ name: 'heroes-view' }"
+							class="hero-view__back-link"
+							variant="third"
+							size="big"
+							:disabled="isLoading"
+							label="Back to heroes"
+						/>
 					</div>
 				</div>
 			</div>
@@ -160,28 +167,8 @@ useBaguetteBox('.hero-gallery-baguettebox-js')
 	}
 
 	&__back-link {
-		display: block;
 		margin: 0 auto;
-		padding: 10px 16px;
-		width: 100%;
 		max-width: 350px;
-		border: 1px solid $color-orange;
-		border-radius: 12px;
-		background-color: $color-orange;
-		color: $color-white;
-		transition:
-			background-color 0.3s ease,
-			border-color 0.3s ease;
-
-		@media (min-width: $desktop) {
-			&:hover {
-				border-color: $color-orange-hover;
-				background-color: $color-orange-hover;
-				transition:
-					background-color 0.3s ease,
-					border-color 0.3s ease;
-			}
-		}
 	}
 }
 </style>

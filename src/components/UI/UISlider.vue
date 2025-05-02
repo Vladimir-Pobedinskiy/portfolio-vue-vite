@@ -10,7 +10,6 @@ defineProps<{
 
 <template>
 	<Swiper
-		v-bind="$attrs"
 		:slidesPerView="swiperOptions.slidesPerView"
 		:spaceBetween="swiperOptions.spaceBetween"
 		:speed="swiperOptions.speed"

@@ -72,7 +72,6 @@ const handleClosed = () => {
 
 <template>
 	<VueFinalModal
-		v-bind="$attrs"
 		v-model="modelValue"
 		:modal-id="modalId"
 		:lock-scroll="lockScroll"

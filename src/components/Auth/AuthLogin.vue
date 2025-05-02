@@ -104,6 +104,7 @@ const onSubmit = async (): Promise<void> => {
 				as="button"
 				class="login__btn-submit"
 				variant="primary"
+				size="big"
 				:full="true"
 				type="submit"
 				:disabled="isLoading"

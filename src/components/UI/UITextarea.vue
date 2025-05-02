@@ -17,7 +17,7 @@ const value = defineModel<string | number>('value')
 </script>
 
 <template>
-	<label v-bind="$attrs" :class="['label', { error: errorValue }, { disabled: disabled }]">
+	<label :class="['label', { error: errorValue }, { disabled: disabled }]">
 		<textarea
 			v-model="value"
 			:id="id"
