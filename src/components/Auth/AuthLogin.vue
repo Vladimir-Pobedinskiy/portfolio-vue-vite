@@ -101,6 +101,7 @@ const onSubmit = async (): Promise<void> => {
 			</Field>
 
 			<UIButton
+				as="button"
 				class="login__btn-submit"
 				variant="primary"
 				:full="true"

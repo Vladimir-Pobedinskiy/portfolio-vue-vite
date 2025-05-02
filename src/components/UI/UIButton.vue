@@ -1,20 +1,29 @@
 <script setup lang="ts">
+import type { Component } from 'vue'
+
 const props = withDefaults(
 	defineProps<{
+		as: 'button' | 'RouterLink' | 'a' | Component
 		id?: string
 		btnKey?: string
-		type: 'button' | 'submit'
-		/** размер кнопки */
+		/** для <RouterLink> */
+		to?: string
+		/** для <a> */
+		href?: string
+		/** для <button> */
+		type?: 'button' | 'submit'
+		/** размер */
 		size?: 'small'
-		/** вариант отображения кнопки */
+		/** вариант отображения */
 		variant?: 'primary' | 'secondary'
-		/** булевое значение для отображения кнопки на всю ширину */
+		/** для отображения на всю ширину */
 		full?: boolean
 		/** строковый контент */
 		label: string
 		disabled?: boolean
 	}>(),
 	{
+		as: 'button',
 		type: 'button',
 		variant: 'primary',
 		full: false,
@@ -27,6 +36,8 @@ const emits = defineEmits<{
 }>()
 
 const onClick = (event: MouseEvent) => {
+	if (props.as !== 'button') return
+
 	if (props.disabled) {
 		event.preventDefault()
 	} else {
@@ -36,12 +47,15 @@ const onClick = (event: MouseEvent) => {
 </script>
 
 <template>
-	<button
+	<Component
+		:is="as"
 		v-bind="$attrs"
 		:id="id"
 		:btn-key="btnKey"
 		:class="[`btn-${variant}`, `${size}`, { full: full }, { disabled: disabled }]"
-		:type="type"
+		:to="as === 'RouterLink' ? to : undefined"
+		:href="as === 'a' ? href : undefined"
+		:type="as === 'button' ? type : undefined"
 		:disabled="disabled"
 		@click="onClick"
 	>
@@ -49,7 +63,7 @@ const onClick = (event: MouseEvent) => {
 		<template v-if="$slots.content">
 			<slot name="content" />
 		</template>
-	</button>
+	</Component>
 </template>
 
 <style lang="scss">

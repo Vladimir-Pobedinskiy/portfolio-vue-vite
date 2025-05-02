@@ -104,6 +104,7 @@ const editSelectedTags = () => {
 				<TaskTagList :tags="combinedTags" @handle-selected-tag="handleSelectedTag" />
 
 				<UIButton
+					as="button"
 					class="modal-tags-btn-save"
 					variant="primary"
 					size="small"

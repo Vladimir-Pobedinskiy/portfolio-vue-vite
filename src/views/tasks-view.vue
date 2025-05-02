@@ -143,6 +143,7 @@ const onSubmit = () => {
 							<TaskTagList :tags="tags" @handle-selected-tag="handleSelectedTag" />
 
 							<UIButton
+								as="button"
 								class="tasks-view__form-btn"
 								variant="primary"
 								type="submit"
@@ -155,6 +156,7 @@ const onSubmit = () => {
 					<div class="tasks-view__content">
 						<UIButton
 							v-if="taskListStore.length"
+							as="button"
 							class="tasks-view__clear-btn"
 							variant="primary"
 							size="small"

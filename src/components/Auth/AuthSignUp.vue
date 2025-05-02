@@ -153,6 +153,7 @@ const onSubmit = async (): Promise<void> => {
 			</Field>
 
 			<UIButton
+				as="button"
 				class="sign-up__btn-submit"
 				variant="primary"
 				:full="true"

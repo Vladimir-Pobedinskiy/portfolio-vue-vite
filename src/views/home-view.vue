@@ -38,8 +38,8 @@ useBaguetteBox('.gallery-baguettebox-js')
 										<img
 											src="https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/vlad-photo.jpg"
 											alt="Владимир"
-											width="350px"
-											height="350px"
+											width="350"
+											height="350"
 										/>
 									</div>
 								</a>
@@ -79,9 +79,6 @@ useBaguetteBox('.gallery-baguettebox-js')
 									Образование: Пензенский государственный университет (бывший ППИ). Факультет информатики и
 									вычислительной техники (ФВТ)
 								</p>
-							</li>
-							<li>
-								<p class="home-view__about-description p1">Дополнительное образование: курс по Vue.js от TOCODE</p>
 							</li>
 						</ul>
 					</div>
