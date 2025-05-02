@@ -4,20 +4,21 @@ const props = withDefaults(
 		id?: string
 		btnKey?: string
 		type: 'button' | 'submit'
-		text: string
 		/** размер кнопки */
 		size?: 'small'
 		/** вариант отображения кнопки */
 		variant?: 'primary' | 'secondary'
 		/** булевое значение для отображения кнопки на всю ширину */
 		full?: boolean
+		/** строковый контент */
+		label: string
 		disabled?: boolean
 	}>(),
 	{
 		type: 'button',
-		text: '',
 		variant: 'primary',
 		full: false,
+		label: '',
 		disabled: false,
 	}
 )
@@ -44,7 +45,7 @@ const onClick = (event: MouseEvent) => {
 		:disabled="disabled"
 		@click="onClick"
 	>
-		{{ text }}
+		{{ label }}
 		<template v-if="$slots.content">
 			<slot name="content" />
 		</template>

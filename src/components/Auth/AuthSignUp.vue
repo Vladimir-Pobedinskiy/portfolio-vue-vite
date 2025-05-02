@@ -158,7 +158,7 @@ const onSubmit = async (): Promise<void> => {
 				:full="true"
 				type="submit"
 				:disabled="isLoading"
-				text="Зарегистрироваться"
+				label="Зарегистрироваться"
 			/>
 
 			<span class="sign-up__form-agreement p4">

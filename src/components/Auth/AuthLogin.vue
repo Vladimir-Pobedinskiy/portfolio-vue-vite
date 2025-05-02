@@ -106,7 +106,7 @@ const onSubmit = async (): Promise<void> => {
 				:full="true"
 				type="submit"
 				:disabled="isLoading"
-				text="Войти"
+				label="Войти"
 			/>
 
 			<div class="login__btn-wrapper">

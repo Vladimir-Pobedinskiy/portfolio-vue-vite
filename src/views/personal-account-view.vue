@@ -22,7 +22,7 @@ const logout = async (): Promise<void> => {
 					variant="primary"
 					size="small"
 					type="button"
-					text="Выйти"
+					label="Выйти"
 					@click="logout"
 				/>
 			</div>

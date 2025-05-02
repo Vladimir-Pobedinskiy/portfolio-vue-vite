@@ -147,7 +147,7 @@ const onSubmit = () => {
 								variant="primary"
 								type="submit"
 								:disabled="isLoading || isSubmitting || !meta.valid"
-								text="Добавить новую задачу"
+								label="Добавить новую задачу"
 							/>
 						</VeeValidateForm>
 					</div>
@@ -160,7 +160,7 @@ const onSubmit = () => {
 							size="small"
 							type="button"
 							:disabled="!taskListStore.length"
-							text="Очистить задачи"
+							label="Очистить задачи"
 							@click="clearTasksStore"
 						/>
 

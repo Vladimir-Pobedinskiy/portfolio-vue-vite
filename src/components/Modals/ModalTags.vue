@@ -109,7 +109,7 @@ const editSelectedTags = () => {
 					size="small"
 					:full="true"
 					type="button"
-					text="Сохранить"
+					label="Сохранить"
 					@click="editSelectedTags"
 				/>
 			</template>

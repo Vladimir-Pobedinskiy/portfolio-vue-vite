@@ -4,6 +4,7 @@ import IconUser from '@/assets/icons/icon-user.svg'
 
 <template>
 	<RouterLink :to="{ name: 'personal-account-view' }" class="ui-user-link" aria-label="В Личный кабинет">
+		<span class="visually-hidden">В Личный кабинет</span>
 		<IconUser class="ui-user-link__icon" />
 	</RouterLink>
 </template>
@@ -13,6 +14,7 @@ import IconUser from '@/assets/icons/icon-user.svg'
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	z-index: 1000;
 
 	@media (min-width: $desktop) {
 		transition: color 0.3s ease;

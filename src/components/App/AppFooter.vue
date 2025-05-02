@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useGeneralStore } from '@/stores/storeGeneral'
+import AppNavigation from '@/components/App/AppNavigation.vue'
 
 const storeGeneral = useGeneralStore()
 const navStore = computed(() => storeGeneral.nav)
@@ -13,11 +14,7 @@ const currentYear = computed(() => new Date().getFullYear())
 		<div class="container">
 			<div class="footer__inner">
 				<div class="footer__top">
-					<ul class="nav-list">
-						<li v-for="(item, i) in navStore" :key="i" class="nav-item">
-							<RouterLink class="nav-link p1 hover-from-center" :to="`${item.url}`">{{ item.title }}</RouterLink>
-						</li>
-					</ul>
+					<AppNavigation :nav="navStore" />
 				</div>
 				<div class="footer__bottom">
 					<p class="footer__title">© {{ currentYear }} Все права защищены.</p>
@@ -51,7 +48,9 @@ const currentYear = computed(() => new Date().getFullYear())
 		font-size: 16px;
 	}
 
-	.nav-list {
+	// nav
+
+	.nav__list {
 		text-align: center;
 
 		@media (min-width: $tablet) {
@@ -59,7 +58,7 @@ const currentYear = computed(() => new Date().getFullYear())
 		}
 	}
 
-	.nav-item {
+	.nav__item {
 		@media (max-width: $tablet-for-maxWidth) {
 			margin-bottom: 16px;
 		}
