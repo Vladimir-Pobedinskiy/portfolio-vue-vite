@@ -1,11 +1,11 @@
 <script setup lang="ts">
-interface NavItem {
+interface NavLink {
 	url: string
 	title: string
 }
 
 defineProps<{
-	nav: NavItem[]
+	nav: NavLink[]
 }>()
 </script>
 

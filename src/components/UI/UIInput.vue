@@ -67,7 +67,7 @@ const preventInvalidKeys = (event: KeyboardEvent) => {
 				:placeholder="type === 'tel' ? '+7 ' : ' '"
 				:max="type === 'number' ? max : undefined"
 				:min="type === 'number' ? min : undefined"
-				:autocomplete="autocomplete !== 'on' ? 'new-password' : autocomplete"
+				:autocomplete="autocomplete"
 				:disabled="disabled"
 				@keydown="preventInvalidKeys"
 			/>
