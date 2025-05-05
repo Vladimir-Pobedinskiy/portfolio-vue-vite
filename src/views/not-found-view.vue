@@ -9,7 +9,16 @@
 				Запрашиваемая вами страница не существует. Возможно она была удалена или был введён неверный адрес в адресной
 				строке.
 			</p>
-			<RouterLink class="not-found-view__btn btn-primary" :to="{ name: 'home-view' }">На главную</RouterLink>
+
+			<UIButton
+				as="RouterLink"
+				:to="{ name: 'home-view' }"
+				class="not-found-view__btn"
+				variant="primary"
+				size="big"
+				:full="true"
+				label="На главную"
+			/>
 		</div>
 	</div>
 </template>

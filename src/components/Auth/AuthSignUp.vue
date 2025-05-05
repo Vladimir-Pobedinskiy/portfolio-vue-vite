@@ -7,6 +7,7 @@ import { useLoadingStore } from '@/stores/storeLoading'
 import { useUserStore } from '@/stores/storeUser'
 import AppLoading from '@/components/App/AppLoading.vue'
 import UIInput from '@/components/UI/UIInput.vue'
+import UICheckbox from '@/components/UI/UICheckbox.vue'
 /*
   - getAuth: информация о пользователе в системе;
   - createUserWithEmailAndPassword: регистрация пользователя с помощью email & password;
@@ -26,6 +27,7 @@ interface IForm {
 	email: string
 	password: string
 	repeatPassword: string
+	agree: boolean
 }
 const form = reactive<IForm>({
 	name: '',
@@ -33,6 +35,7 @@ const form = reactive<IForm>({
 	email: '',
 	password: '',
 	repeatPassword: '',
+	agree: true,
 })
 const schema = Yup.object().shape({
 	name: Yup.string().trim().required('Имя обязательно для заполнения').min(2, 'Введите минимум 2 символа'),
@@ -42,6 +45,7 @@ const schema = Yup.object().shape({
 	repeatPassword: Yup.string()
 		.oneOf([Yup.ref('password')], 'Пароли не совпадают')
 		.required('Обязательное поле'),
+	agree: Yup.bool().required().oneOf([true], 'Необходимо принять условия'),
 })
 
 const loadingStore = useLoadingStore()
@@ -163,9 +167,24 @@ const onSubmit = async (): Promise<void> => {
 				label="Зарегистрироваться"
 			/>
 
-			<span class="sign-up__form-agreement p4">
-				Нажимая кнопку «Зарегистрироваться», я соглашаюсь на обработку персональных данных
-			</span>
+			<Field v-slot="{ field }" v-model:model-value="form.agree" name="agree">
+				<UICheckbox
+					v-model:model-value="form.agree"
+					v-bind="field"
+					:error-value="errors.agree"
+					name="agree"
+					:disabled="isLoading"
+				>
+					<template #content>
+						<span>
+							Я принимаю условия
+							<a class="agree-link" href="!#" target="_blank"> публичной оферты </a>
+							и даю согласие на обработку персональных данных
+						</span>
+					</template>
+				</UICheckbox>
+			</Field>
+
 			<div class="sign-up__sign-up-wrapper">
 				<span class="sign-up__sign-up-title p3">Зарегистрированы?</span>
 				<button class="sign-up__sign-up-btn" type="button" :disabled="isLoading" @click="$router.push('/login')">
@@ -180,12 +199,6 @@ const onSubmit = async (): Promise<void> => {
 .sign-up {
 	&__btn-submit {
 		margin: 24px 0 12px;
-	}
-
-	&__form-agreement {
-		display: inline-block;
-		margin-bottom: 24px;
-		color: $color-gray-medium;
 	}
 
 	&__sign-up-wrapper {

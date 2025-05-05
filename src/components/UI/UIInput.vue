@@ -5,7 +5,6 @@ import IconEyeHidden from '@/assets/icons/icon-eye-input-password-hidden.svg'
 
 const props = withDefaults(
 	defineProps<{
-		id?: string
 		inputKey?: string
 		type: 'text' | 'password' | 'number' | 'email' | 'tel'
 		name: string
@@ -58,7 +57,6 @@ const preventInvalidKeys = (event: KeyboardEvent) => {
 		<label class="label">
 			<input
 				v-model="value"
-				:id="id"
 				:input-key="inputKey"
 				:class="['label__input l-input', { error: errorValue }]"
 				:type="type !== 'password' ? type : isShowPassword ? 'text' : 'password'"
@@ -72,7 +70,7 @@ const preventInvalidKeys = (event: KeyboardEvent) => {
 				@keydown="preventInvalidKeys"
 			/>
 			<span class="label__input-title l-input">{{ placeholder }}</span>
-			<span class="error-message">{{ errorValue }}</span>
+			<span v-if="errorValue" class="error-message">{{ errorValue }}</span>
 		</label>
 
 		<button

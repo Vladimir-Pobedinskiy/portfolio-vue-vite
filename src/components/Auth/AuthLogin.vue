@@ -7,6 +7,7 @@ import { useLoadingStore } from '@/stores/storeLoading'
 import { useUserStore } from '@/stores/storeUser'
 import AppLoading from '@/components/App/AppLoading.vue'
 import UIInput from '@/components/UI/UIInput.vue'
+import UICheckbox from '@/components/UI/UICheckbox.vue'
 /*
   - getAuth: информация о пользователе в системе;
   - signInWithEmailAndPassword: вход с помощью email & password;
@@ -23,14 +24,17 @@ const formRef = ref<any>(null)
 interface IForm {
 	email: string
 	password: string
+	agree: boolean
 }
 const form = reactive<IForm>({
 	email: '',
 	password: '',
+	agree: true,
 })
 const schema = Yup.object().shape({
 	email: Yup.string().required('Email обязателен для заполнения').email('Неверный формат электронной почты'),
 	password: Yup.string().required('Пароль обязателен для заполнения').min(6, 'Неверный пароль'),
+	agree: Yup.bool().required().oneOf([true], 'Необходимо принять условия'),
 })
 
 const loadingStore = useLoadingStore()
@@ -110,6 +114,24 @@ const onSubmit = async (): Promise<void> => {
 				:disabled="isLoading"
 				label="Войти"
 			/>
+
+			<Field v-slot="{ field }" v-model:model-value="form.agree" name="agree">
+				<UICheckbox
+					v-model:model-value="form.agree"
+					v-bind="field"
+					:error-value="errors.agree"
+					name="agree"
+					:disabled="isLoading"
+				>
+					<template #content>
+						<span>
+							Я принимаю условия
+							<a class="agree-link" href="!#" target="_blank"> публичной оферты </a>
+							и даю согласие на обработку персональных данных
+						</span>
+					</template>
+				</UICheckbox>
+			</Field>
 
 			<div class="login__btn-wrapper">
 				<span class="login__login-title p3">Не зарегистрированы?</span>

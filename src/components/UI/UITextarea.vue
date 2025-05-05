@@ -1,7 +1,6 @@
 <script setup lang="ts">
 withDefaults(
 	defineProps<{
-		id?: string
 		textareaKey?: string
 		placeholder: string
 		errorValue?: string
@@ -20,13 +19,12 @@ const value = defineModel<string | number>('value')
 	<label :class="['label', { error: errorValue }, { disabled: disabled }]">
 		<textarea
 			v-model="value"
-			:id="id"
 			:textarea-key="textareaKey"
 			:class="['label__textarea', { error: errorValue }]"
 			:placeholder="placeholder"
 			:disabled="disabled"
 		/>
-		<span class="error-message">{{ errorValue }}</span>
+		<span v-if="errorValue" class="error-message">{{ errorValue }}</span>
 	</label>
 </template>
 
