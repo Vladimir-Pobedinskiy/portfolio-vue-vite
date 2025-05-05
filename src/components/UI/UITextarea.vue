@@ -12,13 +12,13 @@ withDefaults(
 	}
 )
 
-const value = defineModel<string | number>('value')
+const modelValue = defineModel<string | number>('modelValue')
 </script>
 
 <template>
 	<label :class="['label', { error: errorValue }, { disabled: disabled }]">
 		<textarea
-			v-model="value"
+			v-model="modelValue"
 			:textarea-key="textareaKey"
 			:class="['label__textarea', { error: errorValue }]"
 			:placeholder="placeholder"

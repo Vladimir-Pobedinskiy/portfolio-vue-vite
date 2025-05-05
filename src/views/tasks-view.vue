@@ -132,7 +132,7 @@ const onSubmit = () => {
 						>
 							<Field v-slot="{ field }" validate-on-input name="textareaValue">
 								<UITextarea
-									v-model:value="textareaValue"
+									v-model:model-value="textareaValue"
 									v-bind="field"
 									:error-value="errors.textareaValue"
 									placeholder="Введите новую задачу"
