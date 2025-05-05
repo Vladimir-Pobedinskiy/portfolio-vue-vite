@@ -81,7 +81,7 @@ const onSubmit = async (): Promise<void> => {
 		>
 			<Field v-slot="{ field }" validate-on-change name="email">
 				<UIInput
-					v-model:model-value="form.email"
+					v-model:value="form.email"
 					v-bind="field"
 					:error-value="errors.email"
 					type="email"
@@ -93,7 +93,7 @@ const onSubmit = async (): Promise<void> => {
 
 			<Field v-slot="{ field }" name="password">
 				<UIInput
-					v-model:model-value="form.password"
+					v-model:value="form.password"
 					v-bind="field"
 					:error-value="errors.password"
 					type="password"

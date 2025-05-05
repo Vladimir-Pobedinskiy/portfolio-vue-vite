@@ -26,7 +26,7 @@ const props = withDefaults(
 	}
 )
 
-const modelValue = defineModel<string | number>('modelValue')
+const value = defineModel<string | number>('value')
 
 const isShowPassword = ref<boolean>(false)
 const togglePasswordVisibility = () => {
@@ -56,7 +56,7 @@ const preventInvalidKeys = (event: KeyboardEvent) => {
 	<div :class="['label-wrapper', { error: errorValue }, { disabled: disabled }]">
 		<label class="label">
 			<input
-				v-model="modelValue"
+				v-model="value"
 				:input-key="inputKey"
 				:class="['label__input l-input', { error: errorValue }]"
 				:type="type !== 'password' ? type : isShowPassword ? 'text' : 'password'"
