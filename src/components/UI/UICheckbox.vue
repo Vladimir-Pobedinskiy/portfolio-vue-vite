@@ -18,20 +18,20 @@ const modelValue = defineModel<boolean>('modelValue')
 </script>
 
 <template>
-	<div :class="['label-checkbox-wrapper', { error: errorValue }, { disabled: disabled }]">
-		<label :class="['label-checkbox', { error: errorValue }, { disabled: disabled }]">
+	<div :class="['label-checkbox-wrapper', { selected: modelValue }, { error: errorValue }, { disabled: disabled }]">
+		<label class="label-checkbox">
 			<input
 				v-model="modelValue"
 				:value="modelValue"
 				:checkbox-key="checkboxKey"
 				:name="name"
-				:class="['label-checkbox__input visually-hidden', { selected: modelValue }, { error: errorValue }]"
+				class="label-checkbox__input visually-hidden"
 				type="checkbox"
 				:disabled="disabled"
 			/>
 
-			<span :class="['label-checkbox__checkbox-icon-wrapper', { selected: modelValue }, { error: errorValue }]">
-				<IconCheckbox :class="['label-checkbox__checkbox-icon', { selected: modelValue }]" />
+			<span class="label-checkbox__checkbox-icon-wrapper">
+				<IconCheckbox class="label-checkbox__checkbox-icon" />
 			</span>
 
 			<slot name="content" />
@@ -41,43 +41,21 @@ const modelValue = defineModel<boolean>('modelValue')
 </template>
 
 <style lang="scss">
-.label-checkbox-wrapper {
-	position: relative;
-	margin-bottom: 24px;
-
-	&.disabled {
-		cursor: default;
-		opacity: 0.5;
-	}
-}
-
 .label-checkbox {
 	position: relative;
 	display: block;
-	padding-left: 32px;
+	padding-left: 36px;
 	width: fit-content;
 	cursor: pointer;
-
-	&__input {
-		&:disabled + .label__checkbox-icon-wrapper {
-			opacity: 0.8;
-			background-color: $color-white;
-			border-color: $color-vue;
-			color: $color-vue;
-			transition:
-				background-color 0.3s ease,
-				border-color 0.3s ease;
-			cursor: default;
-		}
-	}
 
 	&__checkbox-icon-wrapper {
 		top: 50%;
 		transform: translateY(-50%);
 		position: absolute;
 		left: 0;
-		width: 20px;
-		height: 20px;
+		width: 24px;
+		min-width: 24px;
+		height: 24px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -88,31 +66,13 @@ const modelValue = defineModel<boolean>('modelValue')
 		transition:
 			background-color 0.3s ease,
 			border-color 0.3s ease;
-
-		&.selected {
-			background-color: $color-white;
-			border-color: $color-vue;
-			transition:
-				background-color 0.3s ease,
-				border-color 0.3s ease;
-		}
-
-		&.error {
-			border-color: $color-error;
-			transition: border-color 0.3s ease;
-		}
 	}
 
 	&__checkbox-icon {
 		transform: scale(0);
-		width: 14px;
-		height: 14px;
+		width: 18px;
+		height: 18px;
 		transition: transform 0.3s ease;
-
-		&.selected {
-			transform: scale(1);
-			transition: transform 0.3s ease;
-		}
 	}
 
 	&__checkbox-error {
@@ -126,6 +86,39 @@ const modelValue = defineModel<boolean>('modelValue')
 	a {
 		color: $color-vue;
 		text-decoration: underline;
+	}
+}
+
+.label-checkbox-wrapper {
+	position: relative;
+	margin-bottom: 24px;
+	pointer-events: all;
+
+	&.selected {
+		.label-checkbox__checkbox-icon-wrapper {
+			background-color: $color-white;
+			border-color: $color-vue;
+			transition:
+				background-color 0.3s ease,
+				border-color 0.3s ease;
+		}
+
+		.label-checkbox__checkbox-icon {
+			transform: scale(1);
+			transition: transform 0.3s ease;
+		}
+	}
+
+	&.error {
+		.label-checkbox__checkbox-icon-wrapper {
+			border-color: $color-error;
+			transition: border-color 0.3s ease;
+		}
+	}
+
+	&.disabled {
+		pointer-events: none;
+		opacity: 0.5;
 	}
 }
 </style>

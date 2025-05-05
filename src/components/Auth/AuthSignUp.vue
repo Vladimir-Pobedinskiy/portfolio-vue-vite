@@ -86,7 +86,7 @@ const onSubmit = async (): Promise<void> => {
 	<div class="sign-up">
 		<VeeValidateForm
 			ref="formRef"
-			v-slot="{ errors }"
+			v-slot="{ errors, meta }"
 			:validation-schema="schema"
 			name="sign-up-form"
 			action="#"
@@ -163,7 +163,7 @@ const onSubmit = async (): Promise<void> => {
 				size="big"
 				:full="true"
 				type="submit"
-				:disabled="isLoading"
+				:disabled="isLoading || !meta.valid"
 				label="Зарегистрироваться"
 			/>
 
