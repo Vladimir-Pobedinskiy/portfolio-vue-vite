@@ -45,7 +45,7 @@ useBaguetteBox('.gallery-baguettebox-js')
 								</a>
 								<div class="home-view__about-left-side-inner-content">
 									<p class="home-view__about-name s1">Владимир Побединский</p>
-									<p class="home-view__about-position s3">Frontend-разработчик (Vue и Nuxt) | Верстальщик</p>
+									<p class="home-view__about-position s3">Frontend-разработчик (Vue/Nuxt) | Верстальщик</p>
 									<ul class="home-view__about-social-list">
 										<li class="home-view__about-social-item">
 											<a class="home-view__about-social-link" href="https://vk.com/id9716085" target="_blank">
@@ -68,9 +68,8 @@ useBaguetteBox('.gallery-baguettebox-js')
 						<ul>
 							<li>
 								<p class="home-view__about-description p1">
-									Frontend-разработчик с практическим опытом работы на Vue и Nuxt. Специализируюсь на
-									использовании как Options API, так и Composition API совместно с Typescript. Разработал с нуля
-									несколько проектов на Nuxt 3 и Nuxt.js 2, имею полноценное портфолио на Vue 3. Постоянно совершенствую
+									Frontend-разработчик с практическим опытом работы на Vue/Nuxt. Специализируюсь на
+									использовании как Options API, так и Composition API совместно с Typescript. Постоянно совершенствую
 									свои навыки и стремлюсь к профессиональному росту в области frontend-разработки
 								</p>
 							</li>

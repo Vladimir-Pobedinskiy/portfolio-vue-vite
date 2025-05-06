@@ -20,7 +20,6 @@ const navStore = computed(() => storeGeneral.nav)
 				<AppBurger />
 				<AppLogo />
 				<AppNavigation v-if="isMatchedScreen" :nav="navStore" />
-
 				<UIUserLink />
 			</div>
 		</div>
