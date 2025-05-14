@@ -7,6 +7,7 @@ withDefaults(
 		maxRating?: number
 		showRating?: boolean
 		readOnly: boolean
+		clearable?: boolean
 		padding?: number
 		size?: number
 		inactiveColor?: string
@@ -25,6 +26,7 @@ withDefaults(
 		maxRating: 5,
 		showRating: false,
 		readOnly: true,
+		clearable: false,
 		padding: 4,
 		size: 23,
 		inactiveColor: '#ffffff',
@@ -50,6 +52,7 @@ const rating = defineModel<number>('rating')
 		:max-rating="maxRating"
 		:show-rating="showRating"
 		:read-only="readOnly"
+		:clearable="clearable"
 		:padding="padding"
 		:star-size="size"
 		:inactive-color="inactiveColor"

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import ModalTags from '@/components/Modals/ModalTags.vue'
+import ModalPriority from '@/components/Modals/ModalPriority.vue'
 import TaskTagList from '@/components/Tasks/TaskTagList.vue'
 import UIStarRating from '@/components/UI/UIStarRating.vue'
 import type { ITag, ITask } from '@/interfaces/tasks'
@@ -22,6 +23,8 @@ const inputValue = ref<string>('')
 
 const storeTasks = useTasksStore()
 const changeTaskStore = (currentIndex: number, inputValue: string) => storeTasks.changeTask(currentIndex, inputValue)
+const changePriorityStore = (currentIndex: number, priority: number) =>
+	storeTasks.changePriority(currentIndex, priority)
 const changeTagsStore = (currentIndex: number, selectedTags: ITag[]) =>
 	storeTasks.changeTags(currentIndex, selectedTags)
 
@@ -36,6 +39,9 @@ const editCurrentTask = () => {
 	if (inputValue.value.trim().length) {
 		changeTaskStore(props.currentIndex, inputValue.value.trim())
 	}
+}
+const editTaskPriority = (priority: number) => {
+	changePriorityStore(props.currentIndex, priority)
 }
 const editSelectedTags = (selectedTags: ITag[]) => {
 	changeTagsStore(props.currentIndex, selectedTags)
@@ -79,18 +85,20 @@ const editSelectedTags = (selectedTags: ITag[]) => {
 
 		<div class="task-list-item__priority-wrapper">
 			<UIStarRating
-				v-if="task.priority"
+				v-if="task.priority && task.priority > 0"
 				v-model:rating="task.priority"
 				:read-only="true"
 				:size="18"
 				class="task-list-item__priority"
 			/>
+
+			<ModalPriority :current-index="currentIndex" @editTaskPriority="editTaskPriority" />
 		</div>
 
 		<div class="task-list-item__footer">
-			<div v-if="task.tags && task.tags.length" class="tag-list-wrapper">
-				<TaskTagList :tags="task.tags" isPreview />
-				<ModalTags @editSelectedTags="editSelectedTags" :current-tags="task.tags" :current-index="currentIndex" />
+			<div class="tag-list-wrapper">
+				<TaskTagList v-if="task.tags && task.tags.length" :tags="task.tags" isPreview />
+				<ModalTags :current-tags="task.tags" :current-index="currentIndex" @editSelectedTags="editSelectedTags" />
 			</div>
 			<span v-if="task.date" class="task-list-item__date p5">{{ task.date }}</span>
 		</div>
@@ -183,8 +191,10 @@ const editSelectedTags = (selectedTags: ITag[]) => {
 		}
 	}
 
-	&__priority {
+	&__priority-wrapper {
 		margin-top: 10px;
+		display: flex;
+		align-items: center;
 	}
 
 	&__footer {
