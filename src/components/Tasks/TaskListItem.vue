@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import ModalTags from '@/components/Modals/ModalTags.vue'
 import TaskTagList from '@/components/Tasks/TaskTagList.vue'
+import UIStarRating from '@/components/UI/UIStarRating.vue'
 import type { ITag, ITask } from '@/interfaces/tasks'
 import { useTasksStore } from '@/stores/storeTasks'
 import IconClose from '@/assets/icons/icon-close.svg'
@@ -60,7 +61,7 @@ const editSelectedTags = (selectedTags: ITag[]) => {
 				<button
 					class="task-list-item__btn-close-input"
 					type="button"
-					@click="editCurrentTask(), (inputHiddenFlag = true)"
+					@click="(editCurrentTask(), (inputHiddenFlag = true))"
 				>
 					{{ !inputValue.length ? 'Закрыть' : 'Сохранить' }}
 				</button>
@@ -75,9 +76,20 @@ const editSelectedTags = (selectedTags: ITag[]) => {
 				<IconClose class="task-list-item__remove-icon" />
 			</button>
 		</div>
+
+		<div class="task-list-item__priority-wrapper">
+			<UIStarRating
+				v-if="task.priority"
+				v-model:rating="task.priority"
+				:read-only="true"
+				:size="18"
+				class="task-list-item__priority"
+			/>
+		</div>
+
 		<div class="task-list-item__footer">
-			<div class="tag-list-wrapper">
-				<TaskTagList v-if="task.tags && task.tags.length" :tags="task.tags" isPreview />
+			<div v-if="task.tags && task.tags.length" class="tag-list-wrapper">
+				<TaskTagList :tags="task.tags" isPreview />
 				<ModalTags @editSelectedTags="editSelectedTags" :current-tags="task.tags" :current-index="currentIndex" />
 			</div>
 			<span v-if="task.date" class="task-list-item__date p5">{{ task.date }}</span>
@@ -171,23 +183,23 @@ const editSelectedTags = (selectedTags: ITag[]) => {
 		}
 	}
 
+	&__priority {
+		margin-top: 10px;
+	}
+
 	&__footer {
 		margin-top: 10px;
 		text-align: left;
 	}
 
 	.tag-list-wrapper {
-		margin: 16px 0;
+		margin: 12px 0;
 		width: 100%;
 		max-width: 290px;
 		display: flex;
 		align-items: center;
 		flex: 1 1 90%;
 		z-index: 1;
-
-		@media (min-width: $desktop) {
-			margin: 20px 0 16px;
-		}
 	}
 }
 </style>

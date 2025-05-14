@@ -13,12 +13,19 @@ export const useTasksStore = defineStore(
 		])
 		const tasks = ref<ITask[]>([])
 
-		const addTask = (id: string | number, textareaValue: string, dateTask: string, taskTags: ITag[]) => {
+		const addTask = (
+			id: string | number,
+			textareaValue: string,
+			dateTask: string,
+			taskTags: ITag[],
+			priority: number
+		) => {
 			tasks.value.push({
 				id: id,
 				title: textareaValue,
 				date: dateTask,
 				tags: [...taskTags],
+				priority,
 			})
 		}
 		const changeTask = (index: number, inputValue: string) => {

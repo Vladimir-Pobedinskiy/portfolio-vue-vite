@@ -30,6 +30,7 @@
     "vue-final-modal": "^4.5.5",
     "vue-imask": "^7.6.1",
     "vue-router": "^4.4.5",
+    "vue-star-rating": "^2.1.0",
     "vue3-marquee": "^4.2.2",
     "yup": "^1.4.0"
   },

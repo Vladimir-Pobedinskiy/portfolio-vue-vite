@@ -8,4 +8,5 @@ export interface ITask {
 	title: string
 	date: string
 	tags: ITag[]
+	priority: number
 }

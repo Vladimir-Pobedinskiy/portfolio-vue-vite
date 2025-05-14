@@ -9,6 +9,7 @@ import UITextarea from '@/components/UI/UITextarea.vue'
 import DescriptionUnit from '@/components/DescriptionUnit.vue'
 import TaskList from '@/components/Tasks/TaskList.vue'
 import TaskTagList from '@/components/Tasks/TaskTagList.vue'
+import UIStarRating from '@/components/UI/UIStarRating.vue'
 import { useTasksStore } from '@/stores/storeTasks'
 import { useVfm } from 'vue-final-modal'
 import type { IBreadcrumb, IDescription } from '@/interfaces/app'
@@ -29,8 +30,13 @@ const state = reactive<IState>({
 const storeTasks = useTasksStore()
 const tags = computed(() => storeTasks.tags.map((tag: ITag) => tag))
 const taskListStore = computed(() => storeTasks.tasks)
-const addTaskStore = (id: string | number, textareaValue: string, date: string, selectedTags: ITag[]) =>
-	storeTasks.addTask(id, textareaValue, date, selectedTags)
+const addTaskStore = (
+	id: string | number,
+	textareaValue: string,
+	date: string,
+	selectedTags: ITag[],
+	priority: number
+) => storeTasks.addTask(id, textareaValue, date, selectedTags, priority)
 const deleteTaskStore = (index: number) => storeTasks.deleteTask(index)
 const clearTasksStore = () => storeTasks.clearTasks()
 
@@ -60,6 +66,7 @@ getData()
 
 const textareaValue = ref<string>('')
 const maxTextareaValue = 100
+const taskPriority = ref<number>(0)
 
 const schema = Yup.object().shape({
 	textareaValue: Yup.string()
@@ -92,17 +99,16 @@ const handleSelectedTag = (tag: ITag) => {
 
 const formRef = ref<any>(null)
 const onSubmit = () => {
-	if (textareaValue.value.length) {
-		addTaskStore(uuidv4(), textareaValue.value.trim(), getCurrentDate(), selectedTags.value)
-		textareaValue.value = ''
-		selectedTags.value.length = 0
-		tags.value.forEach((item) => {
-			if (item.selected) {
-				item.selected = false
-			}
-		})
-		formRef.value.resetForm()
-	}
+	addTaskStore(uuidv4(), textareaValue.value.trim(), getCurrentDate(), selectedTags.value, taskPriority.value)
+	textareaValue.value = ''
+	selectedTags.value.length = 0
+	taskPriority.value = 0
+	tags.value.forEach((item) => {
+		if (item.selected) {
+			item.selected = false
+		}
+	})
+	formRef.value.resetForm()
 }
 </script>
 
@@ -118,6 +124,11 @@ const onSubmit = () => {
 
 				<section class="tasks-view__section offset">
 					<h2 class="tasks-view__title title h2">Список задач</h2>
+
+					<div class="tasks-view__priority">
+						<p class="tasks-view__priority-title p2">Выберите приоритет задачи (от 1 до 5)</p>
+						<UIStarRating v-model:rating="taskPriority" :increment="1" :read-only="false" class="task-priority" />
+					</div>
 
 					<div class="tasks-view__form-wrapper">
 						<VeeValidateForm
@@ -208,6 +219,21 @@ const onSubmit = () => {
 
 	&__section {
 		text-align: center;
+	}
+
+	&__priority {
+		width: 100%;
+		max-width: 1000px;
+		margin: 0 auto 24px;
+		text-align: left;
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 8px;
+	}
+
+	&__priority-title {
+		margin-right: 16px;
 	}
 
 	&__form-wrapper {
