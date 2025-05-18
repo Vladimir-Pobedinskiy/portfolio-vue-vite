@@ -142,6 +142,8 @@ const portfolio = {
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .commercial-projects-view {
 	position: relative;
 	height: 100%;
@@ -155,7 +157,7 @@ const portfolio = {
 		margin-bottom: 32px;
 		text-transform: uppercase;
 
-		@media (min-width: $desktop) {
+		@media (min-width: variables.$desktop) {
 			margin-bottom: 40px;
 		}
 	}
@@ -165,7 +167,7 @@ const portfolio = {
 		grid-template-columns: 100%;
 		grid-gap: 20px;
 
-		@media (min-width: $tablet) {
+		@media (min-width: variables.$tablet) {
 			grid-template-columns: repeat(2, 1fr);
 			grid-gap: 20px;
 			row-gap: 24px;
@@ -175,9 +177,9 @@ const portfolio = {
 	&__previews-link {
 		display: flex;
 		flex-direction: column;
-		border: 1px solid $color-vue-bg;
+		border: 1px solid variables.$color-vue-bg;
 		border-radius: 8px;
-		background-color: $color-vue-bg;
+		background-color: variables.$color-vue-bg;
 	}
 
 	&__previews-link-img-wrapper {
@@ -185,7 +187,7 @@ const portfolio = {
 		border-radius: 8px 8px 0 0;
 		overflow: hidden;
 
-		@media (min-width: $desktop) {
+		@media (min-width: variables.$desktop) {
 			height: 254px;
 		}
 	}
@@ -201,7 +203,7 @@ const portfolio = {
 		margin-bottom: 8px;
 		text-align: center;
 
-		@media (min-width: $desktop) {
+		@media (min-width: variables.$desktop) {
 			margin-bottom: 12px;
 		}
 	}
@@ -215,7 +217,7 @@ const portfolio = {
 		margin-bottom: 16px;
 		text-align: center;
 
-		@media (min-width: $desktop) {
+		@media (min-width: variables.$desktop) {
 			margin-bottom: 24px;
 		}
 	}

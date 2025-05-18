@@ -17,11 +17,13 @@ defineProps<{
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .accordion-unit {
 	&__title {
 		margin-bottom: 32px;
 
-		@media (min-width: $desktop) {
+		@media (min-width: variables.$desktop) {
 			margin-bottom: 40px;
 		}
 	}

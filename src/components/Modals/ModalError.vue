@@ -29,10 +29,12 @@ const handleModalError = (flag: boolean) => {
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .modal-error-title {
 	margin-bottom: 16px;
 
-	@media (min-width: $desktop) {
+	@media (min-width: variables.$desktop) {
 		margin-bottom: 16px;
 	}
 }

@@ -49,12 +49,14 @@ withDefaults(
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .disclosure {
 	&__item {
-		border-bottom: 1px solid $color-black;
+		border-bottom: 1px solid variables.$color-black;
 
 		&:first-child {
-			border-top: 1px solid $color-gray-medium;
+			border-top: 1px solid variables.$color-gray-medium;
 		}
 	}
 
@@ -66,7 +68,7 @@ withDefaults(
 		justify-content: space-between;
 		text-transform: uppercase;
 
-		@media (min-width: $desktop) {
+		@media (min-width: variables.$desktop) {
 			cursor: pointer;
 		}
 	}

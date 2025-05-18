@@ -82,11 +82,13 @@ const swiperOptions = {
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .hero-slider {
 	&__top {
 		margin-bottom: 24px;
 
-		@media (min-width: $tablet) {
+		@media (min-width: variables.$tablet) {
 			margin-bottom: 32px;
 			display: flex;
 			align-items: center;
@@ -108,7 +110,7 @@ const swiperOptions = {
 
 	&__button-prev,
 	&__button-next {
-		@media (min-width: $desktop) {
+		@media (min-width: variables.$desktop) {
 			cursor: pointer;
 		}
 	}
@@ -116,7 +118,7 @@ const swiperOptions = {
 	&__button-icon {
 		width: 40px;
 		height: 40px;
-		color: $color-white;
+		color: variables.$color-white;
 		transition: color 0.3s ease;
 	}
 }
@@ -125,15 +127,15 @@ const swiperOptions = {
 .hero-slider__button-next.swiper-button-next {
 	display: none;
 
-	@media (min-width: $desktop) {
+	@media (min-width: variables.$desktop) {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		width: 54px;
 		height: 54px;
-		background-color: $color-gray-dark;
+		background-color: variables.$color-gray-dark;
 		border-radius: 50%;
-		color: $color-white;
+		color: variables.$color-white;
 		transition:
 			background-color 0.3s ease,
 			border-color 0.3s ease;
@@ -144,7 +146,7 @@ const swiperOptions = {
 				border-color 0.3s ease;
 
 			.hero-slider__button-icon {
-				color: $color-white;
+				color: variables.$color-white;
 				transition: color 0.3s ease;
 			}
 		}
@@ -159,7 +161,7 @@ const swiperOptions = {
 
 .hero-slider__button-prev.swiper-button-prev.swiper-button-disabled,
 .hero-slider__button-next.swiper-button-next.swiper-button-disabled {
-	background-color: $color-gray-disabled;
+	background-color: variables.$color-gray-disabled;
 	border: none;
 	transition:
 		background-color 0.3s ease,
@@ -167,7 +169,7 @@ const swiperOptions = {
 	cursor: default;
 
 	.hero-slider__button-icon {
-		color: $color-gray-light;
+		color: variables.$color-gray-light;
 		transition: color 0.3s ease;
 	}
 }

@@ -144,6 +144,8 @@ const onSubmit = async (): Promise<void> => {
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .login {
 	&__btn-submit {
 		margin-bottom: 16px;
@@ -173,7 +175,7 @@ const onSubmit = async (): Promise<void> => {
 			top: 103%;
 			width: 100%;
 			height: 1px;
-			background-color: $color-gray-dark;
+			background-color: variables.$color-gray-dark;
 			transition: all 0.3s ease;
 		}
 	}
@@ -181,7 +183,7 @@ const onSubmit = async (): Promise<void> => {
 
 .label {
 	&__input-title {
-		color: $color-gray-light;
+		color: variables.$color-gray-light;
 	}
 }
 </style>

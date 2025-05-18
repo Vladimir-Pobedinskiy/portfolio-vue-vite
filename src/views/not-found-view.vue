@@ -24,11 +24,13 @@
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .not-found-view {
 	height: 100%;
 	padding: 56px 16px;
 
-	@media (min-width: $desktop) {
+	@media (min-width: variables.$desktop) {
 		padding: 120px 16px;
 	}
 
@@ -44,25 +46,25 @@
 	&__logo-wrapper {
 		margin-bottom: 16px;
 		padding: 0 16px;
-		color: $color-vue;
+		color: variables.$color-vue;
 
-		@media (min-width: $tablet) {
+		@media (min-width: variables.$tablet) {
 			margin-bottom: 32px;
 		}
 	}
 
 	&__logo {
-		font-family: $font;
+		font-family: variables.$font;
 		font-size: 150px;
 		line-height: 1;
 		font-weight: 500;
-		color: $color-vue;
+		color: variables.$color-vue;
 
-		@media (min-width: $mobile) {
+		@media (min-width: variables.$mobile) {
 			font-size: 200px;
 		}
 
-		@media (min-width: $tablet) {
+		@media (min-width: variables.$tablet) {
 			font-size: 280px;
 		}
 	}
@@ -76,7 +78,7 @@
 		width: 100%;
 		max-width: 675px;
 
-		@media (min-width: $desktop) {
+		@media (min-width: variables.$desktop) {
 			margin-bottom: 32px;
 		}
 	}

@@ -35,6 +35,8 @@ const logout = async (): Promise<void> => {
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .personal-account {
 	&__top {
 		margin-top: 32px;
@@ -42,7 +44,7 @@ const logout = async (): Promise<void> => {
 		align-items: center;
 		justify-content: space-between;
 
-		@media (min-width: $desktop) {
+		@media (min-width: variables.$desktop) {
 			margin-bottom: 40px;
 		}
 	}

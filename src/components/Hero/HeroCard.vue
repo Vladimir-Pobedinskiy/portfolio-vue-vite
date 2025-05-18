@@ -36,6 +36,9 @@ defineProps<{
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+@use '@/assets/scss/mixins/mixins';
+
 .hero-card {
 	&__link {
 		padding: 16px;
@@ -56,7 +59,7 @@ defineProps<{
 		border-top-right-radius: 16px;
 		overflow: hidden;
 
-		@media (min-width: $mobile-big) {
+		@media (min-width: variables.$mobile-big) {
 			height: 320px;
 		}
 	}
@@ -81,8 +84,8 @@ defineProps<{
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		color: $color-white;
-		background-color: $color-orange;
+		color: variables.$color-white;
+		background-color: variables.$color-orange;
 		font-weight: 700;
 		border-radius: 16px;
 	}
@@ -110,10 +113,10 @@ defineProps<{
 		display: block;
 		margin-bottom: 20px;
 
-		@include line-clamp(4);
+		@include mixins.line-clamp(4);
 
-		@media (min-width: $desktop) {
-			@include line-clamp(3);
+		@media (min-width: variables.$desktop) {
+			@include mixins.line-clamp(3);
 		}
 	}
 

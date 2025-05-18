@@ -196,6 +196,8 @@ const onSubmit = async (): Promise<void> => {
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .sign-up {
 	&__btn-submit {
 		margin: 24px 0 12px;
@@ -224,7 +226,7 @@ const onSubmit = async (): Promise<void> => {
 			top: 103%;
 			width: 100%;
 			height: 1px;
-			background-color: $color-gray-dark;
+			background-color: variables.$color-gray-dark;
 		}
 	}
 }

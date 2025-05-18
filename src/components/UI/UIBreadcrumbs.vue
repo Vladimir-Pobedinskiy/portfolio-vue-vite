@@ -37,11 +37,13 @@ defineProps<{
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .breadcrumbs-wrapper {
 	margin-bottom: 20px;
 	overflow: hidden;
 
-	@media (min-width: $desktop) {
+	@media (min-width: variables.$desktop) {
 		margin-bottom: 32px;
 	}
 }
@@ -54,7 +56,7 @@ defineProps<{
 	&__item:not(:last-of-type) {
 		position: relative;
 		margin-right: 18px;
-		color: $color-gray-medium;
+		color: variables.$color-gray-medium;
 	}
 
 	li:not(:last-of-type) {
@@ -74,7 +76,7 @@ defineProps<{
 	.breadcrumbs {
 		&__item:not(:last-of-type) {
 			&:first-child {
-				color: $color-white;
+				color: variables.$color-white;
 			}
 		}
 

@@ -108,6 +108,8 @@ const handleClosed = () => {
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .vfm.modal-container {
 	position: fixed;
 	left: 0;
@@ -131,7 +133,7 @@ const handleClosed = () => {
 	max-width: 530px;
 	max-height: 70%;
 	overflow-y: auto;
-	background-color: $color-white;
+	background-color: variables.$color-white;
 	border-radius: 16px;
 }
 

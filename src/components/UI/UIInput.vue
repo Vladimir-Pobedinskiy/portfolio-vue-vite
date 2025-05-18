@@ -92,13 +92,15 @@ const preventInvalidKeys = (event: KeyboardEvent) => {
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .label-wrapper {
 	position: relative;
 	margin-bottom: 18px;
 	height: 44px;
 	pointer-events: all;
 
-	@media (min-width: $mobile-big) {
+	@media (min-width: variables.$mobile-big) {
 		height: 56px;
 	}
 
@@ -107,7 +109,7 @@ const preventInvalidKeys = (event: KeyboardEvent) => {
 		pointer-events: none;
 
 		.label__input-title {
-			color: $color-gray-light;
+			color: variables.$color-gray-light;
 			cursor: default !important;
 		}
 	}
@@ -125,29 +127,29 @@ const preventInvalidKeys = (event: KeyboardEvent) => {
 		padding: 23px 16px 8px;
 		width: 100%;
 		height: 100%;
-		border: 1px solid $color-gray-light;
-		background-color: $color-white;
-		color: $color-black;
+		border: 1px solid variables.$color-gray-light;
+		background-color: variables.$color-white;
+		color: variables.$color-black;
 		outline: transparent;
 		border-radius: 16px;
 		pointer-events: all;
 		transition: border-color 0.4s ease-in-out;
 
 		&:hover {
-			border-color: $color-black;
+			border-color: variables.$color-black;
 			transition: border-color 0.4s ease-in-out;
 		}
 
 		&:active,
 		&:focus {
-			border-color: $color-black;
+			border-color: variables.$color-black;
 			transition: border-color 0.4s ease-in-out;
 		}
 
 		&:disabled {
 			opacity: 0.3;
-			border-color: $color-gray-light;
-			background-color: $color-white;
+			border-color: variables.$color-gray-light;
+			background-color: variables.$color-white;
 			cursor: default;
 			pointer-events: none;
 			transition:
@@ -156,8 +158,8 @@ const preventInvalidKeys = (event: KeyboardEvent) => {
 		}
 
 		&.error {
-			border-color: $color-error;
-			background-color: $color-error-light;
+			border-color: variables.$color-error;
+			background-color: variables.$color-error-light;
 			transition:
 				border-color 0.3s ease,
 				background-color 0.3s ease;
@@ -170,7 +172,7 @@ const preventInvalidKeys = (event: KeyboardEvent) => {
 		top: 50%;
 		transform: translateY(-50%);
 		background-color: transparent;
-		color: $color-gray-light;
+		color: variables.$color-gray-light;
 		cursor: text;
 		will-change: transform, font-size;
 		transition:
@@ -186,7 +188,7 @@ const preventInvalidKeys = (event: KeyboardEvent) => {
 			transform 0.3s ease-in-out,
 			font-size 0.3s ease;
 
-		@media (min-width: $mobile-big) {
+		@media (min-width: variables.$mobile-big) {
 			transform: translateY(-23px);
 		}
 	}
@@ -265,14 +267,14 @@ input[name='repeatPassword'] {
 .error-message {
 	padding-top: 2px;
 	padding-left: 6px;
-	color: $color-error;
+	color: variables.$color-error;
 	transition: color 0.3s ease;
 
-	@media (min-width: $mobile) {
+	@media (min-width: variables.$mobile) {
 		padding-left: 8px;
 	}
 
-	@media (min-width: $desktop) {
+	@media (min-width: variables.$desktop) {
 		padding-left: 12px;
 	}
 }

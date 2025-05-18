@@ -20,15 +20,17 @@ defineProps<{
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .nav {
 	&__list {
 		display: flex;
 
-		@media (max-width: $desktop-for-maxWidth) {
+		@media (max-width: variables.$desktop-for-maxWidth) {
 			flex-direction: column;
 		}
 
-		@media (min-width: $desktop) {
+		@media (min-width: variables.$desktop) {
 			align-items: center;
 		}
 	}
@@ -40,7 +42,7 @@ defineProps<{
 			margin-bottom: 0;
 		}
 
-		@media (min-width: $desktop) {
+		@media (min-width: variables.$desktop) {
 			margin-bottom: 0;
 			margin-right: 20px;
 
@@ -52,7 +54,7 @@ defineProps<{
 
 	&__link {
 		&.active {
-			border-bottom: 2px solid $color-black;
+			border-bottom: 2px solid variables.$color-black;
 		}
 	}
 }

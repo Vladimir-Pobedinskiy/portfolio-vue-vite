@@ -1,5 +1,7 @@
+@use '../general/variables';
+
 .hover-from-left {
-	@media (min-width: $desktop) {
+	@media (min-width: variables.$desktop) {
 		position: relative;
 		transition: transform 0.2s ease;
 
@@ -8,7 +10,7 @@
 			position: absolute;
 			width: 100%;
 			height: 2px;
-			background-color: $color-black;
+			background-color: variables.$color-black;
 			left: 0;
 			bottom: -2px;
 			transform: scaleX(0);
@@ -23,7 +25,7 @@
 }
 
 .hover-from-center {
-	@media (min-width: $desktop) {
+	@media (min-width: variables.$desktop) {
 		position: relative;
 		transition: transform 0.2s ease;
 
@@ -32,7 +34,7 @@
 			position: absolute;
 			width: 100%;
 			height: 2px;
-			background-color: $color-black;
+			background-color: variables.$color-black;
 			left: 0;
 			bottom: -2px;
 			transform: scaleX(0);
@@ -47,7 +49,7 @@
 }
 
 .hover-scale {
-	@media (min-width: $desktop) {
+	@media (min-width: variables.$desktop) {
 		cursor: pointer;
 
 		&:hover {
@@ -58,13 +60,13 @@
 		}
 
 		.hover-scale-img-wrapper {
-			@media (min-width: $desktop) {
+			@media (min-width: variables.$desktop) {
 				overflow: hidden;
 			}
 		}
 
 		.hover-scale-img {
-			@media (min-width: $desktop) {
+			@media (min-width: variables.$desktop) {
 				will-change: transform;
 				transition: transform 0.5s ease;
 			}

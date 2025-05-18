@@ -47,6 +47,8 @@ useSwipeHandler(navigation, 'navigation', 'left', screens.desktop)
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 $burger-height: 2px;
 
 .burger {
@@ -60,7 +62,7 @@ $burger-height: 2px;
 	position: relative;
 	width: 25px;
 	height: 18px;
-	color: $color-white;
+	color: variables.$color-white;
 	border: none;
 	outline: none;
 	background-color: transparent;
@@ -79,7 +81,7 @@ $burger-height: 2px;
 		width: 100%;
 		height: 2px;
 		transition: 0.2s;
-		background-color: $color-black;
+		background-color: variables.$color-black;
 	}
 
 	&::before {
@@ -91,7 +93,7 @@ $burger-height: 2px;
 	}
 
 	&.active {
-		color: $color-black;
+		color: variables.$color-black;
 	}
 
 	&__label {
@@ -118,7 +120,7 @@ $burger-height: 2px;
 
 // burger-nav
 .burger-nav {
-	@media (max-width: $desktop-for-maxWidth) {
+	@media (max-width: variables.$desktop-for-maxWidth) {
 		position: fixed;
 		left: 0;
 		top: 0;
@@ -129,7 +131,7 @@ $burger-height: 2px;
 		visibility: hidden;
 		overflow-y: auto;
 		transform: translateX(-200%);
-		background-color: $color-vue;
+		background-color: variables.$color-vue;
 		z-index: 998;
 		transition:
 			transform 0.3s ease,
@@ -148,7 +150,7 @@ $burger-height: 2px;
 	}
 
 	.nav__item {
-		@media (max-width: $desktop-for-maxWidth) {
+		@media (max-width: variables.$desktop-for-maxWidth) {
 			text-transform: uppercase;
 		}
 	}

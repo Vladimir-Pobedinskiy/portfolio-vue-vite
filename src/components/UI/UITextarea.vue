@@ -29,6 +29,8 @@ const value = defineModel<string | number>('value')
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .label {
 	width: 100%;
 	max-width: 1000px;
@@ -50,13 +52,13 @@ const value = defineModel<string | number>('value')
 		height: 100%;
 		border: 1px solid rgb(227, 221, 221);
 		border-radius: 12px;
-		outline: $color-vue-bg;
+		outline: variables.$color-vue-bg;
 		pointer-events: all;
 
 		&:disabled {
 			opacity: 0.3;
-			border-color: $color-gray-light;
-			background-color: $color-white;
+			border-color: variables.$color-gray-light;
+			background-color: variables.$color-white;
 			cursor: default;
 			pointer-events: none;
 			transition:
@@ -65,8 +67,8 @@ const value = defineModel<string | number>('value')
 		}
 
 		&.error {
-			border-color: $color-error;
-			background-color: $color-error-light;
+			border-color: variables.$color-error;
+			background-color: variables.$color-error-light;
 			transition:
 				border-color 0.3s ease,
 				background-color 0.3s ease;
@@ -77,14 +79,14 @@ const value = defineModel<string | number>('value')
 .error-message {
 	padding-top: 2px;
 	padding-left: 6px;
-	color: $color-error;
+	color: variables.$color-error;
 	transition: color 0.3s ease;
 
-	@media (min-width: $mobile) {
+	@media (min-width: variables.$mobile) {
 		padding-left: 8px;
 	}
 
-	@media (min-width: $desktop) {
+	@media (min-width: variables.$desktop) {
 		padding-left: 12px;
 	}
 }

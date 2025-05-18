@@ -26,15 +26,5 @@ export default defineConfig(({ mode }) => {
 			assetsDir: './',
 			outDir: 'dist',
 		},
-		css: {
-			preprocessorOptions: {
-				scss: {
-					additionalData: `
-            @import "./src/assets/scss/general/variables";
-            @import "./src/assets/scss/mixins/mixins";
-          `,
-				},
-			},
-		},
 	}
 })

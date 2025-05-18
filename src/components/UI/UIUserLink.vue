@@ -10,6 +10,8 @@ import IconUser from '@/assets/icons/icon-user.svg'
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .ui-user-link {
 	width: 28px;
 	height: 28px;
@@ -18,11 +20,11 @@ import IconUser from '@/assets/icons/icon-user.svg'
 	justify-content: center;
 	z-index: 999;
 
-	@media (min-width: $desktop) {
+	@media (min-width: variables.$desktop) {
 		transition: color 0.3s ease;
 
 		&:hover {
-			color: $color-white;
+			color: variables.$color-white;
 			transition: color 0.3s ease;
 		}
 	}

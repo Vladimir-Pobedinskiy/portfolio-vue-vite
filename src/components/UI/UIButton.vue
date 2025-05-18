@@ -71,6 +71,8 @@ const onClick = (event: MouseEvent) => {
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .btn-primary,
 .btn-secondary {
 	width: 100%;
@@ -80,12 +82,12 @@ const onClick = (event: MouseEvent) => {
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	font-family: $font;
+	font-family: variables.$font;
 	font-size: 14px;
 	font-weight: 450;
 	line-height: 1.4;
 
-	@media (min-width: $mobile-big) {
+	@media (min-width: variables.$mobile-big) {
 		width: fit-content;
 		line-height: 1.35;
 	}
@@ -99,7 +101,7 @@ const onClick = (event: MouseEvent) => {
 	&.big {
 		padding: 10px 14px;
 
-		@media (min-width: $mobile-big) {
+		@media (min-width: variables.$mobile-big) {
 			padding: 12px 24px;
 			width: fit-content;
 			font-size: 18px;
@@ -112,27 +114,27 @@ const onClick = (event: MouseEvent) => {
 }
 
 .btn-primary {
-	background-color: $color-gray-dark;
-	color: $color-white;
+	background-color: variables.$color-gray-dark;
+	color: variables.$color-white;
 	transition:
 		background-color 0.4s ease,
 		color 0.4s ease;
 
-	@media (min-width: $desktop-small) {
+	@media (min-width: variables.$desktop-small) {
 		&:hover {
-			background-color: $color-black;
+			background-color: variables.$color-black;
 			transition: background-color 0.4s ease;
 		}
 	}
 
 	&:active {
-		background-color: $color-black;
+		background-color: variables.$color-black;
 		transition: background-color 0.4s ease;
 	}
 
 	&:disabled {
-		background-color: $color-gray-disabled;
-		color: $color-gray-light;
+		background-color: variables.$color-gray-disabled;
+		color: variables.$color-gray-light;
 		cursor: default;
 		transition:
 			background-color 0.4s ease,
@@ -140,8 +142,8 @@ const onClick = (event: MouseEvent) => {
 	}
 
 	&.disabled {
-		background-color: $color-gray-disabled;
-		color: $color-gray-light;
+		background-color: variables.$color-gray-disabled;
+		color: variables.$color-gray-light;
 		cursor: default;
 		transition:
 			background-color 0.4s ease,
@@ -151,18 +153,18 @@ const onClick = (event: MouseEvent) => {
 
 // btn-secondary
 .btn-secondary {
-	background-color: $color-white;
-	color: $color-gray-dark;
-	border: 1px solid $color-gray-dark;
+	background-color: variables.$color-white;
+	color: variables.$color-gray-dark;
+	border: 1px solid variables.$color-gray-dark;
 	transition:
 		background-color 0.4s ease,
 		color 0.4s ease,
 		border-color 0.4s ease;
 
-	@media (min-width: $desktop-small) {
+	@media (min-width: variables.$desktop-small) {
 		&:hover {
-			background-color: $color-gray-dark;
-			color: $color-white;
+			background-color: variables.$color-gray-dark;
+			color: variables.$color-white;
 			transition:
 				background-color 0.4s ease,
 				color 0.4s ease;
@@ -170,17 +172,17 @@ const onClick = (event: MouseEvent) => {
 	}
 
 	&:active {
-		background-color: $color-gray-dark;
-		color: $color-white;
+		background-color: variables.$color-gray-dark;
+		color: variables.$color-white;
 		transition:
 			background-color 0.4s ease,
 			color 0.4s ease;
 	}
 
 	&:disabled {
-		background-color: $color-white;
-		color: $color-gray-light;
-		border-color: $color-gray-light;
+		background-color: variables.$color-white;
+		color: variables.$color-gray-light;
+		border-color: variables.$color-gray-light;
 		cursor: default;
 		transition:
 			background-color 0.4s ease,
@@ -189,9 +191,9 @@ const onClick = (event: MouseEvent) => {
 	}
 
 	&.disabled {
-		background-color: $color-white;
-		color: $color-gray-light;
-		border-color: $color-gray-light;
+		background-color: variables.$color-white;
+		color: variables.$color-gray-light;
+		border-color: variables.$color-gray-light;
 		cursor: default;
 		transition:
 			background-color 0.4s ease,
@@ -200,8 +202,8 @@ const onClick = (event: MouseEvent) => {
 	}
 
 	&.active {
-		background-color: $color-gray-dark;
-		color: $color-white;
+		background-color: variables.$color-gray-dark;
+		color: variables.$color-white;
 		transition:
 			background-color 0.4s ease,
 			color 0.4s ease;
@@ -212,18 +214,18 @@ const onClick = (event: MouseEvent) => {
 .btn-third {
 	display: block;
 	width: 100%;
-	border: 1px solid $color-orange;
+	border: 1px solid variables.$color-orange;
 	border-radius: 12px;
-	background-color: $color-orange;
-	color: $color-white;
+	background-color: variables.$color-orange;
+	color: variables.$color-white;
 	transition:
 		background-color 0.3s ease,
 		border-color 0.3s ease;
 
-	@media (min-width: $desktop) {
+	@media (min-width: variables.$desktop) {
 		&:hover {
-			border-color: $color-orange-hover;
-			background-color: $color-orange-hover;
+			border-color: variables.$color-orange-hover;
+			background-color: variables.$color-orange-hover;
 			transition:
 				background-color 0.3s ease,
 				border-color 0.3s ease;

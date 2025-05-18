@@ -33,6 +33,8 @@ const handleSelectedTag = (tag: ITag) => {
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .task-tag-list {
 	display: flex;
 	align-items: center;
@@ -43,7 +45,7 @@ const handleSelectedTag = (tag: ITag) => {
 	width: 100%;
 	max-width: 290px;
 
-	@media (min-width: $desktop) {
+	@media (min-width: variables.$desktop) {
 		margin: 20px 0 16px;
 	}
 }

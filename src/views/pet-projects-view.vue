@@ -111,6 +111,8 @@ const projects = {
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .pet-projects-view {
 	position: relative;
 	height: 100%;
@@ -124,7 +126,7 @@ const projects = {
 		margin-bottom: 32px;
 		text-transform: uppercase;
 
-		@media (min-width: $desktop) {
+		@media (min-width: variables.$desktop) {
 			margin-bottom: 40px;
 		}
 	}
@@ -134,7 +136,7 @@ const projects = {
 		grid-template-columns: 100%;
 		grid-gap: 20px;
 
-		@media (min-width: $tablet) {
+		@media (min-width: variables.$tablet) {
 			grid-template-columns: repeat(2, 1fr);
 			grid-gap: 20px;
 			row-gap: 24px;
@@ -146,13 +148,13 @@ const projects = {
 		flex-direction: column;
 		padding: 16px;
 		border-radius: 8px;
-		background-color: $color-vue-bg;
+		background-color: variables.$color-vue-bg;
 
-		@media (min-width: $desktop) {
+		@media (min-width: variables.$desktop) {
 			transition: background-color 0.3s;
 
 			&:hover {
-				background-color: $color-vue;
+				background-color: variables.$color-vue;
 				transition: background-color 0.3s;
 			}
 		}

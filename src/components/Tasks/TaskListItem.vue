@@ -106,23 +106,25 @@ const editSelectedTags = (selectedTags: ITag[]) => {
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .task-list-item {
 	margin-top: 20px;
 	padding: 12px;
 	width: 100%;
 	border-radius: 16px;
-	background-color: $color-white;
+	background-color: variables.$color-white;
 	box-shadow: 0 30px 30px rgba(0, 0, 0, 4%);
 
 	&:first-child {
 		margin-top: 0;
 	}
 
-	@media (min-width: $mobile) {
+	@media (min-width: variables.$mobile) {
 		padding: 20px;
 	}
 
-	@media (min-width: $desktop) {
+	@media (min-width: variables.$desktop) {
 		transition: box-shadow 0.25s ease;
 
 		&:hover {
@@ -165,7 +167,7 @@ const editSelectedTags = (selectedTags: ITag[]) => {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		background-color: $color-white;
+		background-color: variables.$color-white;
 		z-index: 2;
 	}
 
@@ -186,7 +188,7 @@ const editSelectedTags = (selectedTags: ITag[]) => {
 		width: 32px;
 		height: 32px;
 
-		@media (max-width: $mobile) {
+		@media (max-width: variables.$mobile) {
 			transform: translateY(150%);
 		}
 	}

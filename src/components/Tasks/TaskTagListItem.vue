@@ -30,6 +30,8 @@ const handleSelectedTag = () => {
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .task-tag-list-item {
 	margin-right: 10px;
 	padding: 8px 0;
@@ -37,8 +39,8 @@ const handleSelectedTag = () => {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: $color-white;
-	color: $color-black;
+	background-color: variables.$color-white;
+	color: variables.$color-black;
 	border: 1px solid rgb(227, 221, 221);
 	border-radius: 22px;
 	user-select: none;
@@ -48,19 +50,19 @@ const handleSelectedTag = () => {
 		color 0.2s ease,
 		border-color 0.2s ease;
 
-	@media (min-width: $desktop) {
+	@media (min-width: variables.$desktop) {
 		transition: border-color 0.3s ease;
 
 		&:hover {
-			border-color: $color-violet;
+			border-color: variables.$color-violet;
 			transition: border-color 0.3s ease;
 		}
 	}
 
 	&.selected {
-		background-color: $color-violet;
-		border-color: $color-violet;
-		color: $color-white;
+		background-color: variables.$color-violet;
+		border-color: variables.$color-violet;
+		color: variables.$color-white;
 		transition:
 			background-color 0.3s ease,
 			color 0.2s ease,

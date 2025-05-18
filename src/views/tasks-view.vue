@@ -211,11 +211,13 @@ const onSubmit = () => {
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .tasks-view {
 	position: relative;
 	height: 100%;
 	width: 100%;
-	background-color: $bg;
+	background-color: variables.$bg;
 
 	&__section {
 		text-align: center;
@@ -269,7 +271,7 @@ const onSubmit = () => {
 		padding: 32px 12px;
 		width: 100%;
 		border-radius: 16px;
-		background-color: $color-vue-bg;
+		background-color: variables.$color-vue-bg;
 		box-shadow: 0 30px 30px rgba(0, 0, 0, 4%);
 	}
 }

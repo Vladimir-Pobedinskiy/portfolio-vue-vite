@@ -1,3 +1,5 @@
+@use '../general/variables';
+
 // baguetteBox
 
 #baguetteBox-overlay {
@@ -8,17 +10,17 @@
 #next-button {
 	display: none;
 
-	@media (min-width: $tablet-big) {
+	@media (min-width: variables.$tablet-big) {
 		display: block;
 	}
 }
 
 .baguetteBox-button {
-	background-color: $color-gray-dark !important;
+	background-color: variables.$color-gray-dark !important;
 
-	@media (min-width: $desktop) {
+	@media (min-width: variables.$desktop) {
 		&:not(:disabled):hover {
-			background-color: $color-gray-dark !important;
+			background-color: variables.$color-gray-dark !important;
 		}
 	}
 

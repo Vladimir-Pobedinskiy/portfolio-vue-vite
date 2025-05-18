@@ -107,6 +107,8 @@ useBaguetteBox('.hero-gallery-baguettebox-js')
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .hero-view {
 	position: relative;
 	height: 100%;
@@ -141,8 +143,8 @@ useBaguetteBox('.hero-gallery-baguettebox-js')
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		color: $color-white;
-		background-color: $color-orange;
+		color: variables.$color-white;
+		background-color: variables.$color-orange;
 		font-weight: 700;
 		border-radius: 12px;
 	}

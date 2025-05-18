@@ -82,6 +82,8 @@ onMounted(() => {
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .splash-screen {
 	position: fixed;
 	left: 0;
@@ -93,7 +95,7 @@ onMounted(() => {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: $color-white;
+	background-color: variables.$color-white;
 	backdrop-filter: blur(5.95px);
 	z-index: 10000;
 
@@ -103,14 +105,14 @@ onMounted(() => {
 		align-items: center;
 		justify-content: center;
 		text-align: center;
-		color: $color-black;
+		color: variables.$color-black;
 	}
 
 	&__title {
 		margin-bottom: 16px;
 		will-change: transform, opacity;
 
-		@media (min-width: $desktop) {
+		@media (min-width: variables.$desktop) {
 			margin-bottom: 24px;
 		}
 	}

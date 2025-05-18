@@ -27,6 +27,8 @@ const navStore = computed(() => storeGeneral.nav)
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .header {
 	width: 100%;
 	position: fixed;
@@ -34,10 +36,10 @@ const navStore = computed(() => storeGeneral.nav)
 	top: 0;
 	padding: 20px 0;
 	min-height: 66px;
-	background-color: $color-vue;
+	background-color: variables.$color-vue;
 	z-index: 998;
 
-	@media (min-width: $desktop) {
+	@media (min-width: variables.$desktop) {
 		padding: 25px 0;
 		min-height: 82px;
 	}

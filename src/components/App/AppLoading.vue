@@ -18,6 +18,8 @@ withDefaults(
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .loading {
 	position: fixed;
 	top: 0;
@@ -47,12 +49,12 @@ withDefaults(
 		width: 40px;
 		height: 40px;
 		border: 4px solid rgba(66, 135, 196, 35%);
-		border-left-color: $color-vue;
+		border-left-color: variables.$color-vue;
 		border-radius: 50%;
 		animation: progress-circular 1s infinite linear;
 		will-change: transform;
 
-		@media (min-width: $desktop) {
+		@media (min-width: variables.$desktop) {
 			width: 50px;
 			height: 50px;
 		}

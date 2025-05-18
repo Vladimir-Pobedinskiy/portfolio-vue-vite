@@ -93,11 +93,13 @@ const handleActiveTab = (index: number) => {
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .tabs-unit {
 	&__title {
 		margin-bottom: 32px;
 
-		@media (min-width: $desktop) {
+		@media (min-width: variables.$desktop) {
 			margin-bottom: 40px;
 		}
 	}
@@ -109,7 +111,7 @@ const handleActiveTab = (index: number) => {
 		display: flex;
 		align-items: center;
 
-		@media (min-width: $desktop) {
+		@media (min-width: variables.$desktop) {
 			margin-bottom: 32px;
 		}
 	}
@@ -125,19 +127,19 @@ const handleActiveTab = (index: number) => {
 		justify-content: center;
 		align-items: center;
 		text-align: center;
-		font-family: $font;
+		font-family: variables.$font;
 		font-size: 14px;
 		font-weight: 450;
 		line-height: 1.4;
-		background-color: $color-white;
-		color: $color-gray-dark;
-		border: 1px solid $color-gray-dark;
+		background-color: variables.$color-white;
+		color: variables.$color-gray-dark;
+		border: 1px solid variables.$color-gray-dark;
 		transition:
 			background-color 0.4s ease,
 			color 0.4s ease,
 			border-color 0.4s ease;
 
-		@media (min-width: $mobile-big) {
+		@media (min-width: variables.$mobile-big) {
 			padding: 12px 24px;
 			font-weight: 450;
 			font-size: 18px;
@@ -145,10 +147,10 @@ const handleActiveTab = (index: number) => {
 			width: fit-content;
 		}
 
-		@media (min-width: $desktop-small) {
+		@media (min-width: variables.$desktop-small) {
 			&:hover {
-				background-color: $color-gray-dark;
-				color: $color-white;
+				background-color: variables.$color-gray-dark;
+				color: variables.$color-white;
 				transition:
 					background-color 0.4s ease,
 					color 0.4s ease;
@@ -156,8 +158,8 @@ const handleActiveTab = (index: number) => {
 		}
 
 		&.selected {
-			background-color: $color-gray-dark;
-			color: $color-white;
+			background-color: variables.$color-gray-dark;
+			color: variables.$color-white;
 			transition:
 				background-color 0.4s ease,
 				color 0.4s ease,
@@ -174,13 +176,13 @@ const handleActiveTab = (index: number) => {
 		grid-template-columns: 100%;
 		grid-gap: 24px;
 
-		@media (min-width: $tablet) {
+		@media (min-width: variables.$tablet) {
 			grid-template-columns: repeat(12, 1fr);
 		}
 	}
 
 	&__panel-left-side {
-		@media (min-width: $tablet) {
+		@media (min-width: variables.$tablet) {
 			grid-column: 5 span;
 			display: flex;
 			align-items: flex-start;
@@ -189,14 +191,14 @@ const handleActiveTab = (index: number) => {
 	}
 
 	&__panel-img-wrapper {
-		@media (min-width: $tablet) {
+		@media (min-width: variables.$tablet) {
 			width: 100%;
 			max-width: 400px;
 		}
 	}
 
 	&__panel-right-side {
-		@media (min-width: $tablet) {
+		@media (min-width: variables.$tablet) {
 			grid-column: 6 / -1;
 		}
 	}

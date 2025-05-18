@@ -90,6 +90,8 @@ useBaguetteBox('.gallery-baguettebox-js')
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .home-view {
 	&__about {
 		position: relative;
@@ -102,14 +104,14 @@ useBaguetteBox('.gallery-baguettebox-js')
 			bottom: -24px;
 			height: 1px;
 			width: 100%;
-			background-color: $color-vue;
+			background-color: variables.$color-vue;
 
-			@media (min-width: $desktop) {
+			@media (min-width: variables.$desktop) {
 				bottom: -40px;
 			}
 		}
 
-		@media (min-width: $desktop) {
+		@media (min-width: variables.$desktop) {
 			margin-bottom: 80px;
 		}
 	}
@@ -119,14 +121,14 @@ useBaguetteBox('.gallery-baguettebox-js')
 		grid-template-columns: 100%;
 		grid-gap: 24px;
 
-		@media (min-width: $desktop) {
+		@media (min-width: variables.$desktop) {
 			margin-bottom: 32px;
 			grid-template-columns: repeat(12, 1fr);
 		}
 	}
 
 	&__about-left-side {
-		@media (min-width: $desktop) {
+		@media (min-width: variables.$desktop) {
 			grid-column: 1 / 10;
 		}
 	}
@@ -135,7 +137,7 @@ useBaguetteBox('.gallery-baguettebox-js')
 		display: flex;
 		flex-direction: column;
 
-		@media (min-width: $desktop) {
+		@media (min-width: variables.$desktop) {
 			flex-direction: row;
 		}
 	}
@@ -149,7 +151,7 @@ useBaguetteBox('.gallery-baguettebox-js')
 		overflow: hidden;
 
 
-		@media (min-width: $desktop) {
+		@media (min-width: variables.$desktop) {
 			margin-right: 32px;
 			margin-bottom: 0;
 		}
@@ -166,7 +168,7 @@ useBaguetteBox('.gallery-baguettebox-js')
 	&__about-name {
 		margin-bottom: 4px;
 
-		@media (min-width: $desktop) {
+		@media (min-width: variables.$desktop) {
 			margin-bottom: 8px;
 		}
 	}
@@ -174,7 +176,7 @@ useBaguetteBox('.gallery-baguettebox-js')
 	&__about-position {
 		margin-bottom: 16px;
 
-		@media (min-width: $desktop) {
+		@media (min-width: variables.$desktop) {
 			margin-bottom: 24px;
 		}
 	}
@@ -200,7 +202,7 @@ useBaguetteBox('.gallery-baguettebox-js')
 	}
 
 	&__about-content {
-		@media (min-width: $desktop) {
+		@media (min-width: variables.$desktop) {
 			grid-column: 10 / -1;
 		}
 

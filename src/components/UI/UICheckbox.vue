@@ -41,6 +41,8 @@ const modelValue = defineModel<boolean>('modelValue')
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .label-checkbox {
 	position: relative;
 	display: block;
@@ -59,10 +61,10 @@ const modelValue = defineModel<boolean>('modelValue')
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background-color: $color-white;
-		border: 1px solid $color-vue;
+		background-color: variables.$color-white;
+		border: 1px solid variables.$color-vue;
 		border-radius: 4px;
-		color: $color-vue;
+		color: variables.$color-vue;
 		transition:
 			background-color 0.3s ease,
 			border-color 0.3s ease;
@@ -79,12 +81,12 @@ const modelValue = defineModel<boolean>('modelValue')
 		position: absolute;
 		left: 0;
 		top: 100%;
-		color: $color-error;
+		color: variables.$color-error;
 		transition: color 0.3s ease;
 	}
 
 	a {
-		color: $color-vue;
+		color: variables.$color-vue;
 		text-decoration: underline;
 	}
 }
@@ -96,8 +98,8 @@ const modelValue = defineModel<boolean>('modelValue')
 
 	&.selected {
 		.label-checkbox__checkbox-icon-wrapper {
-			background-color: $color-white;
-			border-color: $color-vue;
+			background-color: variables.$color-white;
+			border-color: variables.$color-vue;
 			transition:
 				background-color 0.3s ease,
 				border-color 0.3s ease;
@@ -111,7 +113,7 @@ const modelValue = defineModel<boolean>('modelValue')
 
 	&.error {
 		.label-checkbox__checkbox-icon-wrapper {
-			border-color: $color-error;
+			border-color: variables.$color-error;
 			transition: border-color 0.3s ease;
 		}
 	}

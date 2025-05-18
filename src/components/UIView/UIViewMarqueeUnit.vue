@@ -23,11 +23,13 @@ defineProps<{
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .marquee-unit {
 	&__title {
 		margin-bottom: 32px;
 
-		@media (min-width: $desktop) {
+		@media (min-width: variables.$desktop) {
 			margin-bottom: 40px;
 		}
 	}
@@ -37,20 +39,20 @@ defineProps<{
 		width: 250px;
 		will-change: transform;
 
-		@media (min-width: $mobile-big) {
+		@media (min-width: variables.$mobile-big) {
 			width: 300px;
 		}
 
-		@media (min-width: $tablet) {
+		@media (min-width: variables.$tablet) {
 			width: 350px;
 		}
 
-		@media (min-width: $tablet-big) {
+		@media (min-width: variables.$tablet-big) {
 			padding: 15px;
 			width: 25%;
 		}
 
-		@media (min-width: $two-k-display) {
+		@media (min-width: variables.$two-k-display) {
 			width: 35%;
 		}
 	}

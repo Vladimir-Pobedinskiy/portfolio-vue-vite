@@ -25,12 +25,14 @@ const currentYear = computed(() => new Date().getFullYear())
 </template>
 
 <style lang="scss">
+@use '@/assets/scss/general/variables';
+
 .footer {
 	padding: 30px 0;
-	background-color: $color-vue;
+	background-color: variables.$color-vue;
 	z-index: 999;
 
-	@media (min-width: $desktop) {
+	@media (min-width: variables.$desktop) {
 		padding: 40px 0;
 	}
 
@@ -53,17 +55,17 @@ const currentYear = computed(() => new Date().getFullYear())
 	.nav__list {
 		text-align: center;
 
-		@media (min-width: $tablet) {
+		@media (min-width: variables.$tablet) {
 			flex-direction: row;
 		}
 	}
 
 	.nav__item {
-		@media (max-width: $tablet-for-maxWidth) {
+		@media (max-width: variables.$tablet-for-maxWidth) {
 			margin-bottom: 16px;
 		}
 
-		@media (min-width: $tablet) {
+		@media (min-width: variables.$tablet) {
 			margin-right: 20px;
 			margin-bottom: 0;
 
