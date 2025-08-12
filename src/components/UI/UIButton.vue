@@ -4,7 +4,6 @@ import type { Component } from 'vue'
 const props = withDefaults(
 	defineProps<{
 		as: 'button' | 'RouterLink' | 'a' | 'span' | Component
-		btnKey?: string
 		/** для <RouterLink> */
 		to?: { name: string } | string
 		/** для <a> */
@@ -53,7 +52,6 @@ const onClick = (event: MouseEvent) => {
 <template>
 	<Component
 		:is="as"
-		:btn-key="btnKey"
 		:class="[`btn-${variant}`, `${size}`, { full: full }, { disabled: disabled }]"
 		:to="as === 'RouterLink' ? to : undefined"
 		:href="as === 'a' ? href : undefined"

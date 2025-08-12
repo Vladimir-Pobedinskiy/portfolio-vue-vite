@@ -1,7 +1,6 @@
 <script setup lang="ts">
 withDefaults(
 	defineProps<{
-		textareaKey?: string
 		placeholder: string
 		errorValue?: string
 		disabled?: boolean
@@ -19,7 +18,6 @@ const value = defineModel<string | number>('value')
 	<label :class="['label', { error: errorValue }, { disabled: disabled }]">
 		<textarea
 			v-model="value"
-			:textarea-key="textareaKey"
 			:class="['label__textarea', { error: errorValue }]"
 			:placeholder="placeholder"
 			:disabled="disabled"

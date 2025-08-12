@@ -3,7 +3,6 @@ import IconCheckbox from '@/assets/icons/icon-checkbox.svg'
 
 withDefaults(
 	defineProps<{
-		checkboxKey?: string
 		name: string
 		errorValue?: string
 		disabled?: boolean
@@ -23,7 +22,6 @@ const modelValue = defineModel<boolean>('modelValue')
 			<input
 				v-model="modelValue"
 				:value="modelValue"
-				:checkbox-key="checkboxKey"
 				:name="name"
 				class="label-checkbox__input visually-hidden"
 				type="checkbox"
