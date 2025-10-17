@@ -42,14 +42,13 @@ const portfolio = {
 	portfolioList: [
 		{
 			img: {
-				url: 'https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/case/case-img-1.jpg',
+				url: 'https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/case/case-img-3.jpg',
 				alt: 'image',
 			},
-			type: 'Благотворительный фонд',
-			title: 'Фонд "Вера в детство"',
-			description:
-				'Проект разработан с использованием Nuxt 3 — современного фреймворка для создания веб-приложений на Vue.js',
-			url: 'https://veravdetstvo.com',
+			type: 'Интернет-магазин',
+			title: 'Интернет-магазин ювелирных изделий "Центр обручальных колец"',
+			description: 'Проект разработан с использованием Nuxt 2 — фреймворка для создания веб-приложений на Vue.js',
+			url: 'https://centr-kolec.ru',
 		},
 		{
 			img: {
@@ -64,13 +63,14 @@ const portfolio = {
 		},
 		{
 			img: {
-				url: 'https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/case/case-img-3.jpg',
+				url: 'https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/case/case-img-1.jpg',
 				alt: 'image',
 			},
-			type: 'Интернет-магазин',
-			title: 'Интернет-магазин ювелирных изделий "Центр обручальных колец"',
-			description: 'Проект разработан с использованием Nuxt 2 — фреймворка для создания веб-приложений на Vue.js',
-			url: 'https://centr-kolec.ru',
+			type: 'Благотворительный фонд',
+			title: 'Фонд "Вера в детство"',
+			description:
+				'Проект разработан с использованием Nuxt 3 — современного фреймворка для создания веб-приложений на Vue.js',
+			url: 'https://veravdetstvo.com',
 		},
 		{
 			img: {

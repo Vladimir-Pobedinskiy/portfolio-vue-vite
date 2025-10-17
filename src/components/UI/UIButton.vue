@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import type { Component } from 'vue'
-
 const props = withDefaults(
 	defineProps<{
-		as: 'button' | 'RouterLink' | 'a' | 'span' | Component
+		as: 'button' | 'RouterLink' | 'a' | 'span'
 		btnKey?: string
 		/** для <RouterLink> */
 		to?: { name: string } | string
@@ -57,7 +55,7 @@ const onClick = (event: MouseEvent) => {
 		:class="[`btn-${variant}`, `${size}`, { full: full }, { disabled: disabled }]"
 		:to="as === 'RouterLink' ? to : undefined"
 		:href="as === 'a' ? href : undefined"
-		:target="as === 'a' ? target : undefined"
+		:target="as === 'a' || as === 'RouterLink' ? target : undefined"
 		:type="as === 'button' ? type : undefined"
 		:aria-label="ariaLabel ? ariaLabel : undefined"
 		:disabled="as !== 'span' ? disabled : undefined"
