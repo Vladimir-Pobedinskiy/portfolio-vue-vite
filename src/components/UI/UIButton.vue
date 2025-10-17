@@ -51,7 +51,6 @@ const onClick = (event: MouseEvent) => {
 <template>
 	<Component
 		:is="as"
-		:btn-key="btnKey"
 		:class="[`btn-${variant}`, `${size}`, { full: full }, { disabled: disabled }]"
 		:to="as === 'RouterLink' ? to : undefined"
 		:href="as === 'a' ? href : undefined"
@@ -59,8 +58,7 @@ const onClick = (event: MouseEvent) => {
 		:type="as === 'button' ? type : undefined"
 		:aria-label="ariaLabel ? ariaLabel : undefined"
 		:disabled="as !== 'span' ? disabled : undefined"
-		@click="onClick"
-	>
+		@click="onClick">
 		{{ label }}
 		<template v-if="$slots.content">
 			<slot name="content" />

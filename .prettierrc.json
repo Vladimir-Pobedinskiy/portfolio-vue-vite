@@ -2,7 +2,7 @@
 	"$schema": "https://json.schemastore.org/prettierrc",
 	"trailingComma": "es5",
 	"bracketSpacing": true,
-	"jsxBracketSameLine": true,
+	"bracketSameLine": true,
 	"jsxSingleQuote": true,
 	"semi": false,
 	"singleQuote": true,

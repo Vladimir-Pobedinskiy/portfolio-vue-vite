@@ -5,7 +5,6 @@ import IconEyeHidden from '@/assets/icons/icon-eye-input-password-hidden.svg'
 
 const props = withDefaults(
 	defineProps<{
-		inputKey?: string
 		type: 'text' | 'password' | 'number' | 'email' | 'tel'
 		name: string
 		placeholder: string
@@ -57,7 +56,6 @@ const preventInvalidKeys = (event: KeyboardEvent) => {
 		<label class="label">
 			<input
 				v-model="value"
-				:input-key="inputKey"
 				:class="['label__input l-input', { error: errorValue }]"
 				:type="type !== 'password' ? type : isShowPassword ? 'text' : 'password'"
 				v-imask="type === 'tel' ? { mask: '+7 (000) 000-00-00' } : undefined"

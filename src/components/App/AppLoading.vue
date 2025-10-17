@@ -30,8 +30,6 @@ withDefaults(
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 100%;
-	height: 100%;
 	background-color: rgba(44, 60, 74, 35%);
 	backdrop-filter: blur(5.95px);
 
