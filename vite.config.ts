@@ -7,7 +7,7 @@ import path from 'path'
 export default defineConfig(({ mode }) => {
 	const env = loadEnv(mode, process.cwd(), '')
 	return {
-		base: env.BASE_URL,
+		base: env.BASE_URL || '/',
 		server: {
 			port: 8080,
 		},
@@ -23,7 +23,7 @@ export default defineConfig(({ mode }) => {
 			},
 		},
 		build: {
-			assetsDir: './',
+			assetsDir: 'assets',
 			outDir: 'dist',
 		},
 	}
