@@ -42,6 +42,17 @@ const portfolio = {
 	portfolioList: [
 		{
 			img: {
+				url: 'https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/case/case-img-5.webp',
+				alt: 'image',
+			},
+			type: 'Интернет-магазин',
+			title: 'Интернет-магазин корпусной мебели "Альтернатива"',
+			description:
+				'Проект разработан с использованием Nuxt 3 — современного фреймворка для создания веб-приложений на Vue.js',
+			url: 'https://www.alt-mk.ru/',
+		},
+		{
+			img: {
 				url: 'https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/case/case-img-3.jpg',
 				alt: 'image',
 			},
@@ -116,8 +127,7 @@ const portfolio = {
 										variant="primary"
 										size="small"
 										:full="true"
-										label="Перейти на сайт"
-									/>
+										label="Перейти на сайт" />
 								</div>
 							</a>
 						</template>

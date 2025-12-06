@@ -2,7 +2,6 @@
 const props = withDefaults(
 	defineProps<{
 		as: 'button' | 'RouterLink' | 'a' | 'span'
-		btnKey?: string
 		/** для <RouterLink> */
 		to?: { name: string } | string
 		/** для <a> */
