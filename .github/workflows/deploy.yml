@@ -39,6 +39,11 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
+
+      # ← ЭТА СТРОЧКА РЕШАЕТ ВСЮ ПРОБЛЕМУ С 404 ПРИ ОБНОВЛЕНИИ СТРАНИЦ
+      - name: Create 404.html for SPA routing
+        run: cp dist/index.html dist/404.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
