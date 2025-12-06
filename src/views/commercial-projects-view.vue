@@ -42,7 +42,7 @@ const portfolio = {
 	portfolioList: [
 		{
 			img: {
-				url: 'https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/case/case-img-5.webp',
+				url: 'https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/case/case-img-5.jpg',
 				alt: 'image',
 			},
 			type: 'Интернет-магазин',
