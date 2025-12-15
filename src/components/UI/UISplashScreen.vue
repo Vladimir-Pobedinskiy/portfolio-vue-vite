@@ -74,7 +74,7 @@ onMounted(() => {
 			<div class="container">
 				<div v-show="!isSplashScreenStore && tlSplashScreenContent" class="splash-screen__inner-box">
 					<p class="splash-screen__title h1">Hello my friend!</p>
-					<p class="splash-screen__sub-title h2">Welcome into portfolio by Vladimir Pobedinskiy on Vue</p>
+					<p class="splash-screen__sub-title h2">Welcome to portfolio</p>
 				</div>
 			</div>
 		</div>
