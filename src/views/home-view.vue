@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import DescriptionUnit from '@/components/DescriptionUnit.vue'
-import { useBaguetteBox } from '@/composables/useBaguetteBox'
+import { useGLightbox } from '@/composables/useGLightbox'
 import IconVk from '@/assets/icons/icon-vk.svg'
 import IconTg from '@/assets/icons/icon-tg.svg'
 
@@ -19,74 +19,72 @@ const description = {
 	],
 }
 
-useBaguetteBox('.gallery-baguettebox-js')
+useGLightbox()
 </script>
 
 <template>
-	<main>
-		<div class="home-view offset-page">
-			<div class="container">
-				<div class="home-view__about">
-					<div class="home-view__about-inner">
-						<div class="home-view__about-left-side gallery-baguettebox-js">
-							<div class="home-view__about-left-side-inner">
-								<a
-									class="home-view__about-img-link"
-									href="https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/vlad-photo.jpg"
-								>
-									<div class="home-view__about-img-wrapper">
-										<img
-											src="https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/vlad-photo.jpg"
-											alt="Владимир"
-											width="350"
-											height="350"
-										/>
-									</div>
-								</a>
-								<div class="home-view__about-left-side-inner-content">
-									<p class="home-view__about-name s1">Владимир Побединский</p>
-									<p class="home-view__about-position s3">Frontend-разработчик (Vue/Nuxt) | Верстальщик</p>
-									<ul class="home-view__about-social-list">
-										<li class="home-view__about-social-item">
-											<a class="home-view__about-social-link" href="https://vk.com/id9716085" target="_blank">
-												<IconVk class="home-view__about-icon" /> <span>/id9716085</span>
-											</a>
-										</li class="home-view__about-social-item">
-										<li>
-											<a class="home-view__about-social-link" href="https://t.me/vldmrtl058" target="_blank">
-												<IconTg class="home-view__about-icon" /> <span>@vldmrtl058</span>
-											</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="home-view__about-right-side"></div>
-					</div>
+  <div class="home-view offset-page">
+    <div class="container">
+      <div class="home-view__about">
+        <div class="home-view__about-inner">
+          <div class="home-view__about-left-side">
+            <div class="home-view__about-left-side-inner">
+              <a
+                class="home-view__about-img-link glightbox"
+                href="https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/vlad-photo.jpg"
+              >
+                <div class="home-view__about-img-wrapper">
+                  <img
+                    src="https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/vlad-photo.jpg"
+                    alt="Владимир"
+                    width="350px"
+                    height="350px"
+                  />
+                </div>
+              </a>
+              <div class="home-view__about-left-side-inner-content">
+                <p class="home-view__about-name s1">Владимир Побединский</p>
+                <p class="home-view__about-position s3">Frontend-разработчик (Vue/Nuxt) | Верстальщик</p>
+                <ul class="home-view__about-social-list">
+                  <li class="home-view__about-social-item">
+                    <a class="home-view__about-social-link" href="https://vk.com/id9716085" target="_blank">
+                      <IconVk class="home-view__about-icon" /> <span>/id9716085</span>
+                    </a>
+                  </li class="home-view__about-social-item">
+                  <li>
+                    <a class="home-view__about-social-link" href="https://t.me/vldmrtl058" target="_blank">
+                      <IconTg class="home-view__about-icon" /> <span>@vldmrtl058</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="home-view__about-right-side"></div>
+        </div>
 
-					<div class="home-view__about-content">
-						<ul>
-							<li>
-								<p class="home-view__about-description p1">
-									Frontend-разработчик с практическим опытом работы на Vue/Nuxt. Специализируюсь на
-									использовании как Options API, так и Composition API совместно с Typescript. Постоянно совершенствую
-									свои навыки и стремлюсь к профессиональному росту в области frontend-разработки
-								</p>
-							</li>
-							<li>
-								<p class="home-view__about-description p1">
-									Образование: Пензенский государственный университет (бывший ППИ). Факультет информатики и
-									вычислительной техники (ФВТ)
-								</p>
-							</li>
-						</ul>
-					</div>
-				</div>
+        <div class="home-view__about-content">
+          <ul>
+            <li>
+              <p class="home-view__about-description p1">
+                Frontend-разработчик с практическим опытом работы на Vue/Nuxt. Специализируюсь на
+                использовании как Options API, так и Composition API совместно с Typescript. Постоянно совершенствую
+                свои навыки и стремлюсь к профессиональному росту в области frontend-разработки
+              </p>
+            </li>
+            <li>
+              <p class="home-view__about-description p1">
+                Образование: Пензенский государственный университет (бывший ППИ). Факультет информатики и
+                вычислительной техники (ФВТ)
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
 
-				<DescriptionUnit :description="description" />
-			</div>
-		</div>
-	</main>
+      <DescriptionUnit :description="description" />
+    </div>
+  </div>
 </template>
 
 <style lang="scss">
@@ -143,6 +141,7 @@ useBaguetteBox('.gallery-baguettebox-js')
 	}
 
   &__about-img-link {
+    display: block;
     margin-bottom: 32px;
     width: 280px;
 		min-width: 280px;

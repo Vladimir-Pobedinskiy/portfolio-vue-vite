@@ -1,0 +1,9 @@
+@use '../general/variables';
+
+.goverlay {
+	background: variables.$color-white !important;
+}
+
+.gbtn.disabled {
+	cursor: default;
+}

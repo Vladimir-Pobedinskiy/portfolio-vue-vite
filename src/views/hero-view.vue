@@ -4,7 +4,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { getFirestore, query, collection, getDocs } from 'firebase/firestore'
 import { useVfm } from 'vue-final-modal'
 import AppLoading from '@/components/App/AppLoading.vue'
-import { useBaguetteBox } from '@/composables/useBaguetteBox'
+import { useGLightbox } from '@/composables/useGLightbox'
 import type { IBreadcrumb } from '@/interfaces/app'
 import type { IHero } from '@/interfaces/heroes'
 
@@ -39,6 +39,7 @@ const getHero = async (): Promise<void> => {
 			state.hero = { ...res[0].description }
 			state.isLoaded = true
 		}
+		useGLightbox()
 	} catch (error: any) {
 		vfm.open('modal-error')
 		errorMessage.value = error
@@ -49,8 +50,6 @@ const getHero = async (): Promise<void> => {
 	}
 }
 getHero()
-
-useBaguetteBox('.hero-gallery-baguettebox-js')
 </script>
 
 <template>
@@ -61,8 +60,8 @@ useBaguetteBox('.hero-gallery-baguettebox-js')
 		<template v-else-if="state.hero && state.isLoaded && !errorMessage">
 			<div class="container">
 				<UIBreadcrumbs :breadcrumbs="state.breadcrumbs" />
-				<div class="hero-view__inner hero-gallery-baguettebox-js">
-					<a class="hero-view__link hero-gallery-baguettebox-js" :href="state.hero.img.url">
+				<div class="hero-view__inner">
+					<a class="hero-view__link glightbox" :href="state.hero.img.url">
 						<div class="hero-view__img-wrapper">
 							<img :src="state.hero.img.url" :alt="state.hero.img.alt" />
 						</div>
@@ -84,8 +83,7 @@ useBaguetteBox('.hero-gallery-baguettebox-js')
 							variant="third"
 							size="big"
 							:disabled="isLoading"
-							label="Back to heroes"
-						/>
+							label="Back to heroes" />
 					</div>
 				</div>
 			</div>

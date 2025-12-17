@@ -54,8 +54,7 @@ const projects = {
 		},
 		{
 			title: 'UI-компоненты',
-			description:
-				'В данном проекте разработан набор многократно используемых UI-компонентов, которые повышают интерактивность и удобство пользовательского интерфейса.',
+			description: 'В данном проекте представлен набор UI-компонентов.',
 			url: '/ui',
 		},
 	],
@@ -86,8 +85,7 @@ const projects = {
 									variant="primary"
 									size="small"
 									:full="true"
-									label="Перейти"
-								/>
+									label="Перейти" />
 							</RouterLink>
 						</template>
 					</div>
