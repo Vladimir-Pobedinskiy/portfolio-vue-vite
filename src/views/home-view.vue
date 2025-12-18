@@ -57,10 +57,10 @@ const swiperOptions = {
                 >
                   <template #slider-content="{ slide }">
                     <a
-                      class="home-view__about-img-link glightbox"
+                      class="home-view__profile-slider-img-link glightbox"
                       :href="slide.url"
                     >
-                      <div class="home-view__about-img-wrapper">
+                      <div class="home-view__profile-slider-img-wrapper home-view__about-img-wrapper">
                         <img
                           :src="slide.url"
                           :alt="slide.alt"
@@ -179,22 +179,22 @@ const swiperOptions = {
 		}
 	}
 
-  &__about-img-link {
+  &__profile-slider-img-link {
     display: block;
     width: 280px;
-		min-width: 280px;
-		height: 280px;
-		border-radius: 50%;
-		overflow: hidden;
+    min-width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    overflow: hidden;
   }
 
-	&__about-img-wrapper {
-		width: 280px;
-		min-width: 280px;
-		height: 280px;
-		border-radius: 50%;
-		overflow: hidden;
-	}
+  &__profile-slider-img-wrapper {
+    width: 280px;
+    min-width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
 
 	&__about-name {
 		margin-bottom: 4px;
