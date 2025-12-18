@@ -253,15 +253,15 @@ const swiperOptions = {
 
   &__profile-slider-wrapper {
     margin-bottom: 8px;
-    width: 350px;
     height: 350px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     overflow: hidden;
 
     @media (min-width: variables.$desktop) {
       margin-bottom: 0;
+      width: 350px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 
