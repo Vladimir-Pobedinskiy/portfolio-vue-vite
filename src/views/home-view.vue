@@ -254,7 +254,6 @@ const swiperOptions = {
   &__profile-slider-wrapper {
     margin-bottom: 8px;
     height: 350px;
-    overflow: hidden;
 
     @media (min-width: variables.$desktop) {
       margin-bottom: 0;
@@ -286,6 +285,8 @@ const swiperOptions = {
     height: 10px;
     background-color: variables.$color-vue-bg;
     border-radius: 50%;
+    transform: scale(1);
+    transition: transform 0.3s;
 
     &:last-child {
       margin-right: 0;
@@ -294,6 +295,8 @@ const swiperOptions = {
 
   &__profile-slider-pagination-bullet-active {
     background-color: variables.$color-vue;
+    transform: scale(1.2);
+    transition: transform 0.3s;
   }
 }
 
