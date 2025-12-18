@@ -1,5 +1,10 @@
 <script setup lang="ts">
+  /* eslint-disable-next-line */
+// @ts-ignore
+import { profile } from '~/moke/profile.js'
 import DescriptionUnit from '@/components/DescriptionUnit.vue'
+import { Pagination, Keyboard } from 'swiper/modules'
+import UISlider from '@/components/UI/UISlider.vue'
 import { useGLightbox } from '@/composables/useGLightbox'
 import IconVk from '@/assets/icons/icon-vk.svg'
 import IconTg from '@/assets/icons/icon-tg.svg'
@@ -20,6 +25,20 @@ const description = {
 }
 
 useGLightbox()
+
+const modules = [Pagination, Keyboard]
+const swiperOptions = {
+	slidesPerView: 1,
+	spaceBetween: 8,
+	speed: 900,
+	pagination: {
+		el: '.profile-slider__pagination',
+		bulletClass: 'profile-slider__pagination-bullet',
+		bulletActiveClass: 'profile-slider__pagination-bullet-active',
+		clickable: true
+	},
+	keyboard: true,
+}
 </script>
 
 <template>
@@ -29,22 +48,35 @@ useGLightbox()
         <div class="home-view__about-inner">
           <div class="home-view__about-left-side">
             <div class="home-view__about-left-side-inner">
-              <a
-                class="home-view__about-img-link glightbox"
-                href="https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/vlad-photo.jpg"
-              >
-                <div class="home-view__about-img-wrapper">
-                  <img
-                    src="https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/vlad-photo.jpg"
-                    alt="Владимир"
-                    width="350px"
-                    height="350px"
-                  />
-                </div>
-              </a>
+              <UISlider class="profile-slider" :modules="modules" :swiper-options="swiperOptions" :slides="profile.photos">
+                <template #slider-content="{ slide }">
+                  <a
+                    class="home-view__about-img-link glightbox"
+                    :href="slide.url"
+                  >
+                    <div class="home-view__about-img-wrapper">
+                      <img
+                        :src="slide.url"
+                        :alt="slide.alt"
+                        width="350px"
+                        height="350px"
+                      />
+                    </div>
+                  </a>
+                </template>
+                <template #pagination>
+                  <div
+                    v-if="profile.photos && profile.photos.length >= 1"
+                    class="profile-slider__pagination swiper-pagination"
+                  >
+                    <span class="visually-hidden">Пагинация</span>
+                  </div>
+                </template>
+              </UISlider>
+
               <div class="home-view__about-left-side-inner-content">
-                <p class="home-view__about-name s1">Владимир Побединский</p>
-                <p class="home-view__about-position s3">Frontend-разработчик (Vue/Nuxt) | Верстальщик</p>
+                <p class="home-view__about-name s1">{{ profile.name }}</p>
+                <p class="home-view__about-position s3">{{ profile.position }}</p>
                 <ul class="home-view__about-social-list">
                   <li class="home-view__about-social-item">
                     <a class="home-view__about-social-link" href="https://vk.com/id9716085" target="_blank">
@@ -142,18 +174,11 @@ useGLightbox()
 
   &__about-img-link {
     display: block;
-    margin-bottom: 32px;
     width: 280px;
 		min-width: 280px;
 		height: 280px;
 		border-radius: 50%;
 		overflow: hidden;
-
-
-		@media (min-width: variables.$desktop) {
-			margin-right: 32px;
-			margin-bottom: 0;
-		}
   }
 
 	&__about-img-wrapper {
@@ -218,5 +243,16 @@ useGLightbox()
 			}
 		}
 	}
+}
+
+.profile-slider {
+  margin: 0 0 32px;
+  width: 350px;
+  height: 350px;
+  overflow: hidden;
+
+  @media (min-width: variables.$desktop) {
+    margin: 0 32px 0 0;
+  }
 }
 </style>

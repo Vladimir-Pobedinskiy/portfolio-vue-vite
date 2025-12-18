@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import 'swiper/swiper-bundle.css'
+// @ts-ignore
+import 'swiper/css'
 
 defineProps<{
 	swiperOptions: any
@@ -23,6 +24,11 @@ defineProps<{
 			<SwiperSlide v-for="slide in slides" :key="slide.id" class="slider__slide">
 				<slot name="slider-content" :slide="slide" />
 			</SwiperSlide>
+		</template>
+		<template v-if="$slots.pagination">
+			<div class="swiper-pagination-wrapper">
+				<slot name="pagination" />
+			</div>
 		</template>
 	</Swiper>
 </template>

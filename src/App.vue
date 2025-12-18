@@ -4,11 +4,6 @@ import AppHeader from '@/components/App/AppHeader.vue'
 import AppFooter from '@/components/App/AppFooter.vue'
 import ModalError from '@/components/Modals/ModalError.vue'
 import UISplashScreen from '@/components/UI/UISplashScreen.vue'
-import { useInitMargins } from '@/composables/useInitMargins'
-
-onMounted(() => {
-	useInitMargins()
-})
 </script>
 
 <template>
