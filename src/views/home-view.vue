@@ -32,9 +32,9 @@ const swiperOptions = {
 	spaceBetween: 8,
 	speed: 900,
 	pagination: {
-		el: '.profile-slider__pagination',
-		bulletClass: 'profile-slider__pagination-bullet',
-		bulletActiveClass: 'profile-slider__pagination-bullet-active',
+		el: '.home-view__profile-slider-pagination',
+		bulletClass: 'home-view__profile-slider-pagination-bullet',
+		bulletActiveClass: 'home-view__profile-slider-pagination-bullet-active',
 		clickable: true
 	},
 	keyboard: true,
@@ -48,31 +48,38 @@ const swiperOptions = {
         <div class="home-view__about-inner">
           <div class="home-view__about-left-side">
             <div class="home-view__about-left-side-inner">
-              <UISlider class="profile-slider" :modules="modules" :swiper-options="swiperOptions" :slides="profile.photos">
-                <template #slider-content="{ slide }">
-                  <a
-                    class="home-view__about-img-link glightbox"
-                    :href="slide.url"
-                  >
-                    <div class="home-view__about-img-wrapper">
-                      <img
-                        :src="slide.url"
-                        :alt="slide.alt"
-                        width="350px"
-                        height="350px"
-                      />
+              <div class="home-view__profile-slider-wrapper">
+                <UISlider
+                  class="home-view__profile-slider"
+                  :modules="modules"
+                  :swiper-options="swiperOptions"
+                  :slides="profile.photos"
+                >
+                  <template #slider-content="{ slide }">
+                    <a
+                      class="home-view__about-img-link glightbox"
+                      :href="slide.url"
+                    >
+                      <div class="home-view__about-img-wrapper">
+                        <img
+                          :src="slide.url"
+                          :alt="slide.alt"
+                          width="280px"
+                          height="280px"
+                        />
+                      </div>
+                    </a>
+                  </template>
+                  <template #pagination>
+                    <div
+                      v-if="profile.photos && profile.photos.length >= 1"
+                      class="home-view__profile-slider-pagination swiper-pagination"
+                    >
+                      <span class="visually-hidden">Пагинация</span>
                     </div>
-                  </a>
-                </template>
-                <template #pagination>
-                  <div
-                    v-if="profile.photos && profile.photos.length >= 1"
-                    class="profile-slider__pagination swiper-pagination"
-                  >
-                    <span class="visually-hidden">Пагинация</span>
-                  </div>
-                </template>
-              </UISlider>
+                  </template>
+                </UISlider>
+              </div>
 
               <div class="home-view__about-left-side-inner-content">
                 <p class="home-view__about-name s1">{{ profile.name }}</p>
@@ -243,16 +250,53 @@ const swiperOptions = {
 			}
 		}
 	}
+
+  &__profile-slider-wrapper {
+    width: 350px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  &__profile-slider {
+    margin: 0 0 32px;
+    padding-bottom: 30px;
+
+    @media (min-width: variables.$desktop) {
+      margin: 0 32px 0 0;
+    }
+  }
+
+  &__profile-slider-pagination {
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__profile-slider-pagination-bullet {
+    margin-right: 6px;
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: variables.$color-vue-bg;
+    border-radius: 50%;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__profile-slider-pagination-bullet-active {
+    background-color: variables.$color-vue;
+  }
 }
 
-.profile-slider {
-  margin: 0 0 32px;
-  width: 350px;
-  height: 350px;
-  overflow: hidden;
-
-  @media (min-width: variables.$desktop) {
-    margin: 0 32px 0 0;
-  }
+.slider__slide {
+  width: 280px;
+  height: 280px;
+  display: flex;
+  justify-content: center;
 }
 </style>

@@ -26,7 +26,7 @@ defineProps<{
 			</SwiperSlide>
 		</template>
 		<template v-if="$slots.pagination">
-			<div class="swiper-pagination-wrapper">
+			<div v-if="slides && slides.length > 1" class="swiper-pagination-wrapper">
 				<slot name="pagination" />
 			</div>
 		</template>
