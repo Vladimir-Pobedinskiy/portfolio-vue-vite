@@ -252,17 +252,21 @@ const swiperOptions = {
 	}
 
   &__profile-slider-wrapper {
+    margin-bottom: 8px;
     width: 350px;
     height: 350px;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+
+    @media (min-width: variables.$desktop) {
+      margin-bottom: 0;
+    }
   }
 
   &__profile-slider {
-    margin: 0 0 32px;
-    padding-bottom: 30px;
+    padding-bottom: 16px;
 
     @media (min-width: variables.$desktop) {
       margin: 0 32px 0 0;
@@ -270,7 +274,7 @@ const swiperOptions = {
   }
 
   &__profile-slider-pagination {
-    margin-top: 12px;
+    margin-top: 16px;
     display: flex;
     justify-content: center;
   }
