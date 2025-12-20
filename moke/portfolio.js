@@ -75,7 +75,7 @@ export const portfolio = {
 			type: 'Многостраничный сайт',
 			title: 'Сухие корма для животных премиум класса "AJO"',
 			description:
-				'Фронтенд проекта разработан с использованием HTML, SCSS и JavaScript. Для сборки использовался Webpack',
+				'Фронтенд проекта разработан командой из двух человек с использованием HTML, SCSS и JavaScript. Для сборки использовался Webpack',
 			url: 'https://ajo-pet.ru/',
 		},
 		{
