@@ -87,7 +87,7 @@ export const portfolio = {
 			title: 'Поставка сельхозтехники и запчастей ООО ТД "Подшипник"',
 			description:
 				'Фронтенд проекта разработан с использованием HTML, SCSS и JavaScript. Для сборки использовался Webpack',
-			url: 'https://ajo-pet.ru/',
+			url: 'https://pm-penza.ru/',
 		},
 	],
 }
