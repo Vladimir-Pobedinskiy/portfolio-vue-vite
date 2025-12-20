@@ -64,8 +64,30 @@ export const portfolio = {
 			type: 'Многостраничный сайт',
 			title: 'Многостраничный сайт по ремонту "Alvic center"',
 			description:
-				'Фронтенд проекта разработан с использованием HTML, SCSS и JavaScript в сочетании с Vue 3. Для сборки использовался Webpack, что обеспечило высокую производительность и масштабируемость приложения.',
+				'Фронтенд проекта разработан с использованием HTML, SCSS и JavaScript в сочетании с Vue 3. Для сборки использовался Webpack',
 			url: 'https://alviccenter.ru',
+		},
+		{
+			img: {
+				url: 'https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/case/case-img-8.jpg',
+				alt: 'image',
+			},
+			type: 'Многостраничный сайт',
+			title: 'Сухие корма для животных премиум класса "AJO"',
+			description:
+				'Фронтенд проекта разработан с использованием HTML, SCSS и JavaScript. Для сборки использовался Webpack',
+			url: 'https://ajo-pet.ru/',
+		},
+		{
+			img: {
+				url: 'https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/case/case-img-7.jpg',
+				alt: 'image',
+			},
+			type: 'Многостраничный сайт',
+			title: 'Поставка сельхозтехники и запчастей ООО ТД "Подшипник"',
+			description:
+				'Фронтенд проекта разработан с использованием HTML, SCSS и JavaScript. Для сборки использовался Webpack',
+			url: 'https://ajo-pet.ru/',
 		},
 	],
 }

@@ -60,7 +60,7 @@ const swiperOptions = {
                       class="home-view__profile-slider-img-link glightbox"
                       :href="slide.url"
                     >
-                      <div class="home-view__profile-slider-img-wrapper home-view__about-img-wrapper">
+                      <div class="home-view__profile-slider-img-wrapper">
                         <img
                           :src="slide.url"
                           :alt="slide.alt"
