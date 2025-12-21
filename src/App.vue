@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
 import AppHeader from '@/components/App/AppHeader.vue'
 import AppFooter from '@/components/App/AppFooter.vue'
 import ModalError from '@/components/Modals/ModalError.vue'
