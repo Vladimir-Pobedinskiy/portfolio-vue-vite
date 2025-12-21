@@ -6,8 +6,8 @@ export const portfolio = {
 				url: 'https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/case/case-img-5.jpg',
 				alt: 'image',
 			},
-			type: 'Интернет-магазин',
-			title: 'Интернет-магазин корпусной мебели "Альтернатива"',
+			type: 'Многостраничный сайт',
+			title: 'Многостраничный сайт корпусной мебели "Альтернатива"',
 			description:
 				'Фронтенд проекта разработан с использованием Nuxt 3 — современного фреймворка для создания веб-приложений на Vue.js',
 			url: 'https://www.alt-mk.ru/',
@@ -64,7 +64,7 @@ export const portfolio = {
 			type: 'Многостраничный сайт',
 			title: 'Многостраничный сайт по ремонту "Alvic center"',
 			description:
-				'Фронтенд проекта разработан с использованием HTML, SCSS и JavaScript в сочетании с Vue 3. Для сборки использовался Webpack',
+				'Фронтенд проекта разработан с использованием HTML, SCSS и JavaScript в сочетании с Vue 3. Для сборки использовался Webpack.',
 			url: 'https://alviccenter.ru',
 		},
 		{
@@ -75,7 +75,7 @@ export const portfolio = {
 			type: 'Многостраничный сайт',
 			title: 'Сухие корма для животных премиум класса "AJO"',
 			description:
-				'Фронтенд проекта разработан командой из двух человек с использованием HTML, SCSS и JavaScript. Для сборки использовался Webpack',
+				'Фронтенд проекта разработан командой из двух человек с использованием HTML, SCSS и JavaScript. Для сборки использовался Webpack.',
 			url: 'https://ajo-pet.ru/',
 		},
 		{
@@ -86,7 +86,7 @@ export const portfolio = {
 			type: 'Многостраничный сайт',
 			title: 'Поставка сельхозтехники и запчастей ООО ТД "Подшипник"',
 			description:
-				'Фронтенд проекта разработан с использованием HTML, SCSS и JavaScript. Для сборки использовался Webpack',
+				'Фронтенд проекта разработан с использованием HTML, SCSS и JavaScript. Для сборки использовался Webpack.',
 			url: 'https://pm-penza.ru/',
 		},
 	],
