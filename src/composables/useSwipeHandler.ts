@@ -17,7 +17,10 @@ export const useSwipeHandler = (
 
 	const handleSwipe = () => {
 		const { direction } = useSwipe(target, {
-			passive: false,
+			// делаем события passive — не блокируем preventDefault по умолчанию
+			passive: true,
+			// Порог свайпа от 70px
+			threshold: 70,
 			onSwipe: () => {
 				if (window.innerWidth <= parseInt(breakpoint)) {
 					if (!swipeProcessed.value && direction.value === directionSwipe) {
