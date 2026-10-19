@@ -54,11 +54,6 @@ export const routes: RouteRecordRaw[] = [
 		component: () => import('@/views/hero-view.vue'),
 	},
 	{
-		path: '/ui',
-		name: 'ui-view',
-		component: () => import('@/views/ui-view.vue'),
-	},
-	{
 		path: '/:catchAll(.*)*',
 		name: 'not-found-view',
 		component: () => import('@/views/not-found-view.vue'),
