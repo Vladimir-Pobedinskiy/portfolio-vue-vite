@@ -3,6 +3,7 @@
 // @ts-ignore
 import { profile } from '~/moke/profile.js'
 import DescriptionUnit from '@/components/DescriptionUnit.vue'
+import HomeHero3D from '@/components/Home/HomeHero3D.vue'
 import { Pagination, Keyboard } from 'swiper/modules'
 import UISlider from '@/components/UI/UISlider.vue'
 import { useGLightbox } from '@/composables/useGLightbox'
@@ -43,6 +44,8 @@ const swiperOptions = {
 
 <template>
   <div class="home-view offset-page">
+    <HomeHero3D />
+
     <div class="container">
       <div class="home-view__about">
         <div class="home-view__about-inner">
@@ -129,6 +132,10 @@ const swiperOptions = {
 @use '@/assets/scss/general/variables';
 
 .home-view {
+	&.offset-page {
+		padding-top: 0;
+	}
+
 	&__about {
 		position: relative;
 		margin-bottom: 48px;
