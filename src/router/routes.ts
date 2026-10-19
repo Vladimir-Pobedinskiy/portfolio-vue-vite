@@ -31,6 +31,8 @@ export const routes: RouteRecordRaw[] = [
 	{
 		path: '/pet-projects',
 		name: 'pet-projects-view',
+		meta: { requiresAuth: true },
+		beforeEnter: [auth],
 		component: () => import('@/views/pet-projects-view.vue'),
 	},
 	{
@@ -41,16 +43,22 @@ export const routes: RouteRecordRaw[] = [
 	{
 		path: '/tasks',
 		name: 'tasks-view',
+		meta: { requiresAuth: true },
+		beforeEnter: [auth],
 		component: () => import('@/views/tasks-view.vue'),
 	},
 	{
 		path: '/heroes',
 		name: 'heroes-view',
+		meta: { requiresAuth: true },
+		beforeEnter: [auth],
 		component: () => import('@/views/heroes-view.vue'),
 	},
 	{
 		path: '/heroes/:slug',
 		name: 'hero-view',
+		meta: { requiresAuth: true },
+		beforeEnter: [auth],
 		component: () => import('@/views/hero-view.vue'),
 	},
 	{
