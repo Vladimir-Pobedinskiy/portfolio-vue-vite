@@ -2,7 +2,6 @@
   /* eslint-disable-next-line */
 // @ts-ignore
 import { profile } from '~/moke/profile.js'
-import DescriptionUnit from '@/components/DescriptionUnit.vue'
 import HomeHero3D from '@/components/Home/HomeHero3D.vue'
 import { Pagination, Keyboard } from 'swiper/modules'
 import UISlider from '@/components/UI/UISlider.vue'
@@ -10,19 +9,43 @@ import { useGLightbox } from '@/composables/useGLightbox'
 import IconVk from '@/assets/icons/icon-vk.svg'
 import IconTg from '@/assets/icons/icon-tg.svg'
 
-const description = {
-	title: 'В портфолио реализовано:',
-	descriptionList: [
-		'Установка и настройка Vite (Vue 3 с TypeScript)',
-		'Настройка vite.config.ts',
-		'Установка и настройка Vue-router для навигации и Pinia для управления состоянием',
-		'Использование Composition API совместно с TypeScript',
-		'Динамическая перерисовка без перезагрузки страницы',
-		'Обработка несуществующих routes',
-		'Registration & Login через Firebase',
-		'Адаптивная верстка по принципу Mobile First',
-		'На других views демонстрируются мои "Коммерческие проекты" и "Pet-проекты"',
+const projectInfo = {
+	title: 'Технологии и решения',
+	groups: [
+		{
+			title: 'Стек',
+			items: [
+				'Vue 3, TypeScript, Vite',
+				'Pinia с сохранением состояния между сессиями, Vue Router',
+				'SCSS по методологии БЭМ, ESLint, Prettier и Stylelint',
+			],
+		},
+		{
+			title: 'Архитектура',
+			items: [
+				'Разбиение на переиспользуемые UI-компоненты, композаблы и сторы',
+				'Ленивая загрузка страниц и защищённые маршруты с проверкой авторизации',
+				'Страница 404 для несуществующих адресов',
+			],
+		},
+		{
+			title: 'Интерфейс и анимации',
+			items: [
+				'3D-сцена на Three.js с анимацией по скроллу (GSAP ScrollTrigger)',
+				'Адаптивная вёрстка по принципу Mobile First',
+				'Плавные переходы между страницами без перезагрузки',
+			],
+		},
+		{
+			title: 'Деплой',
+			items: ['Сборка и публикация на GitHub Pages'],
+		},
 	],
+	note: {
+		comment: '// мои рабочие проекты',
+		section: 'Коммерческие проекты',
+		url: '/commercial-projects',
+	},
 }
 
 useGLightbox()
@@ -123,7 +146,38 @@ const swiperOptions = {
         </div>
       </div>
 
-      <DescriptionUnit :description="description" />
+      <div class="home-view__project">
+        <h1 class="title h1">{{ projectInfo.title }}</h1>
+
+        <div class="home-view__project-groups">
+          <div v-for="group in projectInfo.groups" :key="group.title" class="home-view__project-group">
+            <p class="home-view__project-group-title s2">{{ group.title }}</p>
+            <ul class="home-view__project-list">
+              <li v-for="item in group.items" :key="item" class="home-view__project-item p1">{{ item }}</li>
+            </ul>
+          </div>
+        </div>
+
+        <RouterLink
+          class="home-view__project-note"
+          :to="projectInfo.note.url"
+          :aria-label="`Мои рабочие проекты — раздел «${projectInfo.note.section}»`"
+        >
+          <span class="home-view__project-note-line" aria-hidden="true">
+            <span class="home-view__project-note-number">01</span>
+            <span class="home-view__project-note-comment">{{ projectInfo.note.comment }}</span>
+          </span>
+          <span class="home-view__project-note-line" aria-hidden="true">
+            <span class="home-view__project-note-number">02</span>
+            <span>
+              <span class="home-view__project-note-object">router</span>.<span
+                class="home-view__project-note-method">push</span>(<span
+                class="home-view__project-note-string">'{{ projectInfo.note.section }}'</span>)<span
+                class="home-view__project-note-cursor"></span>
+            </span>
+          </span>
+        </RouterLink>
+      </div>
     </div>
   </div>
 </template>
@@ -278,6 +332,121 @@ const swiperOptions = {
     }
   }
 
+  &__project-groups {
+    margin-bottom: 32px;
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 24px;
+
+    @media (min-width: variables.$tablet) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: variables.$desktop) {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px 32px;
+    }
+  }
+
+  &__project-group-title {
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(variables.$color-vue, 0.4);
+    color: variables.$color-vue;
+  }
+
+  &__project-list {
+    padding-left: 22px;
+  }
+
+  &__project-item {
+    margin-bottom: 8px;
+    list-style: disc;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &::marker {
+      color: variables.$color-vue;
+    }
+  }
+
+  &__project-note {
+    display: inline-flex;
+    flex-direction: column;
+    max-width: 100%;
+    padding: 12px 20px 12px 0;
+    border-left: 2px solid variables.$color-vue;
+    border-radius: 0 8px 8px 0;
+    font-family: ui-monospace, 'SFMono-Regular', 'Cascadia Code', Consolas, monospace;
+    font-size: 15px;
+    line-height: 1.7;
+    color: variables.$color-gray-dark;
+    transition: background-color 0.2s;
+
+    @media (min-width: variables.$desktop) {
+      font-size: 17px;
+    }
+
+    &:hover,
+    &:focus-visible {
+      background-color: rgba(variables.$color-vue, 0.07);
+
+      .home-view__project-note-string {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+    }
+  }
+
+  &__project-note-line {
+    display: flex;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__project-note-number {
+    flex-shrink: 0;
+    width: 3.5ch;
+    margin-right: 1.5ch;
+    text-align: right;
+    color: variables.$color-gray-light;
+    user-select: none;
+  }
+
+  &__project-note-comment {
+    color: variables.$color-gray-medium;
+    font-style: italic;
+  }
+
+  &__project-note-object {
+    color: #0b6e99;
+  }
+
+  &__project-note-method {
+    color: #795e26;
+  }
+
+  &__project-note-string {
+    color: #047857;
+  }
+
+  &__project-note-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.1em;
+    margin-left: 2px;
+    vertical-align: text-bottom;
+    background-color: variables.$color-gray-dark;
+    animation: project-note-cursor 1.1s steps(1) infinite;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+
   &__profile-slider-pagination {
     margin-top: 16px;
     display: flex;
@@ -311,5 +480,11 @@ const swiperOptions = {
   height: 280px;
   display: flex;
   justify-content: center;
+}
+
+@keyframes project-note-cursor {
+  50% {
+    opacity: 0;
+  }
 }
 </style>
