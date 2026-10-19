@@ -89,5 +89,16 @@ export const portfolio = {
 				'Фронтенд проекта разработан с использованием HTML, SCSS и JavaScript. Для сборки использовался Webpack.',
 			url: 'https://pm-penza.ru/',
 		},
+		{
+			img: {
+				url: 'https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/case/case-img-9.jpg',
+				alt: 'image',
+			},
+			type: 'Многостраничный сайт',
+			title: 'Вывески и рекламные конструкции "Пенза Принт"',
+			description:
+				'Фронтенд проекта разработан с использованием Nuxt 4 — современного фреймворка для создания веб-приложений на Vue.js',
+			url: 'https://penza-print.ru/',
+		},
 	],
 }
