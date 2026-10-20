@@ -4,7 +4,7 @@ export const profile = {
 	photos: [
 		{
 			id: 1,
-			url: 'https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/profile/profile-img-1.jpg',
+			url: 'https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/profile/profile-img-3.jpg',
 			alt: 'profile image',
 		},
 		{
@@ -14,7 +14,7 @@ export const profile = {
 		},
 		{
 			id: 3,
-			url: 'https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/profile/profile-img-3.jpg',
+			url: 'https://vladimir-pobedinskiy.github.io/portfolio-vue-vite/img/profile/profile-img-1.jpg',
 			alt: 'profile image',
 		},
 	],

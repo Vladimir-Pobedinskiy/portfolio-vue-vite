@@ -26,7 +26,6 @@ const root = ref<HTMLElement | null>(null)
 const canvasWrapper = ref<HTMLElement | null>(null)
 const subtitle = ref<HTMLElement | null>(null)
 const hint = ref<HTMLElement | null>(null)
-const glow = ref<HTMLElement | null>(null)
 
 let renderer: THREE.WebGLRenderer | undefined
 let scene: THREE.Scene | undefined
@@ -40,7 +39,6 @@ let scrollTrigger: ScrollTrigger | undefined
 let subtitleTimeline: gsap.core.Timeline | undefined
 let resizeObserver: ResizeObserver | undefined
 let intersectionObserver: IntersectionObserver | undefined
-let glowFade = 0
 
 // Целевой угол задаёт скролл, текущий плавно догоняет его в цикле рендера
 const rotation = { targetY: 0, targetX: 0, y: 0, x: 0 }
@@ -63,13 +61,6 @@ const fitCamera = () => {
 	render()
 }
 
-// Свечение под моделью разгорается синхронно с поворотом
-const updateGlow = (value: number) => {
-	if (!glow.value) return
-	glow.value.style.opacity = String(glowFade * (0.2 + 0.8 * value))
-	glow.value.style.transform = `translateX(-50%) scale(${0.35 + 0.65 * value}, ${0.6 + 0.4 * value})`
-}
-
 const tick = () => {
 	rafId = requestAnimationFrame(tick)
 	if (!mesh) return
@@ -77,7 +68,6 @@ const tick = () => {
 	rotation.x += (rotation.targetX - rotation.x) * 0.08
 	mesh.rotation.y = rotation.y
 	mesh.rotation.x = rotation.x
-	updateGlow(Math.min(Math.max(rotation.y / (Math.PI * 2), 0), 1))
 	render()
 }
 
@@ -94,18 +84,19 @@ const createSubtitleTimeline = (start: () => string) => {
 	const el = subtitle.value!
 	const roleEls = el.querySelectorAll('.home-hero__subtitle-role .home-hero__subtitle-char')
 	const stackEls = el.querySelectorAll('.home-hero__subtitle-stack .home-hero__subtitle-char')
-	const dropIn = (each: number) => [
-		{ opacity: 0, yPercent: -140, scale: 1.8, filter: 'blur(6px)' },
-		{
-			opacity: 1,
-			yPercent: 0,
-			scale: 1,
-			filter: 'blur(0px)',
-			duration: 0.1,
-			ease: 'back.out(2.5)',
-			stagger: { each, from: 'random' as const },
-		},
-	] as const
+	const dropIn = (each: number) =>
+		[
+			{ opacity: 0, yPercent: -140, scale: 1.8, filter: 'blur(6px)' },
+			{
+				opacity: 1,
+				yPercent: 0,
+				scale: 1,
+				filter: 'blur(0px)',
+				duration: 0.1,
+				ease: 'back.out(2.5)',
+				stagger: { each, from: 'random' as const },
+			},
+		] as const
 
 	return gsap
 		.timeline({
@@ -124,12 +115,7 @@ const createSubtitleTimeline = (start: () => string) => {
 			0.47
 		)
 		.fromTo(stackEls, ...dropIn(0.012), 0.5)
-		.fromTo(
-			'.home-hero__subtitle-line',
-			{ scaleX: 0 },
-			{ scaleX: 1, duration: 0.1, ease: 'power2.inOut' },
-			0.64
-		)
+		.fromTo('.home-hero__subtitle-line', { scaleX: 0 }, { scaleX: 1, duration: 0.1, ease: 'power2.inOut' }, 0.64)
 		.to({}, { duration: 0.26 })
 }
 
@@ -214,7 +200,6 @@ const initScene = () => {
 			rotation.targetX = Math.sin(progress * Math.PI) * 0.35
 			const fade = Math.min(progress * 8, 1)
 			gsap.set(hint.value, { opacity: 1 - fade })
-			glowFade = fade
 		},
 	})
 
@@ -247,7 +232,6 @@ onBeforeUnmount(() => {
 	<section ref="root" class="home-hero">
 		<div class="home-hero__sticky">
 			<h2 class="visually-hidden">{{ WORD }}</h2>
-			<div ref="glow" class="home-hero__glow" aria-hidden="true"></div>
 			<div ref="canvasWrapper" class="home-hero__canvas" aria-hidden="true"></div>
 
 			<p ref="subtitle" class="home-hero__subtitle s1" :aria-label="SUBTITLE">
@@ -303,30 +287,6 @@ onBeforeUnmount(() => {
 		}
 	}
 
-	&__glow {
-		position: absolute;
-		left: 50%;
-		top: calc(50% + clamp(24px, 4.5vw, 80px));
-		width: min(90vw, 1100px);
-		height: clamp(60px, 10vw, 160px);
-		border-radius: 50%;
-		background: radial-gradient(
-			ellipse at center,
-			rgba(#6ee7b7, 0.7) 0%,
-			rgba(variables.$color-vue, 0.35) 40%,
-			rgba(#047857, 0) 70%
-		);
-		filter: blur(24px);
-		opacity: 0;
-		transform: translateX(-50%) scale(0.35, 0.6);
-		pointer-events: none;
-
-		@media (prefers-reduced-motion: reduce) {
-			opacity: 0.6;
-			transform: translateX(-50%);
-		}
-	}
-
 	&__canvas {
 		position: relative;
 		width: 100%;
@@ -358,6 +318,12 @@ onBeforeUnmount(() => {
 	&__subtitle-stack {
 		position: relative;
 		display: inline-flex;
+	}
+
+	&__subtitle-role {
+		@media (max-width: calc(variables.$tablet - 1px)) {
+			font-size: 0.75em;
+		}
 	}
 
 	&__subtitle-char {
